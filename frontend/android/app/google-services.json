@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "249104909704",
+    "project_id": "phycosense-ec7d3",
+    "storage_bucket": "phycosense-ec7d3.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:249104909704:android:e124270dc02e16f53b663d",
+        "android_client_info": {
+          "package_name": "com.example.frontend"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBWCsz2GftTqNIRBOkoIt8LdaEpOwYVmVA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
