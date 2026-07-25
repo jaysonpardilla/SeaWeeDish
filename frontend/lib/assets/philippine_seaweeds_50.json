@@ -1,7 +1,7 @@
 [
     {
         "id": 1,
-        "common_name": "Lato (Sea Grapes)",
+        "common_name": "Lato",
         "scientific_name": "Caulerpa lentillifera",
         "description": "Clusters of tiny, green, succulent spheres attached to a creeping stem that release a salty liquid when bitten or crushed.",
         "edible": "Edible",
@@ -61,7 +61,7 @@
     },
     {
         "id": 5,
-        "common_name": "Salyaki (Sea Lettuce)",
+        "common_name": "Salyaki",
         "scientific_name": "Ulva reticulata",
         "description": "A thin, sheet-like seaweed that appears as a green film with many naturally occurring holes or a perforated net-like structure.",
         "edible": "Edible",
@@ -91,7 +91,7 @@
     },
     {
         "id": 7,
-        "common_name": "Tambalang (Guso)",
+        "common_name": "Tambalang",
         "scientific_name": "Kappaphycus alvarezii",
         "description": "Large, fleshy seaweed with heavy branches; it is the primary source of carrageenan and is commonly sold in public markets.",
         "edible": "Edible",
@@ -136,7 +136,7 @@
     },
     {
         "id": 10,
-        "common_name": "Aragan (Sargassum)",
+        "common_name": "Aragan",
         "scientific_name": "Sargassum polycystum",
         "description": "A complex seaweed resembling a small underwater bush with leaf-like blades and tiny round bladders that act as floats.",
         "edible": "Edible",
@@ -151,7 +151,7 @@
     },
     {
         "id": 11,
-        "common_name": "Suso-suso (Crown Algae)",
+        "common_name": "Suso-suso",
         "scientific_name": "Turbinaria ornata",
         "description": "A very stiff, hardy seaweed with triangular, crown-shaped leaves; it is often too tough to eat but used for fertilizer.",
         "edible": "Not Edible (Usually)",
@@ -346,7 +346,7 @@
     },
     {
         "id": 24,
-        "common_name": "Buto-buto (Brown)",
+        "common_name": "Buto-buto",
         "scientific_name": "Colpomenia sinuosa",
         "description": "A hollow, balloon-like brown seaweed that feels thin and papery when touched; it looks like a golden-brown bubble on the reef.",
         "edible": "Not Edible",
@@ -361,7 +361,7 @@
     },
     {
         "id": 25,
-        "common_name": "Buto-buto (Green)",
+        "common_name": "Buto-buto",
         "scientific_name": "Bornetella sphaerica",
         "description": "Tiny, green, marble-like spheres that grow in clusters on rocks, looking like spilled green beads on the ocean floor.",
         "edible": "Not Edible",

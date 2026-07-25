@@ -451,7 +451,6 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
                   name: seaweed['name'] as String,
                   status: seaweed['status'] as String,
                   statusColor: seaweed['statusColor'] as Color,
-                  distance: seaweed['distance'] as String,
                   imagePath: seaweed['image'] as String,
                 ),
               );
@@ -466,13 +465,13 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
     required String name,
     required String status,
     required Color statusColor,
-    required String distance,
     required String imagePath,
   }) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisSize: MainAxisSize.min,
       children: [
-        // Image Container with Distance Badge
+        // Image Container with Status Badge
         Stack(
           children: [
             Container(
@@ -487,18 +486,18 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
                 child: _buildImageFromPath(imagePath),
               ),
             ),
-            // Distance Badge
+            // Status Badge
             Positioned(
               bottom: 8,
               left: 8,
               child: Container(
                 padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 3),
                 decoration: BoxDecoration(
-                  color: const Color(0xFF2DBE89),
+                  color: statusColor.withOpacity(0.9),
                   borderRadius: BorderRadius.circular(6),
                 ),
                 child: Text(
-                  distance,
+                  status,
                   style: const TextStyle(
                     fontSize: 10,
                     fontWeight: FontWeight.w600,
@@ -518,34 +517,8 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
             fontWeight: FontWeight.w700,
             color: Color(0xFF0B7A8A),
           ),
-          maxLines: 2,
+          maxLines: 1,
           overflow: TextOverflow.ellipsis,
-        ),
-        // Status Badge
-        Row(
-          children: [
-            Container(
-              width: 5,
-              height: 5,
-              decoration: BoxDecoration(
-                color: statusColor,
-                shape: BoxShape.circle,
-              ),
-            ),
-            const SizedBox(width: 4),
-            Expanded(
-              child: Text(
-                status,
-                style: TextStyle(
-                  fontSize: 9,
-                  fontWeight: FontWeight.w600,
-                  color: statusColor,
-                ),
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-              ),
-            ),
-          ],
         ),
       ],
     );

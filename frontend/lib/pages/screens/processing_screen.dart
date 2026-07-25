@@ -226,7 +226,7 @@ class _ProcessingScreenState extends State<ProcessingScreen>
                   const Text(
                     'Analyzing Seaweed',
                     style: TextStyle(
-                      fontSize: 28,
+                      fontSize: 24,
                       fontWeight: FontWeight.bold,
                       color: Colors.white,
                     ),
