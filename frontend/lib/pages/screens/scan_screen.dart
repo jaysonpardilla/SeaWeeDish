@@ -100,7 +100,7 @@ class _ScanScreenState extends State<ScanScreen> with WidgetsBindingObserver {
 
       _cameraController = CameraController(
         cameras[_cameraIndex],
-        ResolutionPreset.high,
+        ResolutionPreset.medium,
         enableAudio: false,
       );
 
@@ -137,7 +137,7 @@ class _ScanScreenState extends State<ScanScreen> with WidgetsBindingObserver {
 
       _cameraController = CameraController(
         cameras[_cameraIndex],
-        ResolutionPreset.high,
+        ResolutionPreset.medium,
         enableAudio: false,
       );
       await _cameraController!.initialize();
@@ -379,81 +379,97 @@ class _ScanScreenState extends State<ScanScreen> with WidgetsBindingObserver {
                   left: 0,
                   right: 0,
                   bottom: 70,
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 24),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        _buildOverlayButton(
-                          icon: Icons.flip_camera_android_rounded,
-                          onTap: _switchCamera,
-                        ),
-                        const SizedBox(width: 16),
-                        _buildOverlayButton(
-                          icon: Icons.circle_rounded,
-                          isPrimary: true,
-                          onTap: () async {
-                            // Prevent multiple simultaneous captures
-                            if (_isCapturing) {
-                              print('⚠️ Capture already in progress...');
-                              return;
-                            }
+                  child: AbsorbPointer(
+                    absorbing: _isCapturing,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 24),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          _buildOverlayButton(
+                            icon: Icons.flip_camera_android_rounded,
+                            onTap: _isCapturing ? () {} : _switchCamera,
+                          ),
+                          const SizedBox(width: 16),
+                          _buildOverlayButton(
+                            icon: Icons.circle_rounded,
+                            isPrimary: true,
+                            onTap: _isCapturing
+                                ? () {}
+                                : () async {
+                                    if (_isCapturing) {
+                                      print('⚠️ Capture already in progress...');
+                                      return;
+                                    }
 
-                            if (_isCameraInitialized && _cameraController != null) {
-                              try {
-                                setState(() => _isCapturing = true);
-                                print('📷 Starting to take picture...');
+                                    if (_isCameraInitialized && _cameraController != null) {
+                                      if (_isCapturing) {
+                                        print('⚠️ Capture already in progress...');
+                                        return;
+                                      }
 
-                                final image = await _cameraController!.takePicture();
-                                print('📷 Picture taken: ${image.path}');
+                                      _isCapturing = true;
+                                      if (mounted) {
+                                        setState(() {});
+                                      }
 
-                                final croppedFile = await _cropImageToPreviewBox(image.path);
-                                print('✂️ Cropped image path: ${croppedFile.path}');
+                                      try {
+                                        print('📷 Starting to take picture...');
 
-                                if (mounted) {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => ProcessingScreen(
-                                        imagePath: croppedFile.path,
-                                      ),
-                                    ),
-                                  );
-                                }
-                              } catch (e) {
-                                print('❌ Error taking picture: $e');
-                                if (mounted) {
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                    SnackBar(
-                                      content: Text('Error: $e'),
-                                      backgroundColor: Colors.red,
-                                      duration: const Duration(seconds: 3),
-                                    ),
-                                  );
-                                }
-                              } finally {
-                                setState(() => _isCapturing = false);
-                              }
-                            } else {
-                              print('❌ Camera not initialized. Initialized: $_isCameraInitialized, Controller: ${_cameraController != null}');
-                              if (mounted) {
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  const SnackBar(
-                                    content: Text('Camera is not ready. Please wait...'),
-                                    backgroundColor: Colors.orange,
-                                  ),
-                                );
-                              }
-                            }
-                          },
-                        ),
-                        const SizedBox(width: 16),
-                        _buildOverlayButton(
-                          icon: _isFlashOn ? Icons.flash_on_rounded : Icons.flash_off_rounded,
-                          active: _isFlashOn,
-                          onTap: _toggleFlash,
-                        ),
-                      ],
+                                        final image = await _cameraController!.takePicture();
+                                        print('📷 Picture taken: ${image.path}');
+
+                                        final croppedFile = await _cropImageToPreviewBox(image.path);
+                                        print('✂️ Cropped image path: ${croppedFile.path}');
+
+                                        if (mounted) {
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) => ProcessingScreen(
+                                                imagePath: croppedFile.path,
+                                              ),
+                                            ),
+                                          );
+                                        }
+                                      } catch (e) {
+                                        print('❌ Error taking picture: $e');
+                                        if (mounted) {
+                                          ScaffoldMessenger.of(context).showSnackBar(
+                                            SnackBar(
+                                              content: Text('Error: $e'),
+                                              backgroundColor: Colors.red,
+                                              duration: const Duration(seconds: 3),
+                                            ),
+                                          );
+                                        }
+                                      } finally {
+                                        _isCapturing = false;
+                                        if (mounted) {
+                                          setState(() {});
+                                        }
+                                      }
+                                    } else {
+                                      print('❌ Camera not initialized. Initialized: $_isCameraInitialized, Controller: ${_cameraController != null}');
+                                      if (mounted) {
+                                        ScaffoldMessenger.of(context).showSnackBar(
+                                          const SnackBar(
+                                            content: Text('Camera is not ready. Please wait...'),
+                                            backgroundColor: Colors.orange,
+                                          ),
+                                        );
+                                      }
+                                    }
+                                  },
+                          ),
+                          const SizedBox(width: 16),
+                          _buildOverlayButton(
+                            icon: _isFlashOn ? Icons.flash_on_rounded : Icons.flash_off_rounded,
+                            active: _isFlashOn,
+                            onTap: _isCapturing ? () {} : _toggleFlash,
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -476,7 +492,7 @@ class _ScanScreenState extends State<ScanScreen> with WidgetsBindingObserver {
 
   Widget _buildOverlayButton({
     required IconData icon,
-    required VoidCallback onTap,
+    required VoidCallback? onTap,
     bool isPrimary = false,
     bool active = false,
   }) {
@@ -500,6 +516,7 @@ class _ScanScreenState extends State<ScanScreen> with WidgetsBindingObserver {
         child: InkWell(
           onTap: onTap,
           customBorder: const CircleBorder(),
+          splashColor: Colors.white24,
           child: Padding(
             padding: EdgeInsets.all(isPrimary ? 8 : 6),
             child: Icon(

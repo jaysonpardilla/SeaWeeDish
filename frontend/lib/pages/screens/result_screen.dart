@@ -27,7 +27,7 @@ class ResultScreen extends StatefulWidget {
 }
 
 class _ResultScreenState extends State<ResultScreen> {
-  static const int _minimumConfidenceToSave = 75;
+  static const int _minimumConfidenceToSave = 70;
 
   late String seaweedName;
   late int confidence;
@@ -47,25 +47,23 @@ class _ResultScreenState extends State<ResultScreen> {
     if (widget.prediction != null) {
       seaweedName = widget.prediction!.prediction;
       confidence = widget.prediction!.confidence.toInt();
-      if (confidence < _minimumConfidenceToSave) {
+      if (confidence <= _minimumConfidenceToSave) {
         seaweedName = 'Unrecognized';
       }
       print('📋 Using prediction - Name: $seaweedName, Confidence: $confidence');
     } else {
-      seaweedName = 'Sea Lettuce';
-      confidence = 89;
       print('📋 Using fallback mock data');
     }
 
     Future.microtask(() => _saveResultToDeviceHistory());
 
-    if (confidence >= _minimumConfidenceToSave) {
+    if (confidence > _minimumConfidenceToSave) {
       _saveResultToMap();
     } else {
       if (mounted) {
         setState(() {
           _isSavingToMap = false;
-          _mapSaveStatus = 'Confidence is below 75%. Result was not saved to the map.';
+          _mapSaveStatus = 'Confidence is 70% or below. Result was not saved to the map.';
         });
       }
     }
@@ -74,11 +72,11 @@ class _ResultScreenState extends State<ResultScreen> {
   Future<void> _saveResultToMap() async {
     if (!mounted) return;
 
-    if (confidence < _minimumConfidenceToSave) {
+    if (confidence <= _minimumConfidenceToSave) {
       if (mounted) {
         setState(() {
           _isSavingToMap = false;
-          _mapSaveStatus = 'Confidence is below 75%. Result was not saved to the map.';
+          _mapSaveStatus = 'Confidence is 70% or below. Result was not saved to the map.';
         });
       }
       return;

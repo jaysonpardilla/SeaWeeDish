@@ -6,20 +6,20 @@ import 'package:flutter/foundation.dart';
 /// API Service for PhycoSense Backend
 /// Handles all communication with the FastAPI backend
 class ApiService {
-  // Singleton instance
-  static final ApiService _instance = ApiService._internal();
-  
-  // Backend configuration
-  // Using machine's actual IP address on the network
-  static const String _baseUrl = 'http://10.0.0.77:8000/api';
-  
-  static const int _timeout = 30; // seconds
-
   factory ApiService() {
     return _instance;
   }
 
   ApiService._internal();
+
+  // Backend configuration
+  // Using machine's actual IP address on the network
+  static const String _baseUrl = 'http://10.0.0.77:8000/api';
+
+  // Singleton instance
+  static final ApiService _instance = ApiService._internal();
+
+  static const int _timeout = 30; // seconds
 
   /// Get the backend URL
   /// Override this method or use environment variables for different environments
@@ -185,12 +185,6 @@ class ApiService {
 
 /// Prediction result model
 class PredictionResult {
-  final String prediction;
-  final double confidence;
-  final Map<String, double> probabilities;
-  final String processingTime;
-  final String modelVersion;
-
   PredictionResult({
     required this.prediction,
     required this.confidence,
@@ -218,6 +212,16 @@ class PredictionResult {
     );
   }
 
+  final double confidence;
+  final String modelVersion;
+  final String prediction;
+  final Map<String, double> probabilities;
+  final String processingTime;
+
+  @override
+  String toString() =>
+      'PredictionResult(prediction: $prediction, confidence: ${confidence.toStringAsFixed(2)}%)';
+
   /// Convert to JSON
   Map<String, dynamic> toJson() => {
     'prediction': prediction,
@@ -226,23 +230,19 @@ class PredictionResult {
     'processing_time': processingTime,
     'model_version': modelVersion,
   };
-
-  @override
-  String toString() =>
-      'PredictionResult(prediction: $prediction, confidence: ${confidence.toStringAsFixed(2)}%)';
 }
 
 /// Custom API exception
 class ApiException implements Exception {
-  final String message;
-  final int? statusCode;
-  final dynamic originalError;
-
   ApiException({
     required this.message,
     this.statusCode,
     this.originalError,
   });
+
+  final String message;
+  final dynamic originalError;
+  final int? statusCode;
 
   @override
   String toString() => 'ApiException: $message${statusCode != null ? ' (Status: $statusCode)' : ''}';

@@ -1,0 +1,29 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /map_points/{document} {
+      allow read: if true;
+
+      allow create: if isValidMapPoint(request.resource.data);
+      allow update: if isValidMapPoint(request.resource.data);
+      allow delete: if false;
+    }
+
+    match /users/{userId} {
+      allow read: if true;
+      allow write: if true;
+    }
+  }
+
+  function isValidMapPoint(data) {
+    return data.keys().hasAll(['latitude', 'longitude', 'seaweeds'])
+      && data.latitude is number
+      && data.longitude is number
+      && data.seaweeds is list
+      && data.seaweeds.size() > 0
+      && data.seaweeds[0] is map
+      && data.seaweeds[0].confidence is number
+      && data.seaweeds[0].confidence > 70;
+  }
+}

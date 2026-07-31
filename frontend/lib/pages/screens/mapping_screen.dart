@@ -1,5 +1,6 @@
 // ignore_for_file: use_build_context_synchronously, constant_identifier_names, deprecated_member_use
 
+import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 import 'package:flutter/material.dart';
@@ -42,6 +43,9 @@ class _MappingScreenState extends State<MappingScreen> {
   List<RouteInfo> _currentRoutes = [];
   List<Polyline> _routePolylines = [];
   bool _isLoadingRoute = false;
+  StreamSubscription<QuerySnapshot<Map<String, dynamic>>>? _mapPointsSubscription;
+  List<QueryDocumentSnapshot<Map<String, dynamic>>>? _cachedMapDocs;
+  bool _hasLoadedCachedMarkers = false;
 
   // Biliran Province bounding box (Lat/Lon boundaries)
   static const double BILIRAN_MIN_LAT = 11.30;
@@ -181,12 +185,13 @@ class _MappingScreenState extends State<MappingScreen> {
   void initState() {
     super.initState();
     debugPrint('MappingScreen initState - loading markers');
-    _loadMarkers();
+    _listenToMapPoints();
     _searchController.addListener(_onSearchChanged);
   }
 
   @override
   void dispose() {
+    _mapPointsSubscription?.cancel();
     _searchController.removeListener(_onSearchChanged);
     _searchController.dispose();
     super.dispose();
@@ -267,127 +272,146 @@ class _MappingScreenState extends State<MappingScreen> {
   }
 
   Future<void> _loadMarkers() async {
+    if (!_hasLoadedCachedMarkers && _cachedMapDocs != null) {
+      _applyMarkers(_cachedMapDocs!);
+      _hasLoadedCachedMarkers = true;
+    }
+
     try {
-      final QuerySnapshot<Map<String, dynamic>> snapshot =
-          await _firestore.collection('map_points').get();
-
+      final snapshot = await _firestore.collection('map_points').get();
       debugPrint('Loading ${snapshot.docs.length} map points from Firestore');
-
-      setState(() {
-        _markers.clear();
-        for (var doc in snapshot.docs) {
-          try {
-            final data = doc.data();
-            debugPrint('Document ID: ${doc.id}, Data: $data');
-            
-            final lat = data['latitude'] as double?;
-            final lon = data['longitude'] as double?;
-            final seaweeds = (data['seaweeds'] as List?)?.cast<Map<String, dynamic>>() ?? [];
-            final docId = doc.id;
-
-            debugPrint('Point: lat=$lat, lon=$lon, seaweeds=${seaweeds.length}');
-
-            if (lat != null && lon != null) {
-              // If seaweeds exist, use first image as marker
-              if (seaweeds.isNotEmpty) {
-                try {
-                  final seaweed = seaweeds[0];
-                  debugPrint('Seaweed data: $seaweed');
-                  final imageUrl = seaweed['imageUrl'] as String?;
-                  debugPrint('Image URL: $imageUrl');
-              
-              _markers.add(
-                Marker(
-                  point: LatLng(lat, lon),
-                  width: 50,
-                  height: 50,
-                  builder: (ctx) => GestureDetector(
-                    onTap: () => _showSeaweedDetails(LatLng(lat, lon), seaweeds),
-                    onDoubleTap: () => _editSeaweedsForLocation(docId, LatLng(lat, lon)),
-                    child: imageUrl != null && imageUrl.isNotEmpty
-                        ? Container(
-                            decoration: BoxDecoration(
-                              border: Border.all(color: Colors.white, width: 2),
-                              borderRadius: BorderRadius.circular(8),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.black.withOpacity(0.3),
-                                  blurRadius: 4,
-                                ),
-                              ],
-                            ),
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(6),
-                              child: Image.network(
-                                imageUrl,
-                                fit: BoxFit.cover,
-                                errorBuilder: (context, error, stackTrace) {
-                                  debugPrint('Image load error: $error');
-                                  return const Icon(
-                                    Icons.location_on,
-                                    color: Colors.red,
-                                    size: 40,
-                                  );
-                                },
-                              ),
-                            ),
-                          )
-                        : const Icon(
-                            Icons.location_on,
-                            color: Colors.red,
-                            size: 40,
-                          ),
-                  ),
-                ),
-              );
-                } catch (seaweedError) {
-                  debugPrint('Error processing seaweed: $seaweedError');
-                  // Add default marker if there's an error processing seaweed
-                  _markers.add(
-                    Marker(
-                      point: LatLng(lat, lon),
-                      width: 40,
-                      height: 40,
-                      builder: (ctx) => GestureDetector(
-                        onDoubleTap: () => _editSeaweedsForLocation(docId, LatLng(lat, lon)),
-                        child: const Icon(
-                          Icons.location_on,
-                          color: Colors.orange,
-                          size: 36,
-                        ),
-                      ),
-                    ),
-                  );
-                }
-            } else {
-              // No seaweeds, show default icon with double-tap to edit
-              _markers.add(
-                Marker(
-                  point: LatLng(lat, lon),
-                  width: 40,
-                  height: 40,
-                  builder: (ctx) => GestureDetector(
-                    onDoubleTap: () => _editSeaweedsForLocation(docId, LatLng(lat, lon)),
-                    child: const Icon(
-                      Icons.location_on,
-                      color: Colors.red,
-                      size: 36,
-                    ),
-                  ),
-                ),
-              );
-            }
-            debugPrint('Marker added for point at ($lat, $lon)');
-          }
-          } catch (docError) {
-            debugPrint('Error processing document ${doc.id}: $docError');
-          }
-        }
-        debugPrint('Total markers loaded: ${_markers.length}');
-      });
+      _cachedMapDocs = snapshot.docs;
+      _applyMarkers(snapshot.docs);
     } catch (e) {
       debugPrint('Error loading markers: $e');
     }
+  }
+
+  void _listenToMapPoints() {
+    _mapPointsSubscription?.cancel();
+    _mapPointsSubscription = _firestore.collection('map_points').snapshots().listen(
+      (snapshot) {
+        if (!mounted) return;
+        debugPrint('Realtime map update received: ${snapshot.docs.length} docs');
+        _cachedMapDocs = snapshot.docs;
+        _applyMarkers(snapshot.docs);
+      },
+      onError: (error) {
+        debugPrint('Error listening to map points: $error');
+      },
+    );
+  }
+
+  void _applyMarkers(List<QueryDocumentSnapshot<Map<String, dynamic>>> docs) {
+    if (!mounted) return;
+
+    setState(() {
+      _markers.clear();
+
+      for (final doc in docs) {
+        try {
+          final data = doc.data();
+          final lat = _parseCoordinate(data['latitude']);
+          final lon = _parseCoordinate(data['longitude']);
+          final seaweeds = _extractSeaweeds(data['seaweeds']);
+          final visibleSeaweeds = seaweeds.where(_shouldDisplaySeaweed).toList();
+          final docId = doc.id;
+
+          debugPrint('Document ID: ${doc.id}, lat=$lat, lon=$lon, seaweeds=${seaweeds.length}, visible=${visibleSeaweeds.length}');
+
+          if (lat == null || lon == null || visibleSeaweeds.isEmpty) {
+            continue;
+          }
+
+          final seaweed = visibleSeaweeds.first;
+          final imageUrl = _readImageUrl(seaweed);
+
+          _markers.add(
+            Marker(
+              point: LatLng(lat, lon),
+              width: 50,
+              height: 50,
+              builder: (ctx) => GestureDetector(
+                onTap: () => _showSeaweedDetails(LatLng(lat, lon), seaweeds),
+                onDoubleTap: () => _editSeaweedsForLocation(docId, LatLng(lat, lon)),
+                child: imageUrl != null && imageUrl.isNotEmpty
+                    ? Container(
+                        decoration: BoxDecoration(
+                          border: Border.all(color: Colors.white, width: 2),
+                          borderRadius: BorderRadius.circular(8),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withOpacity(0.3),
+                              blurRadius: 4,
+                            ),
+                          ],
+                        ),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(6),
+                          child: Image.network(
+                            imageUrl,
+                            fit: BoxFit.cover,
+                            errorBuilder: (context, error, stackTrace) {
+                              debugPrint('Image load error: $error');
+                              return const Icon(
+                                Icons.location_on,
+                                color: Colors.red,
+                                size: 40,
+                              );
+                            },
+                          ),
+                        ),
+                      )
+                    : const Icon(
+                        Icons.location_on,
+                        color: Colors.red,
+                        size: 40,
+                      ),
+              ),
+            ),
+          );
+        } catch (docError) {
+          debugPrint('Error processing document ${doc.id}: $docError');
+        }
+      }
+
+      debugPrint('Total markers loaded: ${_markers.length}');
+    });
+  }
+
+  double? _parseCoordinate(dynamic value) {
+    if (value is num) {
+      return value.toDouble();
+    }
+    if (value is String) {
+      return double.tryParse(value);
+    }
+    return null;
+  }
+
+  List<Map<String, dynamic>> _extractSeaweeds(dynamic rawSeaweeds) {
+    if (rawSeaweeds is List) {
+      return rawSeaweeds.whereType<Map>().map((item) {
+        return Map<String, dynamic>.from(item as Map);
+      }).toList();
+    }
+    return [];
+  }
+
+  bool _shouldDisplaySeaweed(Map<String, dynamic> seaweed) {
+    final confidence = seaweed['confidence'];
+    if (confidence is num) {
+      return confidence > 70;
+    }
+    return true;
+  }
+
+  String? _readImageUrl(Map<String, dynamic> seaweed) {
+    final imageUrl = seaweed['imageUrl'];
+    if (imageUrl is String) {
+      return imageUrl;
+    }
+    return null;
   }
 
   bool _isWithinBiliran(double lat, double lon) {
@@ -1787,14 +1811,21 @@ class _SeaweedDetailsBottomSheetState extends State<_SeaweedDetailsBottomSheet> 
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    final screenHeight = MediaQuery.of(context).size.height;
+    final availableHeight = screenHeight * 0.38;
+
+    return Padding(
       padding: const EdgeInsets.all(16),
-      child: SingleChildScrollView(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
+      child: ConstrainedBox(
+        constraints: BoxConstraints(
+          maxHeight: availableHeight,
+        ),
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Expanded(
@@ -1819,8 +1850,8 @@ class _SeaweedDetailsBottomSheetState extends State<_SeaweedDetailsBottomSheet> 
               ],
             ),
             const SizedBox(height: 16),
-            SizedBox(
-              height: 150,
+            ConstrainedBox(
+              constraints: const BoxConstraints(minHeight: 120),
               child: FutureBuilder<List<Map<String, dynamic>>>(
                 future: _nearbySeaweedsFuture,
                 builder: (context, snapshot) {
@@ -1862,7 +1893,8 @@ class _SeaweedDetailsBottomSheetState extends State<_SeaweedDetailsBottomSheet> 
                         ),
                       ),
                       const SizedBox(height: 12),
-                      Expanded(
+                      SizedBox(
+                        height: 170,
                         child: ListView.builder(
                           scrollDirection: Axis.horizontal,
                           itemCount: nearbySeaweeds.length,
@@ -1874,73 +1906,76 @@ class _SeaweedDetailsBottomSheetState extends State<_SeaweedDetailsBottomSheet> 
 
                             return Padding(
                               padding: const EdgeInsets.only(right: 12),
-                              child: Column(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  Stack(
-                                    children: [
-                                      ClipRRect(
-                                        borderRadius: BorderRadius.circular(8),
-                                        child: Image.network(
-                                          imageUrl,
-                                          width: 100,
-                                          height: 100,
-                                          fit: BoxFit.cover,
-                                          errorBuilder: (context, error,
-                                                  stackTrace) =>
-                                              Container(
+                              child: SizedBox(
+                                width: 110,
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    Stack(
+                                      children: [
+                                        ClipRRect(
+                                          borderRadius: BorderRadius.circular(8),
+                                          child: Image.network(
+                                            imageUrl,
                                             width: 100,
                                             height: 100,
-                                            color: Colors.grey[300],
-                                            child: const Icon(
-                                              Icons.broken_image,
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                      if (distance != null &&
-                                          distance.isNotEmpty)
-                                        Positioned(
-                                          bottom: 4,
-                                          right: 4,
-                                          child: Container(
-                                            padding: const EdgeInsets.symmetric(
-                                              horizontal: 6,
-                                              vertical: 2,
-                                            ),
-                                            decoration: BoxDecoration(
-                                              color: Colors.black
-                                                  .withOpacity(0.7),
-                                              borderRadius:
-                                                  BorderRadius.circular(4),
-                                            ),
-                                            child: Text(
-                                              distance,
-                                              style: const TextStyle(
-                                                fontSize: 9,
-                                                color: Colors.white,
-                                                fontWeight: FontWeight.bold,
+                                            fit: BoxFit.cover,
+                                            errorBuilder: (context, error,
+                                                    stackTrace) =>
+                                                Container(
+                                              width: 100,
+                                              height: 100,
+                                              color: Colors.grey[300],
+                                              child: const Icon(
+                                                Icons.broken_image,
                                               ),
                                             ),
                                           ),
                                         ),
-                                    ],
-                                  ),
-                                  const SizedBox(height: 8),
-                                  SizedBox(
-                                    width: 100,
-                                    child: Text(
-                                      name,
-                                      textAlign: TextAlign.center,
-                                      maxLines: 2,
-                                      overflow: TextOverflow.ellipsis,
-                                      style: const TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 12,
+                                        if (distance != null &&
+                                            distance.isNotEmpty)
+                                          Positioned(
+                                            bottom: 4,
+                                            right: 4,
+                                            child: Container(
+                                              padding: const EdgeInsets.symmetric(
+                                                horizontal: 6,
+                                                vertical: 2,
+                                              ),
+                                              decoration: BoxDecoration(
+                                                color:
+                                                    Colors.black.withOpacity(0.7),
+                                                borderRadius:
+                                                    BorderRadius.circular(4),
+                                              ),
+                                              child: Text(
+                                                distance,
+                                                style: const TextStyle(
+                                                  fontSize: 9,
+                                                  color: Colors.white,
+                                                  fontWeight: FontWeight.bold,
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                      ],
+                                    ),
+                                    const SizedBox(height: 8),
+                                    SizedBox(
+                                      width: 100,
+                                      child: Text(
+                                        name,
+                                        textAlign: TextAlign.center,
+                                        maxLines: 2,
+                                        overflow: TextOverflow.ellipsis,
+                                        style: const TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 12,
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                ],
+                                  ],
+                                ),
                               ),
                             );
                           },
@@ -1980,7 +2015,8 @@ class _SeaweedDetailsBottomSheetState extends State<_SeaweedDetailsBottomSheet> 
                 ),
               ),
             ),
-          ],
+            ],
+          ),
         ),
       ),
     );
