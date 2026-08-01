@@ -392,7 +392,7 @@ class _MappingScreenState extends State<MappingScreen> {
   List<Map<String, dynamic>> _extractSeaweeds(dynamic rawSeaweeds) {
     if (rawSeaweeds is List) {
       return rawSeaweeds.whereType<Map>().map((item) {
-        return Map<String, dynamic>.from(item as Map);
+        return Map<String, dynamic>.from(item);
       }).toList();
     }
     return [];
