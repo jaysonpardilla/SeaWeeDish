@@ -1,0 +1,65 @@
+{
+  "preparation_rules": [
+    "Clean thoroughly: Wash multiple times in cold water to remove sand, silt, and tiny shells caught in broad fronds.",
+    "Short cooking times: Delicate sheets overcook quickly and become mushy; add at the end of hot dishes or flash-dry.",
+    "Dehydration for seasoning: Oven-drying or sun-drying intensifies umami and turns the leaves into a versatile flake/powder topping."
+  ],
+  "recipes": [
+    {
+      "title": "Traditional Irish Sea Lettuce & Potato Soup",
+      "description": "A velvety potato soup finished with vibrant fresh sea lettuce leaves for a rich, mineral ocean depth.",
+      "ingredients": [
+        "150 g fresh Ulva lactuca (sea lettuce, washed and chopped)",
+        "2 tbsp butter",
+        "1 medium yellow onion (diced)",
+        "2 cloves garlic (minced)",
+        "500 g Yukon Gold potatoes (peeled and diced)",
+        "1 L vegetable or seafood stock",
+        "100 mL heavy cream or whole milk",
+        "Salt and freshly ground black pepper to taste"
+      ],
+      "instructions": [
+        "Rinse Ulva lactuca fronds in cool water to clear sand and grit. Drain well and chop into ribbons.",
+        "Melt butter in a saucepan over medium heat. Sauté onion and garlic until soft and translucent.",
+        "Add diced potatoes and stock to the pot. Bring to a boil, reduce heat, and simmer for 15-20 minutes until potatoes are fork-tender.",
+        "Stir in chopped sea lettuce and simmer for just 3 to 5 minutes so it retains its bright green color.",
+        "Remove from heat, stir in cream, and blend with an immersion blender until smooth. Season with salt and pepper."
+      ]
+    },
+    {
+      "title": "Crispy Baked Sea Lettuce Chips",
+      "description": "Light, paper-thin savory sea chips baked from whole Ulva lactuca fronds.",
+      "ingredients": [
+        "100 g fresh Ulva lactuca fronds (whole sheets)",
+        "1.5 tbsp extra virgin olive oil or sesame oil",
+        "1/2 tsp fine sea salt or garlic salt",
+        "1/2 tsp toasted sesame seeds (optional)"
+      ],
+      "instructions": [
+        "Preheat oven to 120°C (250°F) and line a baking sheet with parchment paper.",
+        "Wash sea lettuce sheets thoroughly, then pat completely dry using paper towels or a salad spinner.",
+        "Gently toss dried fronds with olive oil, sea salt, and sesame seeds in a bowl until lightly coated.",
+        "Spread fronds in a single layer on the baking sheet without overlapping.",
+        "Bake for 12 to 15 minutes until dry and crisp. Let cool completely before serving as a snack."
+      ]
+    },
+    {
+      "title": "Japanese Aosa Miso Soup (Sea Lettuce Miso Soup)",
+      "description": "A classic coastal Japanese miso soup featuring tender sea lettuce added right before serving.",
+      "ingredients": [
+        "50 g fresh or rehydrated Ulva lactuca",
+        "4 cups dashi stock (kelp and bonito broth)",
+        "3 tbsp dashi-infused miso paste (red or white)",
+        "100 g silken tofu (cubed)",
+        "2 stalk green onions (thinly sliced)"
+      ],
+      "instructions": [
+        "Rinse fresh sea lettuce in cold water and drain well. Slice into bite-sized pieces.",
+        "Bring dashi stock to a gentle simmer in a saucepan over medium heat.",
+        "Add cubed silken tofu and simmer for 2 minutes.",
+        "Ladle a cup of warm dashi into a small bowl, whisk in the miso paste until smooth, then pour back into the pot.",
+        "Turn off the heat, stir in the fresh sea lettuce and green onions, and serve immediately."
+      ]
+    }
+  ]
+}

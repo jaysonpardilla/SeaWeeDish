@@ -1,0 +1,64 @@
+{
+  "preparation_rules": [
+    "Strip leaves from tough stems: The thick central stems are woody and fibrous. Strip off air bladders and leaf-like fronds.",
+    "Wash and soak thoroughly: Soak in fresh water for 10-15 minutes to clear sand, debris, and excess salt.",
+    "Parboil or boil to soften: Boiling or pickling in acid neutralizes bitterness and tenderizes the dense plant walls."
+  ],
+  "recipes": [
+    {
+      "title": "Pickled Sargassum muticum & Potato Soup",
+      "description": "A creamy potato soup featuring Sargassum muticum fronds pickled in apple cider vinegar and honey.",
+      "ingredients": [
+        "1 large handful fresh Sargassum muticum fronds (cleaned)",
+        "240 mL apple cider vinegar",
+        "900 mL water",
+        "1 tbsp honey",
+        "50 g butter",
+        "1 medium yellow onion (chopped)",
+        "500 g potatoes (peeled and cubed)",
+        "1 L vegetable stock or chicken stock",
+        "Salt and freshly ground black pepper to taste"
+      ],
+      "instructions": [
+        "Submerge fresh S. muticum fronds in cold fresh water for 10 minutes to remove sand and salt residue. Drain well.",
+        "Bring 900 mL water, apple cider vinegar, and honey to a boil in a pot. Place the washed seaweed fronds in a heatproof bowl and pour the boiling vinegar mixture over top to steep.",
+        "Melt butter in a large saucepan over medium heat. Add chopped onions and cubed potatoes; cook gently for 2 minutes. Pour in stock and simmer uncovered for 30 minutes until potatoes are fork-tender.",
+        "Strain a handful of pickled S. muticum and drop into the simmering soup. Cook for 3 to 5 minutes. Remove from heat and blend smooth using an immersion stick blender. Season with salt and black pepper."
+      ]
+    },
+    {
+      "title": "Crispy Pan-Fried Sargassum muticum Fronds",
+      "description": "Quickly fried stripped Sargassum muticum leaves served as crispy, umami-rich sea chips.",
+      "ingredients": [
+        "100 g fresh Sargassum muticum fronds (leaves and bladders only, stems discarded)",
+        "2 tbsp coconut oil or neutral cooking oil",
+        "1 pinch fine sea salt",
+        "1/2 tsp toasted sesame seeds (optional)"
+      ],
+      "instructions": [
+        "Strip leaf-like structures and float bladders away from the central woody stem. Rinse thoroughly under cold water and pat completely dry with paper towels.",
+        "Heat oil in a skillet over medium-high heat. Add stripped fronds in a single layer. Fry for 1 to 2 minutes until crisp and slightly darkened.",
+        "Transfer with a slotted spoon to paper towels to drain excess oil. Sprinkle immediately with sea salt and toasted sesame seeds."
+      ]
+    },
+    {
+      "title": "Korean-Style Braised Sargassum (Sargassum-Jorim)",
+      "description": "Sargassum fronds simmered in a soy, garlic, and sesame glaze to soften their texture and build savory depth.",
+      "ingredients": [
+        "150 g fresh Sargassum muticum fronds (parboiled)",
+        "2 tbsp soy sauce",
+        "1 tbsp mirin or rice wine",
+        "1 tbsp brown sugar or honey",
+        "1 tsp toasted sesame oil",
+        "1 clove garlic (minced)",
+        "1/2 cup water or dashi stock"
+      ],
+      "instructions": [
+        "Boil cleaned Sargassum muticum fronds in water for 3 to 5 minutes to soften. Drain and slice into bite-sized pieces.",
+        "In a saucepan, mix soy sauce, mirin, brown sugar, minced garlic, and water/dashi. Bring to a gentle boil.",
+        "Add the parboiled seaweed fronds to the pan. Reduce heat to low and simmer for 15–20 minutes until the liquid reduces into a glossy glaze.",
+        "Stir in toasted sesame oil before removing from heat. Serve cold or warm as a side dish."
+      ]
+    }
+  ]
+}

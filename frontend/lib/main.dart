@@ -3,7 +3,6 @@ import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 import 'pages/screens/onboarding_screen.dart';
-import 'pages/screens/splash_screen.dart';
 import 'pages/screens/app_shell.dart';
 
 Future<void> main() async {
@@ -51,9 +50,7 @@ class _MyAppState extends State<MyApp> {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: const SplashScreen(
-        nextPage: OnboardingScreen(),
-      ),
+      home: const OnboardingScreen(),
       routes: {
         '/app': (context) => const AppShell(),
       },

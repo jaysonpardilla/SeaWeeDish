@@ -10,7 +10,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
 import 'dart:io';
 import '../../services/api_service.dart';
-import 'recommended_dishes_screen.dart';
+import 'recommended_recipes_screen.dart';
 
 class ResultScreen extends StatefulWidget {
   final dynamic capturedImage;
@@ -515,7 +515,9 @@ class _ResultScreenState extends State<ResultScreen> {
                                   onPressed: () {
                                     Navigator.of(context).push(
                                       MaterialPageRoute(
-                                        builder: (context) => const RecommendedDishesScreen(),
+                                        builder: (context) => RecommendedDishesScreen(
+                                          speciesName: seaweedName,
+                                        ),
                                       ),
                                     );
                                   },
@@ -530,7 +532,7 @@ class _ResultScreenState extends State<ResultScreen> {
                                     ),
                                   ),
                                   child: const Text(
-                                    'Recommended Dishes',
+                                    'Recommended Recipes',
                                     style: TextStyle(
                                       fontSize: 10,
                                       color: Colors.white,

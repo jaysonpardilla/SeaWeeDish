@@ -1,0 +1,67 @@
+{
+  "preparation_rules": [
+    "Do not cook: Exposure to heat turns fronds soft, slimy, and watery.",
+    "Clean thoroughly: Trim fibrous roots and submerge in clean water to remove grit.",
+    "Dress immediately prior to eating: Acid and salt wilt feather-like leaves quickly."
+  ],
+  "recipes": [
+    {
+      "title": "Caribbean-Style Fresh Feather Seaweed Salad",
+      "description": "A cold, crisp salad tossing fresh Caulerpa sertularioides with lime juice, bell pepper, and garlic.",
+      "ingredients": [
+        "200 g fresh Caulerpa sertularioides (trimmed and washed)",
+        "1 small red bell pepper (finely diced)",
+        "1/2 small red onion (thinly sliced)",
+        "1 small garlic clove (grated or finely minced)",
+        "2 tbsp fresh lime juice",
+        "1 tbsp extra virgin olive oil",
+        "1/4 tsp sea salt",
+        "1/2 tsp freshly ground black pepper",
+        "1 small scotch bonnet or habanero chili (seeded and minced, optional)"
+      ],
+      "instructions": [
+        "Rinse the feather seaweed fronds in cold water twice to remove sand. Trim off yellowed stems or holdfasts. Drain in a colander and gently pat dry with paper towels.",
+        "In a serving bowl, combine the lime juice, olive oil, minced garlic, sea salt, black pepper, and optional scotch bonnet chili.",
+        "Add the diced red bell pepper and red onion to the dressing.",
+        "Gently add the Caulerpa sertularioides fronds to the bowl, toss softly to coat, and serve immediately."
+      ]
+    },
+    {
+      "title": "Southeast Asian Green Mango & Feather Seaweed Salad",
+      "description": "A fresh salad pairing the natural peppery crunch of feather seaweed with sour green mango and coconut vinegar.",
+      "ingredients": [
+        "200 g fresh Caulerpa sertularioides",
+        "1/2 cup unripened green mango (peeled and julienned or shredded)",
+        "2 small ripe tomatoes (cored and diced)",
+        "1 small shallot or red onion (thinly sliced)",
+        "2 tbsp coconut vinegar or cane vinegar",
+        "1 tbsp fresh calamansi or lime juice",
+        "1/2 tsp sugar",
+        "1 pinch sea salt"
+      ],
+      "instructions": [
+        "Submerge Caulerpa sertularioides in clean, chilled water for 2 minutes to crisp the fronds. Drain thoroughly.",
+        "In a bowl, whisk together the vinegar, calamansi juice, sugar, and salt until dissolved.",
+        "Add the shredded green mango, diced tomatoes, and sliced shallots into the vinegar dressing.",
+        "Place the chilled seaweed fronds on a platter, spoon the green mango mixture over top right before serving, and toss gently."
+      ]
+    },
+    {
+      "title": "South Asian Spiced Coconut & Lime Feather Seaweed Salad",
+      "description": "A raw side dish featuring feather seaweed tossed with freshly grated coconut, green chilies, and citrus.",
+      "ingredients": [
+        "150 g fresh Caulerpa sertularioides",
+        "1/4 cup freshly grated coconut (unsweetened)",
+        "1-2 green chilies (finely chopped)",
+        "1 small shallot (finely minced)",
+        "1.5 tbsp fresh lemon or lime juice",
+        "1 pinch sea salt"
+      ],
+      "instructions": [
+        "Wash the seaweed fronds under cool running water and submerge in an ice bath for 3 minutes. Drain completely.",
+        "In a mortar or bowl, lightly bruise the green chilies, minced shallot, grated coconut, salt, and lime juice together.",
+        "Add the drained Caulerpa sertularioides to the mixture, folding gently so as not to bruise the fronds. Serve cold."
+      ]
+    }
+  ]
+}

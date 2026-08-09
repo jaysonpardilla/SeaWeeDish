@@ -44,16 +44,17 @@ flutter:
     - lib/assets/images/seaweeds-images/
     - lib/assets/images/
     - lib/assets/onboarding/
-    - assets/fonts/
+    - assets/fonts/ 
+    - lib/assets/recipes/
     
 flutter_native_splash:
   color: "#ffffff"
   android: true
   ios: true
   fullscreen: true
-  image: lib/assets/images/native splash screen.png
-  android_gravity: fill
-  ios_content_mode: scaleAspectFill
+  image: lib/assets/images/app_icon_splash.png
+  android_gravity: center
+  ios_content_mode: center
   web_image_mode: cover
 
 

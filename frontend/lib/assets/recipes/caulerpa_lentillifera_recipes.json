@@ -1,0 +1,105 @@
+{
+  "preparation_rules": [
+    "Never apply heat: Cooking or boiling causes vesicles to burst and collapse instantly.",
+    "Wash immediately before serving: Rinse in cool, clean water right before assembling.",
+    "Dress immediately prior to eating: Acid and salt extract water from the beads through osmosis within 5-10 minutes."
+  ],
+  "recipes": [
+    {
+      "title": "Classic Filipino Ensaladang Lato (Seaweed Salad)",
+      "description": "A classic side dish pairing crisp sea grapes with diced tomatoes, onions, and optional salted duck egg.",
+      "ingredients": [
+        "250 g fresh Caulerpa lentillifera (lato)",
+        "2 large ripe plum tomatoes (cored and finely diced)",
+        "1 medium red onion (finely chopped)",
+        "1 piece salted duck egg (itlog na maalat, peeled and diced, optional)",
+        "1 thumb-sized piece fresh ginger (peeled and minced, optional)",
+        "3 tbsp cane vinegar or coconut vinegar",
+        "1 tbsp fresh calamansi juice or lime juice",
+        "1/4 tsp granulated sugar",
+        "1/2 tsp freshly cracked black pepper"
+      ],
+      "instructions": [
+        "Place fresh lato in a bowl of cold water. Gently pick out debris, sea stones, or damaged stems. Drain thoroughly.",
+        "Submerge the cleaned lato in a bowl of ice water for 2 to 3 minutes to maximize crispness. Drain well.",
+        "In a separate bowl, whisk together the vinegar, calamansi juice, sugar, and cracked black pepper until the sugar dissolves. Stir in the diced tomatoes, red onions, and ginger.",
+        "Place the drained lato on a serving platter and top with the salted egg. Either pour the dressing over the top immediately before serving or serve the dressing on the side as a dip."
+      ]
+    },
+    {
+      "title": "Okinawan Umi-Budo with Citrus Ponzu Dip",
+      "description": "Fresh sea grapes served unadorned over crushed ice with a citrusy, savory ponzu dipping sauce.",
+      "ingredients": [
+        "150 g fresh umi-budo",
+        "Ice cubes (for serving platter)",
+        "2 tbsp Japanese soy sauce (shoyu)",
+        "1.5 tbsp yuzu juice, sudachi juice, or fresh lemon juice",
+        "1 tbsp dashi stock (or water)",
+        "1 tsp mirin",
+        "1/2 tsp rice vinegar"
+      ],
+      "instructions": [
+        "Submerge umi-budo in clean, room-temperature or cool water for 1 to 2 minutes to reduce residual salinity. Drain completely.",
+        "Whisk together soy sauce, yuzu juice, dashi, mirin, and rice vinegar in a small dip ramekin.",
+        "Bed a plate with crushed ice, lay the fresh umi-budo clusters on top, and place the ponzu bowl alongside.",
+        "Dip individual fronds into the sauce right before biting. Avoid pouring the dip over the seaweed to keep the pearls firm."
+      ]
+    },
+    {
+      "title": "Okinawan Umi-Budo Donburi (Sea Grape & Sashimi Rice Bowl)",
+      "description": "A popular Izakaya rice bowl where sea grapes act as a popping textural contrast to fresh raw sashimi.",
+      "ingredients": [
+        "100 g fresh umi-budo",
+        "150 g sushi-grade yellowfin tuna or salmon (sliced for sashimi)",
+        "2 cups cooked Japanese short-grain rice (cooled to room temp)",
+        "1 tbsp seasoned rice vinegar",
+        "2 leaves fresh shiso (perilla)",
+        "1 piece egg yolk or poached/onsen egg (optional)",
+        "Wasabi and soy sauce (for serving)"
+      ],
+      "instructions": [
+        "Gently fold seasoned rice vinegar into the cooked rice. Allow it to cool slightly so heat does not collapse the sea grapes.",
+        "Quick-rinse umi-budo in cool water and pat dry with paper towels.",
+        "Divide rice into two serving bowls. Lay shiso leaves on top, arrange sashimi slices along one side, and pile fresh umi-budo on the other side. Nest-egg the yolk in the center if desired.",
+        "Serve with wasabi and soy sauce on the side."
+      ]
+    },
+    {
+      "title": "Malaysian Latok with Sambal Belacan & Calamansi",
+      "description": "Fresh sea grapes paired with a spicy, citrusy, and savory pounded shrimp paste dip.",
+      "ingredients": [
+        "200 g fresh latok",
+        "3-4 pieces fresh calamansi limes (halved)",
+        "2 pieces fresh red bird's eye chilies (cili padi)",
+        "1 tsp toasted shrimp paste (belacan)",
+        "1 small shallot",
+        "1/2 tsp sugar",
+        "1 pinch salt"
+      ],
+      "instructions": [
+        "Wash latok thoroughly in clean water 2 to 3 times to remove any remaining sand or grit. Drain in a colander.",
+        "In a mortar and pestle, pound the chilies, toasted belacan, shallot, sugar, and salt into a textured paste. Squeeze the juice of two calamansi limes into the paste and stir.",
+        "Place the latok on a plate alongside extra calamansi halves and the sambal belacan dip. Dip the sea grapes into the sambal before eating."
+      ]
+    },
+    {
+      "title": "Sesame-Soy & Cucumber Sea Grape Salad",
+      "description": "A crisp, modern cold salad featuring julienned cucumber, cherry tomatoes, and toasted sesame dressing.",
+      "ingredients": [
+        "150 g fresh Caulerpa lentillifera",
+        "1 piece Japanese or Persian cucumber (thinly julienned)",
+        "8-10 pieces cherry tomatoes (halved)",
+        "1 tbsp toasted sesame seeds",
+        "1.5 tbsp roasted sesame oil",
+        "1 tbsp low-sodium soy sauce",
+        "1 tbsp fresh lemon juice",
+        "1 tsp honey or maple syrup"
+      ],
+      "instructions": [
+        "Whisk sesame oil, soy sauce, lemon juice, and honey in a bowl. Toss julienned cucumber and cherry tomatoes with half of the dressing.",
+        "Rinse sea grapes in cold water, dunk in an ice bath for 2 minutes, then drain thoroughly.",
+        "Arrange the dressed vegetables on a plate, lay the sea grapes across the top, drizzle with the remaining dressing right before serving, and sprinkle with toasted sesame seeds."
+      ]
+    }
+  ]
+}

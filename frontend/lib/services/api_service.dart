@@ -17,7 +17,7 @@ class ApiService {
   static const String _baseUrl = 'http://10.0.0.77:8000/api';
 
   // Singleton instance
-  static final ApiService _instance = ApiService._internal();
+  static final ApiService _instance = ApiService._internal(); 
 
   static const int _timeout = 30; // seconds
 

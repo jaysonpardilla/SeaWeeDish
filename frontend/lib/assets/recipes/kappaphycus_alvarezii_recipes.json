@@ -1,0 +1,75 @@
+{
+  "seaweed_type": "Kappaphycus alvarezii",
+  "common_names": [
+    "Guso",
+    "Red alga",
+    "Eucheuma cottonii"
+  ],
+  "preparation_rules": [
+    "Blanch briefly: Blanching in boiling water should not exceed 10-15 seconds to prevent loss of crunchiness.",
+    "Clean thoroughly: Wash raw seaweed under cold running tap water multiple times to remove excess salt, silt, and sand.",
+    "Dress right before serving: Prolonged soaking in vinegar or hot liquid breaks down the structure and turns the seaweed soft or slimy.",
+    "Natural gelling properties: Natural carrageenan content acts as a hydrocolloid gelling agent when boiled into a puree."
+  ],
+  "recipes": [
+    {
+      "title": "Ensaladang Guso (Fresh Seaweed Salad)",
+      "description": "A popular Filipino salad pairing briefly blanched Kappaphycus alvarezii with vinegar, tomatoes, onions, and ginger.",
+      "ingredients": [
+        "500g fresh Kappaphycus alvarezii (Guso)",
+        "1/2 cup coconut vinegar or sugarcane vinegar",
+        "1 large tomato (diced)",
+        "1 medium red onion (finely minced)",
+        "1 thumb-sized piece fresh ginger (peeled and minced)",
+        "2-3 pieces calamansi juice (optional)",
+        "1-2 pieces red chili / siling labuyo (sliced, optional)",
+        "Salt and ground black pepper to taste",
+        "1 pinch sugar"
+      ],
+      "instructions": [
+        "Wash the raw seaweed thoroughly under cold running tap water multiple times to remove excess salt, silt, and sand. Trim off any tough stems or epiphytes.",
+        "Bring a pot of water to a rolling boil. Submerge the washed seaweed for no more than 10–15 seconds, then immediately transfer into a bowl filled with ice water to stop cooking. Drain well.",
+        "Cut the branches into manageable 1-to-2-inch pieces using kitchen shears.",
+        "In a separate mixing bowl, whisk together the vinegar, calamansi juice, minced ginger, red onions, tomatoes, salt, pepper, and sugar. Let sit for 5 minutes.",
+        "Add the blanched Kappaphycus into the dressing bowl, toss gently, and serve cold."
+      ]
+    },
+    {
+      "title": "Pineapple-Kappaphycus Seaweed Jam",
+      "description": "A fruit jam utilizing the natural carrageenan gelling properties of Kappaphycus alvarezii without synthetic pectin.",
+      "ingredients": [
+        "250g fresh Kappaphycus alvarezii (cleaned)",
+        "500g ripe pineapple (cored and crushed or blended)",
+        "300g white granulated sugar",
+        "150 mL water",
+        "1 piece cinnamon stick or pandan leaf (optional)",
+        "1 tbsp calamansi juice or lemon juice"
+      ],
+      "instructions": [
+        "In a pot, boil 250g of cleaned seaweed with 150 mL of water at moderate heat (around 80°C) for 15 minutes, stirring continuously until dissolved into a thick paste/puree.",
+        "Blend the cooked seaweed paste together with the crushed pineapple until smooth.",
+        "Transfer the mixture back into a heavy-bottomed pot and stir in sugar, cinnamon stick or pandan leaf, and calamansi juice.",
+        "Simmer over low-medium heat for 35–45 minutes while stirring frequently until the mixture gels and thickens.",
+        "Remove the cinnamon/pandan leaf, pour the hot jam into sterilized glass jars, seal tightly, and allow to cool."
+      ]
+    },
+    {
+      "title": "Seaweed Jelly Candy (Gummy Snack)",
+      "description": "A chewy jelly candy made from boiled fresh Kappaphycus seaweed puree set with natural carrageenan.",
+      "ingredients": [
+        "100g pure Kappaphycus alvarezii puree (boiled fresh seaweed blended with water)",
+        "1 cup fruit juice (mango, orange, or calamansi concentrate)",
+        "1 cup sugar",
+        "1/4 cup corn syrup",
+        "1 pinch citric acid or lemon juice"
+      ],
+      "instructions": [
+        "Combine the seaweed puree, fruit juice, sugar, and corn syrup in a saucepan.",
+        "Heat over medium setting while stirring constantly until all sugar crystals dissolve.",
+        "Bring to a gentle boil for 10–12 minutes until the liquid thickens into a syrup consistency.",
+        "Stir in the pinch of citric acid.",
+        "Pour the molten mixture into silicone candy molds and let sit at room temperature for 2 hours until fully set."
+      ]
+    }
+  ]
+}

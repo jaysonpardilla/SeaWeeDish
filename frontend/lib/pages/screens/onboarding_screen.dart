@@ -1,4 +1,4 @@
-// ignore_for_file: use_full_hex_values_for_flutter_colors
+// ignore_for_file: use_full_hex_values_for_flutter_colors, deprecated_member_use
 
 import 'package:flutter/material.dart';
 
@@ -10,248 +10,200 @@ class OnboardingScreen extends StatefulWidget {
   State<OnboardingScreen> createState() => _OnboardingScreenState();
 }
 
-class _OnboardingScreenState extends State<OnboardingScreen>
-    with SingleTickerProviderStateMixin {
-  final PageController _pageController = PageController();
-  int _currentPage = 0;
-  late final AnimationController _borderController;
-  late final Animation<double> _borderAnimation;
+class _OnboardingScreenState extends State<OnboardingScreen> {
+  void _goToApp() {
+    Navigator.of(context).pushReplacementNamed('/app');
+  }
 
-  final List<Map<String, String>> _pages = const [
-    {
-      'title': 'Scan Seaweeds Instantly',
-      'subtitle': 'Use your camera to identify marine plants in seconds.',
-      'image': 'lib/assets/onboarding/onboard1.png',
-      'button': 'Next',
-    },
-    {
-      'title': 'AI Powered Identification',
-      'subtitle': 'Advance machine learning helps recognize species with confidence.',
-      'image': 'lib/assets/onboarding/onboard2.png',
-      'button': 'Next',
-    },
-    {
-      'title': 'Stay Safe While Exploring',
-      'subtitle': 'Not all seaweeds are safe to eat. Always verify before consuming.',
-      'image': 'lib/assets/onboarding/onboard3.png',
-      'button': 'Get Started',
-    },
-  ];
-
-  TextStyle get _titleTextStyle => TextStyle(
+  TextStyle get _titleTextStyle => const TextStyle(
         fontFamily: 'Itim',
-        fontSize: 30,
+        fontSize: 34,
         fontWeight: FontWeight.bold,
-        color: Color(0xFF083C7E),
-        letterSpacing: 0.5,
-        height: 1.0,
+        color: Color(0xFF0F3B3D),
+        height: 1.1,
       );
 
   TextStyle get _subtitleTextStyle => const TextStyle(
-        fontFamily: 'Itim',
-        fontSize: 15,
-        color: Color(0xFF395C7A),
-        height: 1.3,
+      fontFamily: 'Lora',
+        fontSize: 16,
+        color: Color(0xFF5B6B6D),
+        height: 1.4,
       );
 
-  void _goNextPage() {
-    if (_currentPage < _pages.length - 1) {
-      _pageController.nextPage(
-        duration: const Duration(milliseconds: 450),
-        curve: Curves.easeInOut,
+  TextStyle get _featureTitleStyle => const TextStyle(
+      fontFamily: 'Lora',
+        fontSize: 11,
+        fontWeight: FontWeight.w700,
+        color: Color(0xFF0F3B3D),
       );
-    } else {
-      // Navigate to app shell (guest) on the last page
-      Navigator.of(context).pushReplacementNamed('/app');
-    }
-  }
-
-  @override
-  void initState() {
-    super.initState();
-
-    _borderController = AnimationController(
-      vsync: this,
-      duration: const Duration(seconds: 4),
-    )..repeat();
-
-    _borderAnimation = Tween<double>(begin: 0, end: 2 * 3.14159).animate(
-      CurvedAnimation(parent: _borderController, curve: Curves.linear),
-    );
-  }
-
-  @override
-  void dispose() {
-    _pageController.dispose();
-    _borderController.dispose();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
-      body: SafeArea(
-        child: Column(
-          children: [
-            Expanded(
-              child: PageView.builder(
-                controller: _pageController,
-                physics: const BouncingScrollPhysics(),
-                onPageChanged: (index) {
-                  setState(() {
-                    _currentPage = index;
-                  });
-                },
-                itemCount: _pages.length,
-                itemBuilder: (context, index) {
-                  final page = _pages[index];
-                  return Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 18),
-                    child: Column(
-                      children: [
-                        Expanded(
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                page['title']!,
-                                textAlign: TextAlign.center,
-                                style: _titleTextStyle,
-                              ),
-                              const SizedBox(height: 8),
-                              Text(
-                                page['subtitle']!,
-                                textAlign: TextAlign.center,
-                                style: _subtitleTextStyle,
-                              ),
-                              const SizedBox(height: 16),
-                              Center(
-                                child: SizedBox(
-                                  width: double.infinity,
-                                  height: 300,
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      borderRadius: BorderRadius.circular(30),
-                                      boxShadow: const [
-                                        BoxShadow(
-                                          color: Color(0x14000000),
-                                          blurRadius: 20,
-                                          offset: Offset(0, 8),
-                                        ),
-                                      ],
-                                    ),
-                                    clipBehavior: Clip.antiAlias,
-                                    child: Image.asset(
-                                      page['image']!,
-                                      fit: BoxFit.cover,
-                                      filterQuality: FilterQuality.high,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  );
-                },
+      body: Stack(
+        children: [
+          Positioned.fill(
+            child: Image.asset(
+              'lib/assets/onboarding/onboarding.png',
+              fit: BoxFit.contain,
+              alignment: Alignment.center,
+            ),
+          ),
+          Positioned.fill(
+            child: Container(
+              decoration: const BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomLeft,
+                  colors: [
+                    Color.fromARGB(143, 9, 60, 3),
+                    Color.fromARGB(20, 230, 241, 226),
+                    Color.fromARGB(213, 22, 51, 36),
+                  ],
+                  stops: [0.0, 0.45, 1.0],
+                ),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 20),
+          ),
+          SafeArea(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 24),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: List.generate(
-                      _pages.length,
-                      (index) {
-                        final bool isActive = index == _currentPage;
-                        return AnimatedContainer(
-                          duration: const Duration(milliseconds: 250),
-                          margin: const EdgeInsets.symmetric(horizontal: 6),
-                          width: isActive ? 24 : 10,
-                          height: 10,
-                          decoration: BoxDecoration(
-                            color: isActive ? const Color(0xFF2D8B72) : const Color(0xFFB7D0C3),
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                        );
-                      },
+                  const SizedBox(height: 24),
+                  Center(
+                    child: Container(
+                      width: 64,
+                      height: 64,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: Image.asset(
+                        'lib/assets/images/app_icon.png',
+                        width: 32,
+                        height: 32,
+                        fit: BoxFit.contain,
+                      ),
                     ),
                   ),
-                  const SizedBox(height: 10),
-                  AnimatedBuilder(
-                    animation: _borderAnimation,
-                    builder: (context, child) {
-                      return Container(
-                        width: double.infinity,
-                        height: 53,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(18),
-                          gradient: SweepGradient(
-                            startAngle: 0,
-                            endAngle: 2 * 3.14159,
-                            transform: GradientRotation(_borderAnimation.value),
-                            colors: const [
-                              Color(0xFFF00E5FF), // Deep ocean blue
-                              Color(0xFF00CFCF), // Bright aqua
-                              Color(0xFF4FFFB0), // Sea green
-                              Color(0xFF2BE4FF), // Light blue
-                              Color.fromARGB(255, 218, 99, 105), // Back to deep blue
-                            ],
-                            stops: const [0.0, 0.25, 0.5, 0.75, 1.0],
-                          ),
-                        ),
-                        padding: const EdgeInsets.all(2.5), // Border thickness
-                        child: Container(
-                          decoration: BoxDecoration(
-                            gradient: const LinearGradient(
-                              colors: [
-                                Color(0xFF0B3D91), // Deep blue
-                                Color(0xFF0CA8B3), // Aqua
-                                Color(0xFF8BE8CE), // Light green
-                              ],
-                              begin: Alignment.centerLeft,
-                              end: Alignment.centerRight,
-                            ),
-                            borderRadius: BorderRadius.circular(16),
-                            boxShadow: const [
-                              BoxShadow(
-                                color: Color(0x2D0B3D91),
-                                blurRadius: 12,
-                                offset: Offset(0, 4),
-                              ),
-                            ],
-                          ),
-                          child: Material(
-                            color: Colors.transparent,
-                            child: InkWell(
-                              onTap: _goNextPage,
-                              borderRadius: BorderRadius.circular(16),
-                              child: Center(
-                                child: Text(
-                                  _pages[_currentPage]['button']!,
-                                  style: const TextStyle(
-                                    fontFamily: 'Itim',
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.white,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      );
-                    },
+                  const SizedBox(height: 5),
+                  Text(
+                    'Cook. Enjoy. Live Healthy.',
+                    textAlign: TextAlign.center,
+                    style: _titleTextStyle,
                   ),
+                  const SizedBox(height: 12),
+                  Text(
+                    'Get curated recipes, cooking tips, and nutritional benefits.',
+                    textAlign: TextAlign.center,
+                    style: _subtitleTextStyle,
+                  ),
+                  const Spacer(),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      _buildFeatureCard(
+                        icon: Icons.eco,
+                        title: 'Nutrient Rich',
+                      ),
+                      _buildFeatureCard(
+                        icon: Icons.favorite,
+                        title: 'Healthy Lifestyle',
+                      ),
+                      _buildFeatureCard(
+                        icon: Icons.autorenew,
+                        title: 'Sustainable Choice',
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 24),
+                  SizedBox(
+                    height: 56,
+                    child: ElevatedButton(
+                      onPressed: _goToApp,
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: const Color.fromARGB(255, 26, 103, 107),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(15),
+                        ),
+                        side: const BorderSide(
+                          color: Color.fromARGB(255, 54, 125, 127),
+                          width: 1,
+                        ),
+                      ),
+                      child: const Text(
+                        'Get Started',
+                        style: TextStyle(
+                          fontFamily: 'Itim',
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold, 
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                  const Text(
+                    "Let's explore seaweeds together!",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontFamily: 'Lora',
+                      fontSize: 14,
+                      color: Color.fromARGB(255, 232, 252, 255),
+                    ),
+                  ),
+                  const SizedBox(height: 24),
                 ],
               ),
             ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildFeatureCard({
+    required IconData icon,
+    required String title,
+  }) {
+    return Expanded(
+      child: Container(
+        margin: const EdgeInsets.symmetric(horizontal: 2),
+        padding: const EdgeInsets.symmetric(vertical: 9, horizontal: 6),
+        decoration: BoxDecoration(
+          color: const Color.fromARGB(145, 255, 255, 255),
+          borderRadius: BorderRadius.circular(18), 
+          border: Border.all(
+            color: const Color.fromARGB(96, 21, 83, 87),
+            width: 1,
+          ),
+          boxShadow: const [
+            BoxShadow(
+              color: Color.fromARGB(103, 173, 247, 210),
+              blurRadius: 14,
+              offset: Offset(0, 6),
+            ),
+          ],
+        ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Container(
+              width: 42,
+              height: 42,
+              decoration: BoxDecoration(
+                color: const Color.fromARGB(215, 226, 250, 239),
+                borderRadius: BorderRadius.circular(14),
+              ),
+              child: Icon(
+                icon,
+                color: const Color.fromARGB(255, 21, 83, 87),
+                size: 22,
+              ),
+            ),
+            const SizedBox(height: 12),
+            Text(title, style: _featureTitleStyle, textAlign: TextAlign.center),
           ],
         ),
       ),
