@@ -1,20 +1,14 @@
 // ignore_for_file: use_full_hex_values_for_flutter_colors, deprecated_member_use
-
 import 'package:flutter/material.dart';
-
-
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
-
   @override
   State<OnboardingScreen> createState() => _OnboardingScreenState();
 }
-
 class _OnboardingScreenState extends State<OnboardingScreen> {
   void _goToApp() {
     Navigator.of(context).pushReplacementNamed('/app');
   }
-
   TextStyle get _titleTextStyle => const TextStyle(
         fontFamily: 'Itim',
         fontSize: 34,
@@ -22,7 +16,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
         color: Color(0xFF0F3B3D),
         height: 1.1,
       );
-
   TextStyle get _subtitleTextStyle => const TextStyle(
       fontFamily: 'Lora',
         fontSize: 16,
@@ -162,11 +155,10 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       ),
     );
   }
-
   Widget _buildFeatureCard({
     required IconData icon,
     required String title,
-  }) {
+    }) {
     return Expanded(
       child: Container(
         margin: const EdgeInsets.symmetric(horizontal: 2),

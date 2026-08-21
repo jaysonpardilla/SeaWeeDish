@@ -2,7 +2,6 @@
 
 import 'dart:convert';
 import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -314,8 +313,8 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
     required Color backgroundColor,
     required Color iconColor,
     VoidCallback? onTap,
-  }) {
-    return GestureDetector(
+    }) {
+      return GestureDetector(
       onTap: onTap ?? () {
         // Handle action
       },

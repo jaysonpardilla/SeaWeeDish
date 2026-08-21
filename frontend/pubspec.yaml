@@ -26,14 +26,15 @@ dependencies:
   latlong2: ^0.8.1
   geolocator: ^11.0.0
 
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^5.0.0
+  flutter_lints: ^5.0.0 
+  flutter_launcher_icons: ^0.14.4
 
 flutter:
   uses-material-design: true
-  
   fonts:
     - family: Itim
       fonts:
@@ -57,4 +58,8 @@ flutter_native_splash:
   ios_content_mode: center
   web_image_mode: cover
 
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "lib/assets/images/app_icon.png" 
 

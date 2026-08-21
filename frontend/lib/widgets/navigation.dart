@@ -175,6 +175,7 @@ class _BottomNavigationState extends State<BottomNavigation>
                     : null,
               ),
             ),
+            
             // Icon with active label underneath
             Column(
               mainAxisSize: MainAxisSize.min,

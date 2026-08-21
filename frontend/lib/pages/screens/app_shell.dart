@@ -6,6 +6,18 @@ import 'learning_screen.dart';
 import 'history_screen.dart';
 import 'mapping_screen.dart';
 
+/// Enum for organizing screen indices - makes code more readable
+enum AppScreen {
+  home(0),
+  learning(1),
+  scan(2),
+  history(3),
+  mapping(4);
+
+  final int value;
+  const AppScreen(this.value);
+}
+
 class AppShell extends StatefulWidget {
   const AppShell({super.key});
 
@@ -14,7 +26,8 @@ class AppShell extends StatefulWidget {
 }
 
 class _AppShellState extends State<AppShell> {
-  final GlobalKey<State<LearningScreen>> _learningScreenKey = GlobalKey<State<LearningScreen>>();
+  final GlobalKey<State<LearningScreen>> _learningScreenKey = 
+  GlobalKey<State<LearningScreen>>();
   int _currentIndex = 0;
   int _previousIndex = 0;
 
@@ -26,20 +39,32 @@ class _AppShellState extends State<AppShell> {
     const MappingScreen(),
   ];
 
+  /// Handle tab changes and cleanup for specific screens
   void _onTabChanged(int index) {
-    // Clear search when leaving learning screen (index 1)
-    if (_previousIndex == 1 && index != 1) {
-      try {
-        (_learningScreenKey.currentState as dynamic)?.clearSearch();
-      } catch (e) {
-        // Silently handle if state is not available
-      }
-    }
+    _clearSearchIfLeavingLearning(index);
     
     setState(() {
       _previousIndex = _currentIndex;
       _currentIndex = index;
     });
+  }
+
+  /// Clear learning screen search when navigating away from it
+  void _clearSearchIfLeavingLearning(int newIndex) {
+    final isLeavingLearning = 
+        _previousIndex == AppScreen.learning.value && 
+        newIndex != AppScreen.learning.value;
+    
+    if (!isLeavingLearning) return;
+
+    try {
+      final learningState = _learningScreenKey.currentState;
+      if (learningState != null) {
+        (learningState as dynamic).clearSearch();
+      }
+    } catch (e) {
+      debugPrint('Error clearing learning screen search: $e');
+    }
   }
 
   @override
@@ -49,13 +74,13 @@ class _AppShellState extends State<AppShell> {
       backgroundColor: const Color(0xFFF8FBFC),
       body: Stack(
         children: [
-          // Content fills entire screen
+          // Content fills entire screen based on current tab
           IndexedStack(
             index: _currentIndex,
             children: _pages,
           ),
-          // Navigation positioned at bottom (hide when Scan tab is active)
-          if (_currentIndex != 2)
+          // Navigation bar positioned at bottom (hidden when on Scan tab)
+          if (_currentIndex != AppScreen.scan.value)
             Positioned(
               left: 0,
               right: 0,
