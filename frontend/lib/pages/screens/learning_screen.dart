@@ -362,9 +362,13 @@ class _LearningScreenState extends State<LearningScreen> {
                   ),
                 ],
               ),
-              child: ListTile(
-                contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-                leading: ClipRRect(
+              child: Material(
+                color: Colors.transparent,
+                borderRadius: BorderRadius.circular(12),
+                clipBehavior: Clip.antiAlias,
+                child: ListTile(
+                  contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                  leading: ClipRRect(
                   borderRadius: BorderRadius.circular(10),
                   child: Container(
                     width: 60,
@@ -450,6 +454,7 @@ class _LearningScreenState extends State<LearningScreen> {
                     ),
                   );
                 },
+                ),
               ),
             ),
           );

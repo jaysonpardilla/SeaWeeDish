@@ -1103,29 +1103,6 @@ class _MappingScreenState extends State<MappingScreen> {
                   InteractiveFlag.pinchZoom |
                   InteractiveFlag.doubleTapZoom |
                   InteractiveFlag.rotate,
-              onTap: (tapPosition, point) async {
-                // Restrict to Biliran bounds
-                if (!_isWithinBiliran(point.latitude, point.longitude)) {
-                  if (!mounted) return;
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(
-                      content: Text(
-                        'You can only add points within Biliran province',
-                      ),
-                    ),
-                  );
-                  return;
-                }
-
-                // Store the pending location and show upload modal for new location
-                setState(() {
-                  _editingLocationId = null;
-                  _pendingLocationPoint = point;
-                  _selectedSeaweedImages.clear();
-                  _seaweedNames.clear();
-                });
-                _showSeaweedUploadModal(isEditing: false);
-              },
             ),
             children: [
               TileLayer(

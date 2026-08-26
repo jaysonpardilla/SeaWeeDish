@@ -82,7 +82,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   ),
                   const SizedBox(height: 5),
                   Text(
-                    'Cook. Enjoy. Live Healthy.',
+                    'Discover. Identify. Thrive.',
                     textAlign: TextAlign.center,
                     style: _titleTextStyle,
                   ),
