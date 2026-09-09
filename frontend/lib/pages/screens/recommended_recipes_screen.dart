@@ -26,6 +26,9 @@ class _RecommendedDishesScreenState extends State<RecommendedDishesScreen> {
     'kappaphycus alvarezii': 'kappaphycus_alvarezii_recipes.json',
     'sargassum muticum': 'sargassum_muticum_recipes.json',
     'ulva lactuca': 'ulva_lactuca_recipes.json',
+    'turbinaria ornata': 'turbinaria_ornata.json',
+    'turbinaria': 'turbinaria_ornata.json',
+    'padina australis': 'padina_australis.json',
   };
 
   @override

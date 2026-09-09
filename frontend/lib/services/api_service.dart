@@ -16,9 +16,10 @@ class ApiService {
   // Using machine's actual IP address on the network
   // static const String _baseUrl = 'http://10.0.0.77:8000/api';
 
-  static const String _baseUrl = 'https://seaweedish-production.up.railway.app/api';
+  static const String _baseUrl = 'https://seaweedish-server.up.railway.app/api'; 
 
-  // Singleton instance
+
+  // Singleton instanceseaweedish-server.up.railway.app
   static final ApiService _instance = ApiService._internal(); 
 
   static const int _timeout = 30; // seconds

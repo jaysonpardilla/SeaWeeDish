@@ -32,9 +32,6 @@ class _ResultScreenState extends State<ResultScreen> {
   late String seaweedName;
   late int confidence;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
-  LatLng? _userLocation;
-  bool _isSavingToMap = true;
-  String? _mapSaveStatus;
 
   @override
   void initState() {
@@ -59,13 +56,6 @@ class _ResultScreenState extends State<ResultScreen> {
 
     if (confidence > _minimumConfidenceToSave) {
       _saveResultToMap();
-    } else {
-      if (mounted) {
-        setState(() {
-          _isSavingToMap = false;
-          _mapSaveStatus = 'Confidence is 70% or below. Result was not saved to the map.';
-        });
-      }
     }
   }
 
@@ -73,12 +63,6 @@ class _ResultScreenState extends State<ResultScreen> {
     if (!mounted) return;
 
     if (confidence <= _minimumConfidenceToSave) {
-      if (mounted) {
-        setState(() {
-          _isSavingToMap = false;
-          _mapSaveStatus = 'Confidence is 70% or below. Result was not saved to the map.';
-        });
-      }
       return;
     }
 
@@ -98,12 +82,6 @@ class _ResultScreenState extends State<ResultScreen> {
         
         if (requested == LocationPermission.denied ||
             requested == LocationPermission.deniedForever) {
-          if (mounted) {
-            setState(() {
-              _isSavingToMap = false;
-              _mapSaveStatus = 'Location permission was not granted.';
-            });
-          }
           return;
         }
       }
@@ -112,12 +90,6 @@ class _ResultScreenState extends State<ResultScreen> {
       print('🗺️ Location service enabled: $serviceEnabled');
       
       if (!serviceEnabled) {
-        if (mounted) {
-          setState(() {
-            _isSavingToMap = false;
-            _mapSaveStatus = 'Location services are disabled.';
-          });
-        }
         return;
       }
 
@@ -127,12 +99,6 @@ class _ResultScreenState extends State<ResultScreen> {
       );
       
       print('🗺️ Got position: ${position.latitude}, ${position.longitude}');
-
-      if (mounted) {
-        setState(() {
-          _userLocation = LatLng(position.latitude, position.longitude);
-        });
-      }
 
       String imageUrl = '';
       if (widget.capturedImage is File) {
@@ -167,21 +133,9 @@ class _ResultScreenState extends State<ResultScreen> {
       });
 
       print('✅ Firestore save successful!');
-
-      if (!mounted) return;
-      setState(() {
-        _isSavingToMap = false;
-        _mapSaveStatus = 'Saved to the seaweed map.';
-      });
     } catch (e, st) {
       print('❌ Map save error: $e');
       print('❌ Stack trace: $st');
-      
-      if (!mounted) return;
-      setState(() {
-        _isSavingToMap = false;
-        _mapSaveStatus = 'Unable to save to map: $e';
-      });
     }
   }
 
@@ -385,106 +339,48 @@ class _ResultScreenState extends State<ResultScreen> {
                         width: 1,
                       ),
                     ),
-                    child: Text.rich(
-                      TextSpan(
-                        text: 'Status: ',
-                        style: const TextStyle(
-                          fontSize: 12,
-                          color: Colors.white70,
-                          fontWeight: FontWeight.w600,
-                        ),
-                        children: [
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text.rich(
                           TextSpan(
-                            text: _getEdibilityLabel(),
-                            style: TextStyle(
+                            text: 'Status: ',
+                            style: const TextStyle(
                               fontSize: 12,
+                              color: Colors.white70,
+                              fontWeight: FontWeight.w600,
+                            ),
+                            children: [
+                              TextSpan(
+                                text: _getEdibilityLabel(),
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.bold,
+                                  color: _getEdibilityLabel() == 'Edible'
+                                      ? const Color(0xFF4CAF50)
+                                      : const Color(0xFFFF5252),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        if (widget.prediction != null) ...[
+                          const SizedBox(width: 12),
+                          Text(
+                            'Confidence: $confidence%',
+                            style: const TextStyle(
+                              fontSize: 12,
+                              color: Colors.white,
                               fontWeight: FontWeight.bold,
-                              color: _getEdibilityLabel() == 'Edible'
-                                  ? const Color(0xFF4CAF50)
-                                  : const Color(0xFFFF5252),
                             ),
                           ),
                         ],
-                      ),
+                      ],
                     ),
                   ),
                   const SizedBox(height: 40),
                   // Prediction Probabilities (if available)
                   if (widget.prediction != null) ...[
-                    Container(
-                      padding: const EdgeInsets.all(10),
-                      decoration: BoxDecoration(
-                        color: Colors.white.withOpacity(0.1),
-                        borderRadius: BorderRadius.circular(12),
-                        border: Border.all(
-                          color: Colors.white.withOpacity(0.2),
-                          width: 1,
-                        ),
-                      ),
-                      child: Column(
-                        children: [
-                          const Text(
-                            'Prediction Scores',
-                            style: TextStyle(
-                              fontSize: 12,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white,
-                            ),
-                          ),
-                          const SizedBox(height: 12),
-                          ...widget.prediction!.probabilities.entries.map((e) {
-                            final percentage = e.value;
-                            return Padding(
-                              padding: const EdgeInsets.symmetric(vertical: 1),
-                              child: Row(
-                                children: [
-                                  Expanded(
-                                    flex: 3,
-                                    child: Text(
-                                      e.key,
-                                      style: const TextStyle(
-                                        fontSize: 12,
-                                        color: Colors.white70,
-                                      ),
-                                    ),
-                                  ),
-                                  Expanded(
-                                    flex: 5,
-                                    child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(4),
-                                      child: LinearProgressIndicator(
-                                        value: percentage / 100,
-                                        minHeight: 6,
-                                        backgroundColor: Colors.white.withOpacity(0.1),
-                                        valueColor: AlwaysStoppedAnimation<Color>(
-                                          e.key == widget.prediction!.prediction
-                                              ? const Color(0xFF0CA8B3)
-                                              : Colors.white.withOpacity(0.3),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  const SizedBox(width: 3),
-                                  Expanded(
-                                    flex: 2,
-                                    child: Text(
-                                      '${percentage.toStringAsFixed(1)}%',
-                                      style: const TextStyle(
-                                        fontSize: 12,
-                                        color: Colors.white60,
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                      textAlign: TextAlign.end,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            );
-                          }).toList(),
-                        ],
-                      ),
-                    ),
-                    const SizedBox(height: 16),
                     // Cleaning Process section (only show if result is recognized)
                     if (seaweedName.trim().toLowerCase() != 'unrecognized')
                       Container(
@@ -549,77 +445,6 @@ class _ResultScreenState extends State<ResultScreen> {
                       ),
                   ],
                   const SizedBox(height: 24),
-                  Container(
-                    width: double.infinity,
-                    padding: const EdgeInsets.all(12),
-                    decoration: BoxDecoration(
-                      color: Colors.white.withOpacity(0.12),
-                      borderRadius: BorderRadius.circular(14),
-                      border: Border.all(color: Colors.white.withOpacity(0.2)),
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Text(
-                          'Shared location map',
-                          style: TextStyle(
-                            fontSize: 13,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white,
-                          ),
-                        ),
-                        const SizedBox(height: 8),
-                        if (_isSavingToMap)
-                          const Text(
-                            'Saving your current location to the shared map...',
-                            style: TextStyle(fontSize: 12, color: Colors.white70),
-                          )
-                        else if (_mapSaveStatus != null)
-                          Text(
-                            _mapSaveStatus!,
-                            style: const TextStyle(fontSize: 12, color: Colors.white70),
-                          )
-                        else
-                          const Text(
-                            'Your location is ready to be shared with other users.',
-                            style: TextStyle(fontSize: 12, color: Colors.white70),
-                          ),
-                        const SizedBox(height: 10),
-                        if (_userLocation != null)
-                          SizedBox(
-                            height: 180,
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(12),
-                              child: FlutterMap(
-                                options: MapOptions(
-                                  center: _userLocation!,
-                                  zoom: 14.0,
-                                ),
-                                children: [
-                                  TileLayer(
-                                    urlTemplate:
-                                        'https://tile.openstreetmap.de/{z}/{x}/{y}.png',
-                                    userAgentPackageName: 'com.example.app',
-                                  ),
-                                  MarkerLayer(
-                                    markers: [
-                                      Marker(
-                                        point: _userLocation!,
-                                        builder: (context) => const Icon(
-                                          Icons.location_on,
-                                          color: Color(0xFF0CA8B3),
-                                          size: 28,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                      ],
-                    ),
-                  ),
                   const SizedBox(height: 24),
                   // Back to Home button
                   SizedBox(
@@ -711,6 +536,24 @@ class _ResultScreenState extends State<ResultScreen> {
         'Shake Out Sand: Hold the sea lettuce under water and shake it gently so hidden sand falls into the bowl.',
         'Move to New Bowl: Move the clean leaves into a second bowl of fresh water. Repeat until the water stays clear and clean.',
         'Drain: Squeeze the leaves gently with your hands to get rid of extra water. It is ready for soups or salads.',
+      ];
+    }
+
+    if (predicted == 'padina australis') {
+      return [
+        'Hand Sorting: Inspect the unique, fan-shaped, concentric-zoned fronds of the seaweed to pull out clingy sand, small shell fragments, pieces of coral, or any entangled marine debris.',
+        'Seawater Pre-Wash: Submerge and swish the seaweeds in clean seawater first to help strip away stubborn surface grit and loose particles without leaching the internal compounds.',
+        'Running Freshwater Immersion: Thoroughly rinse or submerge the seaweed in running freshwater; scientific trials show a freshwater rinse effectively purifies the fronds by reducing excess salt content up to 97%.',
+        'Drain and Shade-Dry: Drain all excess water completely, then spread the seaweed out thinly to air-dry or shade-dry. Avoid using direct or intense cooking heat to preserve its delicate medicinal and therapeutic nutrients.',
+      ];
+    }
+
+    if (predicted == 'turbinaria ornata') {
+      return [
+        'Initial Sort: Manually check the seaweed and remove any visible sand, silt, tiny marine organisms, or trash caught within its rigid, cup-like structures.',
+        'Seawater or Fresh Water Rinse: Place the seaweed fronds in a large bowl of clean water. Swish them vigorously with your hands to loosen and drop the heavy sand particles to the bottom.',
+        'Scrub and Repeat: Gently brush the surface to remove stubborn animal castings or detritus, then lift the seaweed into a fresh bowl of water. Repeat this process until no sand or debris settles at the bottom.',
+        'Desalinate and Drain: Shake off the excess water and let it drain. The cleaned seaweed is now ready to be eaten fresh, pickled, or added to your favorite dishes.',
       ];
     }
 

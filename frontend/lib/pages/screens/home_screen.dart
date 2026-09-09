@@ -134,10 +134,9 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
                 
                 // Recent Scans
                 _buildRecentScans(),
-                
-                // Info Cards Row
+
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 0),
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
                   child: Row(
                     children: [
                       Expanded(child: _buildDidYouKnowCard()),
@@ -277,20 +276,20 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
                 onTap: () => widget.onTabChanged(2),
               ),
               _buildQuickActionTile(
-                icon: Icons.location_on_outlined,
-                title: 'View Map',
-                subtitle: 'Explore nearby\nseaweeds',
-                backgroundColor: const Color(0xFFD9F4F7),
-                iconColor: const Color(0xFF0B7A8A),
-                onTap: () => widget.onTabChanged(4),
-              ),
-              _buildQuickActionTile(
                 icon: Icons.menu_book_outlined,
                 title: 'Learn',
                 subtitle: 'Stay informed',
                 backgroundColor: const Color(0xFFD9F4F7),
                 iconColor: const Color(0xFF0B7A8A),
                 onTap: () => widget.onTabChanged(1),
+              ),
+              _buildQuickActionTile(
+                icon: Icons.history_outlined,
+                title: 'View History',
+                subtitle: 'Review your scans',
+                backgroundColor: const Color(0xFFD9F4F7),
+                iconColor: const Color(0xFF0B7A8A),
+                onTap: () => widget.onTabChanged(3),
               ),
               _buildQuickActionTile(
                 icon: Icons.security_outlined,
@@ -582,16 +581,12 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
       decoration: BoxDecoration(
         color: const Color(0xFFEBF8F5),
         borderRadius: BorderRadius.circular(16),
-        border: Border.all(
-          color: const Color(0xFFD4EFE9),
-          width: 1,
-        ),
+        border: Border.all(color: const Color(0xFFD4EFE9)),
       ),
       padding: const EdgeInsets.all(12),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Seaweed Illustration
           Container(
             width: double.infinity,
             height: 60,
@@ -599,14 +594,9 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
               color: const Color(0xFFD9F4F7).withOpacity(0.5),
               borderRadius: BorderRadius.circular(12),
             ),
-            child: const Icon(
-              Icons.spa,
-              size: 35,
-              color: Color(0xFF0B7A8A),
-            ),
+            child: const Icon(Icons.spa, size: 35, color: Color(0xFF0B7A8A)),
           ),
           const SizedBox(height: 12),
-          // Content
           const Text(
             'Did You Know?',
             style: TextStyle(
@@ -626,30 +616,6 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
               height: 1.3,
             ),
           ),
-          const SizedBox(height: 10),
-          GestureDetector(
-            onTap: () {
-              // Navigate to learn more
-            },
-            child: Row(
-              children: [
-                const Text(
-                  'Learn more',
-                  style: TextStyle(
-                    fontSize: 11,
-                    fontWeight: FontWeight.w600,
-                    color: Color(0xFF0B7A8A),
-                  ),
-                ),
-                const SizedBox(width: 4),
-                const Icon(
-                  Icons.arrow_forward,
-                  size: 11,
-                  color: Color(0xFF0B7A8A),
-                ),
-              ],
-            ),
-          ),
         ],
       ),
     );
@@ -660,16 +626,12 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
       decoration: BoxDecoration(
         color: const Color(0xFFFEF4E8),
         borderRadius: BorderRadius.circular(16),
-        border: Border.all(
-          color: const Color(0xFFFFE8C9),
-          width: 1,
-        ),
+        border: Border.all(color: const Color(0xFFFFE8C9)),
       ),
       padding: const EdgeInsets.all(12),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Check Icon
           Container(
             width: double.infinity,
             height: 70,
@@ -677,16 +639,13 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
               color: const Color(0xFF2DBE89).withOpacity(0.15),
               borderRadius: BorderRadius.circular(12),
             ),
-            child: const Center(
-              child: Icon(
-                Icons.check_circle_outline,
-                size: 35,
-                color: Color(0xFF2DBE89),
-              ),
+            child: const Icon(
+              Icons.check_circle_outline,
+              size: 35,
+              color: Color(0xFF2DBE89),
             ),
           ),
           const SizedBox(height: 12),
-          // Content
           const Text(
             'Safety Reminder',
             style: TextStyle(
@@ -716,11 +675,7 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
             child: const Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Icon(
-                  Icons.shield,
-                  size: 13,
-                  color: Color(0xFF2DBE89),
-                ),
+                Icon(Icons.shield, size: 13, color: Color(0xFF2DBE89)),
                 SizedBox(width: 4),
                 Text(
                   'Stay Safe',
@@ -883,4 +838,4 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
     );
   }
 
-}
+}                                                                                                                                                                                                              

@@ -1,0 +1,70 @@
+{
+  "preparation_rules": [
+    "Soak well to desalinate: Turbinaria ornata is naturally very salty; soak it in fresh water for at least 15–30 minutes to achieve a mild flavor profile.",
+    "Do not overcook: Prolonged exposure to high heat turns its unique, cup-shaped structural ridges tough or unpleasantly rubbery.",
+    "Blanch for optimal texture: A quick 10–30 second flash-boil followed by an ice bath brightens its golden-brown color and softens the naturally rigid texture."
+  ],
+  "recipes": [
+    {
+      "title": "Pacific-Style Coconut Milk Blanched Turbinaria",
+      "description": "A rich, savory side dish featuring briefly blanched Turbinaria ornata simmered gently in spiced coconut cream.",
+      "ingredients": [
+        "200 g fresh Turbinaria ornata (cleaned and drained)",
+        "1 cup thick coconut milk (first press)",
+        "1 tbsp ginger (finely julienned)",
+        "2 cloves garlic (minced)",
+        "1 small red onion (thinly sliced)",
+        "1-2 bird's eye chilies (sliced, optional)",
+        "1/2 tsp salt (to taste)",
+        "1/2 tsp black pepper"
+      ],
+      "instructions": [
+        "Bring a pot of water to a rolling boil, submerge the Turbinaria ornata for 20 seconds, then immediately plunge it into ice water. Drain well and chop into bite-sized pieces.",
+        "In a saucepan over medium heat, combine the coconut milk, ginger, garlic, red onion, and sliced chilies. Bring to a gentle simmer for 5 minutes until fragrant.",
+        "Season the simmering coconut milk with salt and black pepper.",
+        "Remove the saucepan from the heat, fold in the blanched Turbinaria ornata fronds to coat them in the warm sauce, and serve immediately."
+      ]
+    },
+    {
+      "title": "Southeast Asian Crispy Turbinaria Fritters",
+      "description": "Crunchy, golden-brown seaweed fritters that incorporate chopped Turbinaria ornata into a seasoned vegetable batter.",
+      "ingredients": [
+        "150 g fresh Turbinaria ornata (cleaned, soaked, and finely chopped)",
+        "1/2 cup all-purpose flour",
+        "1/4 cup cornstarch",
+        "1/2 cup ice-cold water",
+        "1/2 cup carrots (shredded)",
+        "2 stalks green onions (finely chopped)",
+        "1/2 tsp garlic powder",
+        "1/2 tsp salt and 1/4 tsp black pepper",
+        "Cooking oil (for deep frying)"
+      ],
+      "instructions": [
+        "Ensure the chopped Turbinaria ornata is thoroughly patted dry with paper towels to prevent the batter from becoming watery.",
+        "In a large bowl, whisk together the all-purpose flour, cornstarch, garlic powder, salt, black pepper, and ice-cold water to form a smooth batter.",
+        "Fold the chopped seaweed, shredded carrots, and green onions into the batter until evenly distributed.",
+        "Heat oil in a frying pan over medium-high heat. Drop spoonfuls of the mixture into the hot oil and fry for 2–3 minutes per side until golden brown and crispy. Drain on paper towels."
+      ]
+    },
+    {
+      "title": "Spiced Vinegar Pickled Turbinaria",
+      "description": "A refreshing, crunchy seaweed pickle where the cup-shaped leaves of the Turbinaria absorb a tangy garlic and chili brine.",
+      "ingredients": [
+        "200 g fresh Turbinaria ornata (cleaned and blanched for 10 seconds)",
+        "3/4 cup cane vinegar or coconut vinegar",
+        "2 tbsp sugar",
+        "1 tsp salt",
+        "3 cloves garlic (crushed)",
+        "1 tsp whole black peppercorns",
+        "1 small red onion (sliced into rings)",
+        "1 thumb ginger (sliced)"
+      ],
+      "instructions": [
+        "Cut the blanched and cooled Turbinaria ornata into small clusters and place them into a clean glass jar along with the sliced onion and ginger.",
+        "In a small saucepan, combine the cane vinegar, sugar, salt, crushed garlic, and whole black peppercorns. Bring to a light boil until the sugar dissolves completely.",
+        "Let the vinegar mixture cool down to room temperature.",
+        "Pour the cooled liquid over the seaweed in the jar, ensuring it is fully submerged. Seal the jar and let it marinate in the refrigerator for at least 2 hours before serving cold."
+      ]
+    }
+  ]
+}

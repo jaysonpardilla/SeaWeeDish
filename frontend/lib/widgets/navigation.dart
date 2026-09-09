@@ -40,7 +40,6 @@ class _BottomNavigationState extends State<BottomNavigation>
     NavItem(icon: Icons.menu_book_rounded, label: 'Learn'),
     NavItem(icon: Icons.camera_alt_rounded, label: 'Scan'),
     NavItem(icon: Icons.history_rounded, label: 'History'),
-    NavItem(icon: Icons.map_rounded, label: 'Map'),
   ];
 
   @override

@@ -8,7 +8,7 @@
     <uses-permission android:name="android.permission.READ_MEDIA_IMAGES"/>
 
     <application
-        android:label="Seaweedish"
+        android:label="Seaweedish v2"
         android:icon="@mipmap/ic_launcher"
         android:networkSecurityConfig="@xml/network_security_config">
         <activity

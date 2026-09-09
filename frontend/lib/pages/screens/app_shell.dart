@@ -4,15 +4,13 @@ import 'home_screen.dart';
 import 'scan_screen.dart';
 import 'learning_screen.dart';
 import 'history_screen.dart';
-import 'mapping_screen.dart';
 
 /// Enum for organizing screen indices - makes code more readable
 enum AppScreen {
   home(0),
   learning(1),
   scan(2),
-  history(3),
-  mapping(4);
+  history(3);
 
   final int value;
   const AppScreen(this.value);
@@ -36,7 +34,6 @@ class _AppShellState extends State<AppShell> {
     LearningScreen(key: _learningScreenKey),
     ScanScreen(onTabChanged: _onTabChanged),
     const HistoryScreen(),
-    const MappingScreen(),
   ];
 
   /// Handle tab changes and cleanup for specific screens

@@ -40,17 +40,6 @@ class _ScanScreenState extends State<ScanScreen> with WidgetsBindingObserver {
     super.initState();
     WidgetsBinding.instance.addObserver(this);
     _initializeCameraFuture = _initializeCamera();
-
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (!mounted) return;
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Please turn on location services and allow location access so sightings can be saved to the map.'),
-          backgroundColor: Color(0xFF0B5C7A),
-          duration: Duration(seconds: 4),
-        ),
-      );
-    });
   }
 
   @override
