@@ -227,29 +227,29 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
                   color: Color(0xFF0B7A8A),
                 ),
               ),
-              GestureDetector(
-                onTap: () {
-                  // Navigate to see all actions
-                },
-                child: Row(
-                  children: [
-                    const Text(
-                      'See All',
-                      style: TextStyle(
-                        fontSize: 12,
-                        fontWeight: FontWeight.w600,
-                        color: Color(0xFF0B7A8A),
-                      ),
-                    ),
-                    const SizedBox(width: 4),
-                    const Icon(
-                      Icons.chevron_right,
-                      size: 16,
-                      color: Color(0xFF0B7A8A),
-                    ),
-                  ],
-                ),
-              ),
+              // GestureDetector(
+              //   onTap: () {
+              //     // Navigate to see all actions
+              //   },
+              //   child: Row(
+              //     children: [
+              //       const Text(
+              //         'See All',
+              //         style: TextStyle(
+              //           fontSize: 12,
+              //           fontWeight: FontWeight.w600,
+              //           color: Color(0xFF0B7A8A),
+              //         ),
+              //       ),
+              //       const SizedBox(width: 4),
+              //       const Icon(
+              //         Icons.chevron_right,
+              //         size: 16,
+              //         color: Color(0xFF0B7A8A),
+              //       ),
+              //     ],
+              //   ),
+              // ),
             ],
           ),
           const SizedBox(height: 7),
@@ -297,6 +297,9 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
                 subtitle: 'Guidelines for\nsafe use',
                 backgroundColor: const Color(0xFFD9F4F7),
                 iconColor: const Color(0xFF0B7A8A),
+                onTap: () {
+                  Navigator.pushNamed(context, '/safety-tips');
+                },
               ),
             ],
           ),

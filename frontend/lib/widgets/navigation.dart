@@ -21,8 +21,6 @@ class _BottomNavigationState extends State<BottomNavigation>
     with TickerProviderStateMixin {
   late AnimationController _animationController;
   late Animation<double> _slideAnimation;
-  late AnimationController _pulseController;
-  late Animation<double> _pulseAnimation;
   bool _animationsInitialized = false;
 
   // Design Constants
@@ -54,15 +52,7 @@ class _BottomNavigationState extends State<BottomNavigation>
         duration: _animationDuration,
         vsync: this,
       );
-      _pulseController = AnimationController(
-        duration: const Duration(seconds: 2),
-        vsync: this,
-      )..repeat(reverse: true);
-      
-      _pulseAnimation = Tween<double>(begin: 1.0, end: 1.2).animate(
-        CurvedAnimation(parent: _pulseController, curve: Curves.easeInOut),
-      );
-      
+
       _animationsInitialized = true;
       _updateAnimation();
     }
@@ -92,7 +82,6 @@ class _BottomNavigationState extends State<BottomNavigation>
   @override
   void dispose() {
     _animationController.dispose();
-    _pulseController.dispose();
     _animationsInitialized = false;
     super.dispose();
   }
@@ -144,7 +133,6 @@ class _BottomNavigationState extends State<BottomNavigation>
 
   Widget _buildNavItem(int index) {
     final isActive = widget.currentIndex == index;
-    final isCameraIcon = index == 2; // Camera icon is at index 2
 
     return Expanded(
       child: GestureDetector(
@@ -174,36 +162,22 @@ class _BottomNavigationState extends State<BottomNavigation>
                     : null,
               ),
             ),
-            
+
             // Icon with active label underneath
             Column(
               mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                isCameraIcon
-                    ? AnimatedBuilder(
-                        animation: _pulseAnimation,
-                        builder: (context, child) {
-                          return Transform.scale(
-                            scale: _pulseAnimation.value,
-                            child: Icon(
-                              _navItems[index].icon,
-                              color: isActive ? _iconColorActive : _iconColorInactive,
-                              size: 32,
-                            ),
-                          );
-                        },
-                      )
-                    : AnimatedScale(
-                        duration: _animationDuration,
-                        curve: Curves.fastOutSlowIn,
-                        scale: isActive ? 1.0 : 0.85,
-                        child: Icon(
-                          _navItems[index].icon,
-                          color: isActive ? _iconColorActive : _iconColorInactive,
-                          size: 25,
-                        ),
-                      ),
+                AnimatedScale(
+                  duration: _animationDuration,
+                  curve: Curves.fastOutSlowIn,
+                  scale: isActive ? 1.0 : 0.85,
+                  child: Icon(
+                    _navItems[index].icon,
+                    color: isActive ? _iconColorActive : _iconColorInactive,
+                    size: 25,
+                  ),
+                ),
                 if (isActive) ...[
                   Text(
                     _navItems[index].label,

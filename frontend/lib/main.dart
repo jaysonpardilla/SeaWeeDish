@@ -4,6 +4,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 import 'pages/screens/onboarding_screen.dart';
 import 'pages/screens/app_shell.dart';
+import 'pages/screens/safety_tips_screen.dart';
 
 Future<void> main() async {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
@@ -53,6 +54,7 @@ class _MyAppState extends State<MyApp> {
       home: const OnboardingScreen(),
       routes: {
         '/app': (context) => const AppShell(),
+        '/safety-tips': (context) => const SafetyTipsScreen(),
       },
     );
   }
