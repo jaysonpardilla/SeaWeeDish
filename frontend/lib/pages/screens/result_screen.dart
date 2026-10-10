@@ -37,6 +37,9 @@ class _ResultScreenState extends State<ResultScreen> {
   void initState() {
     super.initState();
 
+    seaweedName = 'Unrecognized';
+    confidence = 0;
+
     print('📋 ResultScreen initState');
     print('📋 Captured image type: ${widget.capturedImage.runtimeType}');
     print('📋 Prediction: ${widget.prediction}');
@@ -47,14 +50,15 @@ class _ResultScreenState extends State<ResultScreen> {
       if (confidence <= _minimumConfidenceToSave) {
         seaweedName = 'Unrecognized';
       }
-      print('📋 Using prediction - Name: $seaweedName, Confidence: $confidence');
+      print(
+          '📋 Using prediction - Name: $seaweedName, Confidence: $confidence');
     } else {
       print('📋 Using fallback mock data');
     }
 
     Future.microtask(() => _saveResultToDeviceHistory());
 
-    if (confidence > _minimumConfidenceToSave) {
+    if (widget.prediction != null && confidence > _minimumConfidenceToSave) {
       _saveResultToMap();
     }
   }
@@ -73,13 +77,13 @@ class _ResultScreenState extends State<ResultScreen> {
 
       final permission = await Geolocator.checkPermission();
       print('🗺️ Location permission: $permission');
-      
+
       if (permission == LocationPermission.denied ||
           permission == LocationPermission.deniedForever) {
         print('🗺️ Requesting location permission...');
         final requested = await Geolocator.requestPermission();
         print('🗺️ Permission request result: $requested');
-        
+
         if (requested == LocationPermission.denied ||
             requested == LocationPermission.deniedForever) {
           return;
@@ -88,7 +92,7 @@ class _ResultScreenState extends State<ResultScreen> {
 
       final serviceEnabled = await Geolocator.isLocationServiceEnabled();
       print('🗺️ Location service enabled: $serviceEnabled');
-      
+
       if (!serviceEnabled) {
         return;
       }
@@ -97,7 +101,7 @@ class _ResultScreenState extends State<ResultScreen> {
       final position = await Geolocator.getCurrentPosition(
         desiredAccuracy: LocationAccuracy.high,
       );
-      
+
       print('🗺️ Got position: ${position.latitude}, ${position.longitude}');
 
       String imageUrl = '';
@@ -106,7 +110,8 @@ class _ResultScreenState extends State<ResultScreen> {
         imageUrl = await _uploadImageToCloudinary(widget.capturedImage as File);
         print('🗺️ Image URL after upload: $imageUrl');
       } else {
-        print('⚠️ Captured image is not a File: ${widget.capturedImage.runtimeType}');
+        print(
+            '⚠️ Captured image is not a File: ${widget.capturedImage.runtimeType}');
       }
 
       print('🗺️ Saving to Firestore...');
@@ -114,7 +119,8 @@ class _ResultScreenState extends State<ResultScreen> {
       print('  latitude: ${position.latitude},');
       print('  longitude: ${position.longitude},');
       print('  userId: guest_user,');
-      print('  seaweed: { name: $seaweedName, confidence: $confidence, imageUrl: $imageUrl }');
+      print(
+          '  seaweed: { name: $seaweedName, confidence: $confidence, imageUrl: $imageUrl }');
       print('}');
 
       await _firestore.collection('map_points').add({
@@ -160,7 +166,8 @@ class _ResultScreenState extends State<ResultScreen> {
           .toList();
 
       history.add(entry);
-      history.sort((a, b) => (b['createdAt'] as int).compareTo(a['createdAt'] as int));
+      history.sort(
+          (a, b) => (b['createdAt'] as int).compareTo(a['createdAt'] as int));
 
       final trimmedHistory = history.take(100).toList();
       await prefs.setStringList(
@@ -231,7 +238,8 @@ class _ResultScreenState extends State<ResultScreen> {
   Future<String> _uploadImageToCloudinary(File imageFile) async {
     try {
       const uploadPreset = 'seaweeds_identifier';
-      const cloudinaryUrl = 'https://api.cloudinary.com/v1_1/dkvhqzo31/image/upload';
+      const cloudinaryUrl =
+          'https://api.cloudinary.com/v1_1/dkvhqzo31/image/upload';
 
       print('📤 Starting Cloudinary upload for: ${imageFile.path}');
       print('📤 File exists: ${await imageFile.exists()}');
@@ -239,31 +247,34 @@ class _ResultScreenState extends State<ResultScreen> {
 
       final request = http.MultipartRequest('POST', Uri.parse(cloudinaryUrl));
       request.fields['upload_preset'] = uploadPreset;
-      request.fields['public_id'] = 'seaweeds/${DateTime.now().millisecondsSinceEpoch}_${imageFile.path.split('/').last}';
-      request.files.add(await http.MultipartFile.fromPath('file', imageFile.path));
+      request.fields['public_id'] =
+          'seaweeds/${DateTime.now().millisecondsSinceEpoch}_${imageFile.path.split('/').last}';
+      request.files
+          .add(await http.MultipartFile.fromPath('file', imageFile.path));
 
       print('📤 Sending request to Cloudinary...');
       final response = await request.send().timeout(const Duration(minutes: 2));
-      
+
       print('📤 Cloudinary response status: ${response.statusCode}');
-      
+
       if (response.statusCode != 200) {
         final errorBody = await response.stream.bytesToString();
         print('❌ Cloudinary error body: $errorBody');
-        throw Exception('Cloudinary upload failed with status ${response.statusCode}: $errorBody');
+        throw Exception(
+            'Cloudinary upload failed with status ${response.statusCode}: $errorBody');
       }
 
       final responseBody = await response.stream.bytesToString();
       print('📤 Cloudinary response: $responseBody');
-      
+
       final responseData = jsonDecode(responseBody);
       final imageUrl = responseData['secure_url'] as String?;
-      
+
       if (imageUrl == null || imageUrl.isEmpty) {
         print('⚠️ Cloudinary returned empty URL');
         return '';
       }
-      
+
       print('✅ Cloudinary upload successful: $imageUrl');
       return imageUrl;
     } catch (e) {
@@ -356,9 +367,11 @@ class _ResultScreenState extends State<ResultScreen> {
                                 style: TextStyle(
                                   fontSize: 12,
                                   fontWeight: FontWeight.bold,
-                                  color: _getEdibilityLabel() == 'Edible'
-                                      ? const Color(0xFF4CAF50)
-                                      : const Color(0xFFFF5252),
+                                  color: switch (_getEdibilityLabel()) {
+                                    'Edible' => const Color(0xFF4CAF50),
+                                    'Unavailable' => Colors.white70,
+                                    _ => const Color(0xFFFF5252),
+                                  },
                                 ),
                               ),
                             ],
@@ -389,7 +402,8 @@ class _ResultScreenState extends State<ResultScreen> {
                         decoration: BoxDecoration(
                           color: Colors.white.withOpacity(0.06),
                           borderRadius: BorderRadius.circular(12),
-                          border: Border.all(color: Colors.white.withOpacity(0.12)),
+                          border:
+                              Border.all(color: Colors.white.withOpacity(0.12)),
                         ),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -411,14 +425,16 @@ class _ResultScreenState extends State<ResultScreen> {
                                   onPressed: () {
                                     Navigator.of(context).push(
                                       MaterialPageRoute(
-                                        builder: (context) => RecommendedDishesScreen(
+                                        builder: (context) =>
+                                            RecommendedDishesScreen(
                                           speciesName: seaweedName,
                                         ),
                                       ),
                                     );
                                   },
                                   style: OutlinedButton.styleFrom(
-                                    side: const BorderSide(color: Colors.white24),
+                                    side:
+                                        const BorderSide(color: Colors.white24),
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(8),
                                     ),
@@ -482,8 +498,10 @@ class _ResultScreenState extends State<ResultScreen> {
   }
 
   String _getEdibilityLabel() {
-    // New rule: use confidence to determine status.
-    // If confidence is greater than 60 => Edible, otherwise Unidentified.
+    if (seaweedName.trim().toLowerCase() == 'unrecognized') {
+      return 'Unidentified';
+    }
+
     if (confidence > 60) {
       return 'Edible';
     }
@@ -492,9 +510,11 @@ class _ResultScreenState extends State<ResultScreen> {
 
   // Returns a list of cleaning steps for the predicted species (or empty if unknown)
   List<String> _getCleaningSteps() {
-    final predicted = (widget.prediction?.prediction ?? seaweedName).trim().toLowerCase();
+    final predicted =
+        (widget.prediction?.prediction ?? seaweedName).trim().toLowerCase();
 
-    if (predicted == 'caulerpa lentilifera' || predicted == 'caulerpa lentillifera') {
+    if (predicted == 'caulerpa lentilifera' ||
+        predicted == 'caulerpa lentillifera') {
       return [
         'Pick and Sort: Look through the green grape-like clusters and pull out small rocks, tiny shells, or bits of other plants.',
         'First Wash: Rinse the sea grapes gently in a bowl of clean, cool tap water to remove dirt and extra salt.',
@@ -627,7 +647,7 @@ class _ResultScreenState extends State<ResultScreen> {
     } catch (e) {
       print('❌ Exception displaying image: $e');
     }
-    
+
     return Container(
       color: Colors.white.withOpacity(0.1),
       child: Icon(
@@ -637,8 +657,6 @@ class _ResultScreenState extends State<ResultScreen> {
       ),
     );
   }
-
-
 
   void _backToHome() {
     // Pop all routes until we reach the root (ScanScreen)
@@ -712,7 +730,8 @@ class _FullScreenMapScreenState extends State<FullScreenMapScreen> {
             child: SafeArea(
               child: Container(
                 color: Colors.black.withOpacity(0.5),
-                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
                 child: Row(
                   children: [
                     GestureDetector(
@@ -846,5 +865,5 @@ class _FullScreenMapScreenState extends State<FullScreenMapScreen> {
   void dispose() {
     mapController.dispose();
     super.dispose();
-  }                                                                                                                                                          
+  }
 }
