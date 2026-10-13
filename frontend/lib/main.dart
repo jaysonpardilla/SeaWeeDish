@@ -5,9 +5,11 @@ import 'firebase_options.dart';
 import 'pages/screens/onboarding_screen.dart';
 import 'pages/screens/app_shell.dart';
 import 'pages/screens/safety_tips_screen.dart';
+import 'services/app_language.dart';
 
 Future<void> main() async {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+  await AppLanguage.instance.initialize();
   
   try {
     await Firebase.initializeApp(
@@ -45,17 +47,20 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+    return AnimatedBuilder(
+      animation: AppLanguage.instance,
+      builder: (context, child) => MaterialApp(
+        title: 'SeaWeeDish',
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        ),
+        home: const OnboardingScreen(),
+        routes: {
+          '/app': (context) => const AppShell(),
+          '/safety-tips': (context) => const SafetyTipsScreen(),
+        },
       ),
-      home: const OnboardingScreen(),
-      routes: {
-        '/app': (context) => const AppShell(),
-        '/safety-tips': (context) => const SafetyTipsScreen(),
-      },
     );
   }
 }

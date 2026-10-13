@@ -11,6 +11,7 @@ import 'package:http/http.dart' as http;
 import 'package:image_picker/image_picker.dart';
 import 'package:geolocator/geolocator.dart';
 
+import '../../services/app_language.dart';
 import '../../services/navigation_service.dart';
 
 class MappingScreen extends StatefulWidget {
@@ -20,7 +21,7 @@ class MappingScreen extends StatefulWidget {
   State<MappingScreen> createState() => _MappingScreenState(); 
 }
 
-class _MappingScreenState extends State<MappingScreen> { 
+class _MappingScreenState extends State<MappingScreen> with AppLanguageAwareStateMixin<MappingScreen> { 
   static const String CLOUDINARY_UPLOAD_PRESET = 'seaweeds_identifier';
   static const String CLOUDINARY_API_URL = 'https://api.cloudinary.com/v1_1/dkvhqzo31/image/upload';
   final List<Marker> _markers = [];
@@ -457,7 +458,7 @@ class _MappingScreenState extends State<MappingScreen> {
         if (mounted) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
-              content: Text('Found: $displayName'),
+              content: Text(appText('mapping_screen.dart', 'Found: {displayName}').replaceAll('{displayName}', displayName)),
               backgroundColor: const Color(0xFF0CA8B3),
               duration: const Duration(seconds: 2),
             ),
@@ -472,8 +473,8 @@ class _MappingScreenState extends State<MappingScreen> {
         // Result outside Biliran
         if (mounted) {
           ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(
-              content: Text('Result is outside Biliran. Searching within Biliran only...'),
+            SnackBar(
+              content: Text(appText('mapping_screen.dart', 'Result is outside Biliran. Searching within Biliran only...')),
               backgroundColor: Colors.orange,
               duration: Duration(seconds: 2),
             ),
@@ -483,8 +484,8 @@ class _MappingScreenState extends State<MappingScreen> {
         // No result found
         if (mounted) {
           ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(
-              content: Text('Location not found in Biliran'),
+            SnackBar(
+              content: Text(appText('mapping_screen.dart', 'Location not found in Biliran')),
               backgroundColor: Colors.orange,
               duration: Duration(seconds: 2),
             ),
@@ -496,7 +497,7 @@ class _MappingScreenState extends State<MappingScreen> {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text('Search error: $e'),
+            content: Text('${appText('mapping_screen.dart', 'Search error: ')}$e'),
             backgroundColor: Colors.red,
             duration: const Duration(seconds: 2),
           ),
@@ -586,14 +587,14 @@ class _MappingScreenState extends State<MappingScreen> {
 
   if (_selectedSeaweedImages.isEmpty) {
     ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text('Please select at least one seaweed image')),
+      SnackBar(content: Text(appText('mapping_screen.dart', 'Please select at least one seaweed image'))),
     );
     return;
   }
 
   if (_seaweedNames.any((name) => name.isEmpty)) {
     ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text('Please enter names for all seaweeds')),
+      SnackBar(content: Text(appText('mapping_screen.dart', 'Please enter names for all seaweeds'))),
     );
     return;
   }
@@ -663,7 +664,7 @@ class _MappingScreenState extends State<MappingScreen> {
           Navigator.pop(context);
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
-              content: Text('Upload Error: $uploadError'),
+              content: Text('${appText('mapping_screen.dart', 'Upload Error: ')}$uploadError'),
               backgroundColor: Colors.red,
               duration: const Duration(seconds: 5),
             ),
@@ -703,7 +704,7 @@ class _MappingScreenState extends State<MappingScreen> {
       Navigator.pop(context);
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text('✓ ${seaweedsList.length} seaweeds uploaded successfully'),
+          content: Text(appText('mapping_screen.dart', '✓ {count} seaweeds uploaded successfully').replaceAll('{count}', '${seaweedsList.length}')),
         backgroundColor: const Color(0xFF0CA8B3),
           duration: const Duration(seconds: 3),
         ),
@@ -715,7 +716,7 @@ class _MappingScreenState extends State<MappingScreen> {
     if (mounted) {
       Navigator.pop(context);
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Error: $e'), backgroundColor: Colors.red),
+        SnackBar(content: Text('${appText('mapping_screen.dart', 'Error: ')}$e'), backgroundColor: Colors.red),
       );
     }
   }
@@ -781,8 +782,8 @@ class _MappingScreenState extends State<MappingScreen> {
       if (userLocation == null) {
         if (!mounted) return;
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('Could not retrieve your location'),
+          SnackBar(
+            content: Text(appText('mapping_screen.dart', 'Could not retrieve your location')),
             backgroundColor: Colors.red,
           ),
         );
@@ -801,8 +802,8 @@ class _MappingScreenState extends State<MappingScreen> {
       if (routes.isEmpty) {
         if (!mounted) return;
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('Could not calculate route'),
+          SnackBar(
+            content: Text(appText('mapping_screen.dart', 'Could not calculate route')),
             backgroundColor: Colors.red,
           ),
         );
@@ -849,14 +850,14 @@ class _MappingScreenState extends State<MappingScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Route: ${_navigationService.formatDistance(bestRoute.distance)}',
+                        '${appText('mapping_screen.dart', 'Route: {distance}').replaceAll('{distance}', _navigationService.formatDistance(bestRoute.distance))}',
                         style: const TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 14,
                         ),
                       ),
                       Text(
-                        'Time: ${_navigationService.formatDuration(bestRoute.duration)}',
+                        '${appText('mapping_screen.dart', 'Time: {duration}').replaceAll('{duration}', _navigationService.formatDuration(bestRoute.duration))}',
                         style: const TextStyle(fontSize: 12),
                       ),
                     ],
@@ -864,7 +865,7 @@ class _MappingScreenState extends State<MappingScreen> {
                 ),
                 if (routes.length > 1)
                   Text(
-                    '${routes.length} routes',
+                    appText('mapping_screen.dart', '{count} routes').replaceAll('{count}', '${routes.length}'),
                     style: const TextStyle(fontSize: 12),
                   ),
               ],
@@ -878,7 +879,7 @@ class _MappingScreenState extends State<MappingScreen> {
       if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text('Error: $e'),
+          content: Text('${appText('mapping_screen.dart', 'Error: ')}$e'),
           backgroundColor: Colors.red,
         ),
       );
@@ -912,21 +913,21 @@ class _MappingScreenState extends State<MappingScreen> {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Location Services Disabled'),
+        title: Text(appText('mapping_screen.dart', 'Location Services Disabled')),
         content: const Text(
           'Please enable location services to use navigation.',
         ),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: const Text('Cancel'),
+            child: Text(appText('mapping_screen.dart', 'Cancel')),
           ),
           TextButton(
             onPressed: () {
               Navigator.pop(context);
               Geolocator.openLocationSettings();
             },
-            child: const Text('Enable'),
+            child: Text(appText('mapping_screen.dart', 'Enable')),
           ),
         ],
       ),
@@ -938,21 +939,21 @@ class _MappingScreenState extends State<MappingScreen> {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Location Permission Required'),
+        title: Text(appText('mapping_screen.dart', 'Location Permission Required')),
         content: const Text(
           'Location permission is required to calculate and display routes.',
         ),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: const Text('Cancel'),
+            child: Text(appText('mapping_screen.dart', 'Cancel')),
           ),
           TextButton(
             onPressed: () {
               Navigator.pop(context);
               Geolocator.openAppSettings();
             },
-            child: const Text('Open Settings'),
+            child: Text(appText('mapping_screen.dart', 'Open Settings')),
           ),
         ],
       ),
@@ -1197,7 +1198,7 @@ class _MappingScreenState extends State<MappingScreen> {
                         _searchLocation(null, value);
                       },
                       decoration: InputDecoration(
-                        hintText: 'Search location in Biliran...',
+                        hintText: appText('mapping_screen.dart', 'Search location in Biliran...'),
                         hintStyle: const TextStyle(
                           color: Color(0xFF999999),
                           fontSize: 14,
@@ -1461,7 +1462,7 @@ class _SeaweedUploadModalDialog extends StatefulWidget {
   State<_SeaweedUploadModalDialog> createState() => _SeaweedUploadModalDialogState();
 }
 
-class _SeaweedUploadModalDialogState extends State<_SeaweedUploadModalDialog> {
+class _SeaweedUploadModalDialogState extends State<_SeaweedUploadModalDialog> with AppLanguageAwareStateMixin<_SeaweedUploadModalDialog> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
@@ -1593,7 +1594,7 @@ class _SeaweedUploadModalDialogState extends State<_SeaweedUploadModalDialog> {
                                         widget.onNameChanged(index, value);
                                       },
                                       decoration: InputDecoration(
-                                        hintText: 'Enter name',
+                                        hintText: appText('mapping_screen.dart', 'Enter name'),
                                         contentPadding:
                                             const EdgeInsets.symmetric(
                                           horizontal: 10,
@@ -1660,7 +1661,7 @@ class _SeaweedUploadModalDialogState extends State<_SeaweedUploadModalDialog> {
                     }
                   },
                   icon: const Icon(Icons.add_photo_alternate_outlined),
-                  label: const Text('Add Another Image'),
+                  label: Text(appText('mapping_screen.dart', 'Add Another Image')),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.grey[100],
                     foregroundColor: const Color(0xFF0CA8B3),
@@ -1680,7 +1681,7 @@ class _SeaweedUploadModalDialogState extends State<_SeaweedUploadModalDialog> {
       actions: [
         TextButton(
           onPressed: widget.onCancel,
-          child: const Text('Cancel'),
+          child: Text(appText('mapping_screen.dart', 'Cancel')),
         ),
         ElevatedButton(
           onPressed: widget.selectedImages.isEmpty ? null : widget.onUpload,
@@ -1844,7 +1845,7 @@ class _SeaweedDetailsBottomSheetState extends State<_SeaweedDetailsBottomSheet> 
 
                   if (snapshot.hasError) {
                     return Center(
-                      child: Text('Error: ${snapshot.error}'),
+                      child: Text('${appText('mapping_screen.dart', 'Error: ')}${snapshot.error}'),
                     );
                   }
 

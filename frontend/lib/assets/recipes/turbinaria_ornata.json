@@ -23,7 +23,27 @@
         "In a saucepan over medium heat, combine the coconut milk, ginger, garlic, red onion, and sliced chilies. Bring to a gentle simmer for 5 minutes until fragrant.",
         "Season the simmering coconut milk with salt and black pepper.",
         "Remove the saucepan from the heat, fold in the blanched Turbinaria ornata fronds to coat them in the warm sauce, and serve immediately."
-      ]
+      ],
+      "filipino": {
+        "title": "Turbinaria na Pinasingawan sa Gatas ng Niyog, Estilong Pasipiko",
+        "description": "Malinamnam na ulam na may Turbinaria ornata na mabilisang blinanch at marahang pinakuluan sa maanghang na krema ng niyog.",
+        "ingredients": [
+          "200 g sariwang Turbinaria ornata (nilinis at pinatulo)",
+          "1 cup malapot na gatas ng niyog (unang piga)",
+          "1 tbsp luya (hiniwang maninipis na pahaba)",
+          "2 butil ng bawang (tinadtad nang pino)",
+          "1 maliit na pulang sibuyas (hiniwang maninipis)",
+          "1-2 siling labuyo (hiniwa, opsyonal)",
+          "1/2 tsp asin (ayon sa panlasa)",
+          "1/2 tsp itim na paminta"
+        ],
+        "instructions": [
+          "Pakuluin nang malakas ang isang kaserola ng tubig, ilubog ang Turbinaria ornata nang 20 segundo, saka agad ilipat sa tubig na may yelo. Patuluin nang mabuti at hiwain sa kagat-laking piraso.",
+          "Sa kaserola sa katamtamang init, pagsamahin ang gatas ng niyog, luya, bawang, pulang sibuyas, at hiniwang sili. Pakuluin nang marahan sa loob ng 5 minuto hanggang bumango.",
+          "Timplahan ng asin at itim na paminta ang kumukulong gatas ng niyog.",
+          "Alisin ang kaserola sa apoy, maingat na ihalo ang blinanch na Turbinaria ornata upang mabalutan ng maligamgam na sarsa, at ihain kaagad."
+        ]
+      }
     },
     {
       "title": "Southeast Asian Crispy Turbinaria Fritters",
@@ -44,7 +64,28 @@
         "In a large bowl, whisk together the all-purpose flour, cornstarch, garlic powder, salt, black pepper, and ice-cold water to form a smooth batter.",
         "Fold the chopped seaweed, shredded carrots, and green onions into the batter until evenly distributed.",
         "Heat oil in a frying pan over medium-high heat. Drop spoonfuls of the mixture into the hot oil and fry for 2–3 minutes per side until golden brown and crispy. Drain on paper towels."
-      ]
+      ],
+      "filipino": {
+        "title": "Malutong na Turbinaria Fritters, Estilong Timog-Silangang Asya",
+        "description": "Malutong at ginintuang seaweed fritters na may tinadtad na Turbinaria ornata sa tinimplahang masa ng gulay.",
+        "ingredients": [
+          "150 g sariwang Turbinaria ornata (nilinis, binabad, at tinadtad nang pino)",
+          "1/2 cup all-purpose na harina",
+          "1/4 cup gawgaw",
+          "1/2 cup tubig na napakalamig",
+          "1/2 cup karot (ginayat)",
+          "2 tangkay ng berdeng sibuyas (tinadtad nang pino)",
+          "1/2 tsp pulbos ng bawang",
+          "1/2 tsp asin at 1/4 tsp itim na paminta",
+          "Mantika (para sa deep-frying)"
+        ],
+        "instructions": [
+          "Siguraduhing pinatuyo nang husto sa paper towel ang tinadtad na Turbinaria ornata upang hindi maging malabnaw ang masa.",
+          "Sa malaking mangkok, haluin ang all-purpose na harina, gawgaw, pulbos ng bawang, asin, itim na paminta, at napakalamig na tubig hanggang maging makinis na masa.",
+          "Ihalo sa masa ang tinadtad na seaweed, ginayat na karot, at berdeng sibuyas hanggang pantay ang pagkakahalo.",
+          "Painitin ang mantika sa kawali sa katamtaman-mataas na init. Maghulog ng tig-iisang kutsarang bahagi ng halo sa mainit na mantika at iprito nang 2–3 minuto bawat tagiliran hanggang maging ginintuang-kayumanggi at malutong. Patuluin sa paper towel."
+        ]
+      }
     },
     {
       "title": "Spiced Vinegar Pickled Turbinaria",
@@ -64,7 +105,27 @@
         "In a small saucepan, combine the cane vinegar, sugar, salt, crushed garlic, and whole black peppercorns. Bring to a light boil until the sugar dissolves completely.",
         "Let the vinegar mixture cool down to room temperature.",
         "Pour the cooled liquid over the seaweed in the jar, ensuring it is fully submerged. Seal the jar and let it marinate in the refrigerator for at least 2 hours before serving cold."
-      ]
+      ],
+      "filipino": {
+        "title": "Turbinaria na Binabad sa Maanghang na Suka",
+        "description": "Nakakaginhawa at malutong na atsarang seaweed; sinisipsip ng hugis-tasáng dahon ng Turbinaria ang maasim na timplang bawang at sili.",
+        "ingredients": [
+          "200 g sariwang Turbinaria ornata (nilinis at blinanch nang 10 segundo)",
+          "3/4 cup suka ng tubo o suka ng niyog",
+          "2 tbsp asukal",
+          "1 tsp asin",
+          "3 butil ng bawang (dinikdik)",
+          "1 tsp buong butil ng itim na paminta",
+          "1 maliit na pulang sibuyas (hiniwang paikot)",
+          "1 hinlalaking piraso ng luya (hiniwa)"
+        ],
+        "instructions": [
+          "Hiwain nang maliliit na kumpol ang blinanch at pinalamig na Turbinaria ornata at ilagay sa malinis na garapong salamin kasama ng hiniwang sibuyas at luya.",
+          "Sa maliit na kaserola, pagsamahin ang suka ng tubo, asukal, asin, dinikdik na bawang, at buong butil ng itim na paminta. Pakuluin nang bahagya hanggang tuluyang matunaw ang asukal.",
+          "Palamigin ang pinaghalong suka hanggang maging kapantay ng temperatura ng silid.",
+          "Ibuhos ang pinalamig na likido sa seaweed sa garapon at tiyaking lubog ito nang lubusan. Isara ang garapon at ibabad sa refrigerator nang hindi bababa sa 2 oras bago ihain nang malamig."
+        ]
+      }
     }
   ]
 }

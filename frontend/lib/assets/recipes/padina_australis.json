@@ -22,7 +22,26 @@
         "In a medium pot, combine the water, sliced ginger, crushed garlic, and bruised lemongrass. Bring to a rolling boil over medium-high heat.",
         "Add the cleaned Padina australis fronds to the pot, reduce the heat to low, and let it simmer gently for 15 to 20 minutes to extract the marine flavors.",
         "Stir in the soy sauce or fish sauce, turn off the heat, ladle into bowls, and garnish with fresh green onions to serve warm."
-      ]
+      ],
+      "filipino": {
+        "title": "Sabaw na Dashi na may Umami ng Padina, Estilong Baybayin",
+        "description": "Masustansiya at masalimuot ang lasa ng sabaw-dagat na gumagamit ng sariwang Padina australis upang makuha ang malalim at malasang umami.",
+        "ingredients": [
+          "150 g sariwang Padina australis (nilinis at pinatulo)",
+          "4 cups tubig",
+          "1 hinlalaking piraso ng luya (hiniwa at bahagyang dinikdik)",
+          "3 butil ng bawang (dinikdik)",
+          "1 tbsp toyo o patis",
+          "1 tangkay ng tanglad (puting bahagi lamang, bahagyang dinikdik)",
+          "1/2 cup sariwang berdeng sibuyas (tinadtad para sa palamuti)"
+        ],
+        "instructions": [
+          "Siyasatin nang mabuti ang mga kulot na gilid ng Padina australis na parang pamaypay at banlawan nang ilang ulit sa malamig na tubig upang maalis ang lahat ng dumi.",
+          "Sa katamtamang kaserola, pagsamahin ang tubig, hiniwang luya, dinikdik na bawang, at bahagyang dinikdik na tanglad. Pakuluin nang malakas sa katamtaman-mataas na init.",
+          "Idagdag sa kaserola ang nilinis na mga dahon ng Padina australis, hinaan ang apoy, at pakuluan nang marahan sa loob ng 15 hanggang 20 minuto upang lumabas ang lasa ng dagat.",
+          "Ihalo ang toyo o patis, patayin ang apoy, isalin sa mga mangkok, at budburan ng sariwang berdeng sibuyas bago ihain nang mainit."
+        ]
+      }
     },
     {
       "title": "Tropical Spiced Padina Vinegar Pickle",
@@ -41,7 +60,26 @@
         "In a bowl, mix the coconut vinegar, sugar, and salt together until the crystals completely dissolve.",
         "Stir the sliced red onion, julienned ginger, and chilies directly into the vinegar solution.",
         "Place the drained seaweed into a clean glass jar, pour the spiced vinegar marinade completely over it, cover tightly, and chill in the refrigerator for at least 1 hour before serving."
-      ]
+      ],
+      "filipino": {
+        "title": "Atsarang Padina na may Pampalasa, Estilong Tropikal",
+        "description": "Maasim at malutong na atsara kung saan ibinababad ang kakaibang dahong-pamaypay ng Padina australis sa timplang lokal na suka at pampalasa.",
+        "ingredients": [
+          "200 g sariwang Padina australis (nilinis at hiniwa sa maliliit na kumpol)",
+          "1 cup suka ng niyog o suka ng tubo",
+          "3 tbsp asukal",
+          "1 tsp asin",
+          "1 maliit na pulang sibuyas (hiniwang maninipis)",
+          "1 hinlalaking piraso ng luya (hiniwang pahaba)",
+          "2 maliit na siling labuyo (hinati, opsyonal)"
+        ],
+        "instructions": [
+          "Pakuluin ang isang maliit na kaserola ng tubig, blananchin ang Padina australis nang 15 segundo upang luminaw ang kulay, saka agad ilubog sa tubig na may yelo. Patuluin nang mabuti.",
+          "Sa mangkok, paghaluin ang suka ng niyog, asukal, at asin hanggang tuluyang matunaw ang mga butil.",
+          "Ihalo sa solusyon ng suka ang hiniwang pulang sibuyas, hiniwang pahabang luya, at sili.",
+          "Ilagay ang pinatulong seaweed sa malinis na garapong salamin, buhusan nang tuluyan ng timplang suka, isara nang mahigpit, at palamigin sa refrigerator nang hindi bababa sa 1 oras bago ihain."
+        ]
+      }
     },
     {
       "title": "Savory Crab and Padina Seafood Soup",
@@ -60,7 +98,26 @@
         "Add the halved crabs to the pot and stir-fry for 2 minutes until the shells start turning slightly orange.",
         "Pour in the water or fish stock and bring the liquid to a steady boil. Lower the heat and cook for 8 minutes until the crabs are fully cooked.",
         "Add the cleaned Padina australis into the boiling soup, season with salt and white pepper, and let it cook for another 3 minutes before serving hot."
-      ]
+      ],
+      "filipino": {
+        "title": "Malinamnam na Sopas ng Alimango at Padina",
+        "description": "Nakaaaliw na tradisyonal na sabaw sa baybayin na pinagtatambal ang tamis ng lokal na alimango at makalupang tekstura ng nilutong Padina.",
+        "ingredients": [
+          "150 g sariwang Padina australis (nilinis at hiniwa-hiwa)",
+          "2 buong alimangong asul (nilinis at hinati)",
+          "1 katamtamang kamatis (hiniwa-wedge)",
+          "1 maliit na sibuyas (tinadtad)",
+          "4 cups tubig o sabaw ng isda",
+          "1 tbsp mantika",
+          "Asin at puting paminta ayon sa panlasa"
+        ],
+        "instructions": [
+          "Painitin ang mantika sa malaking kaserola sa katamtamang init. Igisa ang tinadtad na sibuyas at kamatis hanggang lumambot.",
+          "Idagdag sa kaserola ang hinating alimango at haluin habang piniprito nang 2 minuto hanggang magsimulang mamula nang bahagya ang mga talukab.",
+          "Ibuhos ang tubig o sabaw ng isda at pakuluin nang tuluy-tuloy. Hinaan ang apoy at lutuin nang 8 minuto hanggang maluto nang husto ang alimango.",
+          "Idagdag sa kumukulong sopas ang nilinis na Padina australis, timplahan ng asin at puting paminta, at lutuin pa nang 3 minuto bago ihain nang mainit."
+        ]
+      }
     }
   ]
 }

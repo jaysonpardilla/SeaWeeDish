@@ -10,6 +10,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
 import 'dart:io';
 import '../../services/api_service.dart';
+import '../../services/app_language.dart';
 import 'recommended_recipes_screen.dart';
 
 class ResultScreen extends StatefulWidget {
@@ -26,7 +27,8 @@ class ResultScreen extends StatefulWidget {
   State<ResultScreen> createState() => _ResultScreenState();
 }
 
-class _ResultScreenState extends State<ResultScreen> {
+class _ResultScreenState extends State<ResultScreen>
+    with AppLanguageAwareStateMixin<ResultScreen> {
   static const int _minimumConfidenceToSave = 70;
 
   late String seaweedName;
@@ -328,7 +330,13 @@ class _ResultScreenState extends State<ResultScreen> {
                   const SizedBox(height: 5),
                   // Seaweed name with label
                   Text(
-                    'Result: $seaweedName',
+                    appText('result_screen.dart', 'Result: {name}')
+                        .replaceAll(
+                          '{name}',
+                          seaweedName == 'Unrecognized'
+                              ? appText('result_screen.dart', 'Unrecognized')
+                              : seaweedName,
+                        ),
                     style: const TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
@@ -355,7 +363,7 @@ class _ResultScreenState extends State<ResultScreen> {
                       children: [
                         Text.rich(
                           TextSpan(
-                            text: 'Status: ',
+                            text: appText('result_screen.dart', 'Status: '),
                             style: const TextStyle(
                               fontSize: 12,
                               color: Colors.white70,
@@ -363,7 +371,10 @@ class _ResultScreenState extends State<ResultScreen> {
                             ),
                             children: [
                               TextSpan(
-                                text: _getEdibilityLabel(),
+                                text: appText(
+                                  'result_screen.dart',
+                                  _getEdibilityLabel(),
+                                ),
                                 style: TextStyle(
                                   fontSize: 12,
                                   fontWeight: FontWeight.bold,
@@ -380,7 +391,10 @@ class _ResultScreenState extends State<ResultScreen> {
                         if (widget.prediction != null) ...[
                           const SizedBox(width: 12),
                           Text(
-                            'Confidence: $confidence%',
+                            appText(
+                              'result_screen.dart',
+                              'Confidence: {confidence}%',
+                            ).replaceAll('{confidence}', '$confidence'),
                             style: const TextStyle(
                               fontSize: 12,
                               color: Colors.white,
@@ -411,9 +425,12 @@ class _ResultScreenState extends State<ResultScreen> {
                             Row(
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
-                                const Expanded(
+                                Expanded(
                                   child: Text(
-                                    'Cleaning Process',
+                                    appText(
+                                      'result_screen.dart',
+                                      'Cleaning Process',
+                                    ),
                                     style: TextStyle(
                                       fontSize: 13,
                                       fontWeight: FontWeight.bold,
@@ -443,8 +460,11 @@ class _ResultScreenState extends State<ResultScreen> {
                                       vertical: 10,
                                     ),
                                   ),
-                                  child: const Text(
-                                    'Recommended Recipes',
+                                  child: Text(
+                                    appText(
+                                      'result_screen.dart',
+                                      'Recommended Recipes',
+                                    ),
                                     style: TextStyle(
                                       fontSize: 10,
                                       color: Colors.white,
@@ -477,8 +497,8 @@ class _ResultScreenState extends State<ResultScreen> {
                           borderRadius: BorderRadius.circular(10),
                         ),
                       ),
-                      child: const Text(
-                        'Scan again',
+                      child: Text(
+                        appText('result_screen.dart', 'Scan again'),
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
@@ -532,7 +552,8 @@ class _ResultScreenState extends State<ResultScreen> {
       ];
     }
 
-    if (predicted == 'kappaphycus') {
+    if (predicted == 'kappaphycus' ||
+        predicted.startsWith('kappaphycus alvarezii')) {
       return [
         'Clean Debris: Remove bits of plastic rope, wood, or small stones stuck to the thick branches.',
         'Wash Dirt: Rinse the whole clumps under running clean tap water or soak them in a large basin to wash away mud and salt.',
@@ -583,8 +604,11 @@ class _ResultScreenState extends State<ResultScreen> {
   Widget _buildCleaningProcess() {
     final steps = _getCleaningSteps();
     if (steps.isEmpty) {
-      return const Text(
-        'No cleaning instructions available for this result.',
+      return Text(
+        appText(
+          'result_screen.dart',
+          'No cleaning instructions available for this result.',
+        ),
         style: TextStyle(fontSize: 12, color: Colors.white70),
         textAlign: TextAlign.justify,
       );
@@ -596,7 +620,7 @@ class _ResultScreenState extends State<ResultScreen> {
         return Padding(
           padding: const EdgeInsets.symmetric(vertical: 4),
           child: Text(
-            '• $s',
+            '• ${appText('result_screen.dart', s)}',
             style: const TextStyle(fontSize: 12, color: Colors.white70),
             textAlign: TextAlign.justify,
           ),
@@ -676,7 +700,8 @@ class FullScreenMapScreen extends StatefulWidget {
   State<FullScreenMapScreen> createState() => _FullScreenMapScreenState();
 }
 
-class _FullScreenMapScreenState extends State<FullScreenMapScreen> {
+class _FullScreenMapScreenState extends State<FullScreenMapScreen>
+    with AppLanguageAwareStateMixin<FullScreenMapScreen> {
   late MapController mapController;
   late LatLng selectedLocation = LatLng(11.5740, 124.5745);
 

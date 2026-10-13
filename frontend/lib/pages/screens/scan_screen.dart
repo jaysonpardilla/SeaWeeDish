@@ -6,6 +6,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'dart:io';
 import 'package:image/image.dart' as img;
+import '../../services/app_language.dart';
 import 'processing_screen.dart';
 
 class ScanScreen extends StatefulWidget {
@@ -17,7 +18,8 @@ class ScanScreen extends StatefulWidget {
   State<ScanScreen> createState() => _ScanScreenState();
 }
 
-class _ScanScreenState extends State<ScanScreen> with WidgetsBindingObserver {
+class _ScanScreenState extends State<ScanScreen>
+    with WidgetsBindingObserver, AppLanguageAwareStateMixin<ScanScreen> {
   int _selectedIndex = 0;
   CameraController? _cameraController;
   late Future<void> _initializeCameraFuture;
@@ -74,11 +76,18 @@ class _ScanScreenState extends State<ScanScreen> with WidgetsBindingObserver {
 
       // Request camera permission
       final cameraStatus = await Permission.camera.request();
-      
+
       if (!cameraStatus.isGranted) {
         if (mounted) {
           ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(content: Text('Camera permission is required to take pictures')),
+            SnackBar(
+              content: Text(
+                appText(
+                  'scan_screen.dart',
+                  'Camera permission is required to take pictures',
+                ),
+              ),
+            ),
           );
         }
         return;
@@ -108,7 +117,9 @@ class _ScanScreenState extends State<ScanScreen> with WidgetsBindingObserver {
       print('Error initializing camera: $e');
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Camera error: $e')),
+          SnackBar(
+            content: Text('${appText('scan_screen.dart', 'Camera error: ')}$e'),
+          ),
         );
       }
     }
@@ -154,8 +165,10 @@ class _ScanScreenState extends State<ScanScreen> with WidgetsBindingObserver {
 
       final previewWidth = previewSize.width;
       final previewHeight = previewSize.height;
-      final left = ((previewWidth - _cropBoxWidth) / 2).clamp(0.0, previewWidth - 1.0);
-      final top = ((previewHeight - _cropBoxHeight) / 2).clamp(0.0, previewHeight - 1.0);
+      final left =
+          ((previewWidth - _cropBoxWidth) / 2).clamp(0.0, previewWidth - 1.0);
+      final top = ((previewHeight - _cropBoxHeight) / 2)
+          .clamp(0.0, previewHeight - 1.0);
       final cropWidth = _cropBoxWidth.clamp(1.0, previewWidth - left);
       final cropHeight = _cropBoxHeight.clamp(1.0, previewHeight - top);
 
@@ -163,8 +176,10 @@ class _ScanScreenState extends State<ScanScreen> with WidgetsBindingObserver {
       final scaleY = originalImage.height / previewHeight;
       final cropX = (left * scaleX).round().clamp(0, originalImage.width - 1);
       final cropY = (top * scaleY).round().clamp(0, originalImage.height - 1);
-      final cropW = (cropWidth * scaleX).round().clamp(1, originalImage.width - cropX);
-      final cropH = (cropHeight * scaleY).round().clamp(1, originalImage.height - cropY);
+      final cropW =
+          (cropWidth * scaleX).round().clamp(1, originalImage.width - cropX);
+      final cropH =
+          (cropHeight * scaleY).round().clamp(1, originalImage.height - cropY);
 
       final croppedImage = img.copyCrop(
         originalImage,
@@ -229,7 +244,8 @@ class _ScanScreenState extends State<ScanScreen> with WidgetsBindingObserver {
         child: Stack(
           children: [
             Positioned.fill(
-              child: _selectedIndex == 0 ? _buildScanCard() : _buildUploadCard(),
+              child:
+                  _selectedIndex == 0 ? _buildScanCard() : _buildUploadCard(),
             ),
             Positioned(
               top: 16,
@@ -272,7 +288,6 @@ class _ScanScreenState extends State<ScanScreen> with WidgetsBindingObserver {
     );
   }
 
-
   Widget _buildModeTabs() {
     return Container(
       padding: const EdgeInsets.all(6),
@@ -291,15 +306,18 @@ class _ScanScreenState extends State<ScanScreen> with WidgetsBindingObserver {
                 margin: EdgeInsets.only(left: index == 0 ? 0 : 10),
                 padding: const EdgeInsets.symmetric(vertical: 5),
                 decoration: BoxDecoration(
-                  color: selected ? const Color(0xFF0B5C7A) : Colors.white.withOpacity(0.92),
+                  color: selected
+                      ? const Color(0xFF0B5C7A)
+                      : Colors.white.withOpacity(0.92),
                   borderRadius: BorderRadius.circular(16),
                   border: Border.all(
-                    color: selected ? const Color(0xFF0B5C7A) : Colors.transparent,
+                    color:
+                        selected ? const Color(0xFF0B5C7A) : Colors.transparent,
                   ),
                 ),
                 child: Center(
                   child: Text(
-                    _modes[index],
+                    appText('scan_screen.dart', _modes[index]),
                     style: TextStyle(
                       color: selected ? Colors.white : const Color(0xFF22324A),
                       fontWeight: FontWeight.w600,
@@ -315,7 +333,6 @@ class _ScanScreenState extends State<ScanScreen> with WidgetsBindingObserver {
     );
   }
 
-  
   Widget _buildScanCard() {
     return Container(
       decoration: const BoxDecoration(
@@ -329,7 +346,8 @@ class _ScanScreenState extends State<ScanScreen> with WidgetsBindingObserver {
       child: FutureBuilder<void>(
         future: _initializeCameraFuture,
         builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.done && _isCameraInitialized) {
+          if (snapshot.connectionState == ConnectionState.done &&
+              _isCameraInitialized) {
             return Stack(
               fit: StackFit.expand,
               children: [
@@ -387,13 +405,16 @@ class _ScanScreenState extends State<ScanScreen> with WidgetsBindingObserver {
                                 ? () {}
                                 : () async {
                                     if (_isCapturing) {
-                                      print('⚠️ Capture already in progress...');
+                                      print(
+                                          '⚠️ Capture already in progress...');
                                       return;
                                     }
 
-                                    if (_isCameraInitialized && _cameraController != null) {
+                                    if (_isCameraInitialized &&
+                                        _cameraController != null) {
                                       if (_isCapturing) {
-                                        print('⚠️ Capture already in progress...');
+                                        print(
+                                            '⚠️ Capture already in progress...');
                                         return;
                                       }
 
@@ -405,17 +426,23 @@ class _ScanScreenState extends State<ScanScreen> with WidgetsBindingObserver {
                                       try {
                                         print('📷 Starting to take picture...');
 
-                                        final image = await _cameraController!.takePicture();
-                                        print('📷 Picture taken: ${image.path}');
+                                        final image = await _cameraController!
+                                            .takePicture();
+                                        print(
+                                            '📷 Picture taken: ${image.path}');
 
-                                        final croppedFile = await _cropImageToPreviewBox(image.path);
-                                        print('✂️ Cropped image path: ${croppedFile.path}');
+                                        final croppedFile =
+                                            await _cropImageToPreviewBox(
+                                                image.path);
+                                        print(
+                                            '✂️ Cropped image path: ${croppedFile.path}');
 
                                         if (mounted) {
                                           Navigator.push(
                                             context,
                                             MaterialPageRoute(
-                                              builder: (context) => ProcessingScreen(
+                                              builder: (context) =>
+                                                  ProcessingScreen(
                                                 imagePath: croppedFile.path,
                                               ),
                                             ),
@@ -424,11 +451,15 @@ class _ScanScreenState extends State<ScanScreen> with WidgetsBindingObserver {
                                       } catch (e) {
                                         print('❌ Error taking picture: $e');
                                         if (mounted) {
-                                          ScaffoldMessenger.of(context).showSnackBar(
+                                          ScaffoldMessenger.of(context)
+                                              .showSnackBar(
                                             SnackBar(
-                                              content: Text('Error: $e'),
+                                              content: Text(
+                                                '${appText('scan_screen.dart', 'Error: ')}$e',
+                                              ),
                                               backgroundColor: Colors.red,
-                                              duration: const Duration(seconds: 3),
+                                              duration:
+                                                  const Duration(seconds: 3),
                                             ),
                                           );
                                         }
@@ -439,11 +470,18 @@ class _ScanScreenState extends State<ScanScreen> with WidgetsBindingObserver {
                                         }
                                       }
                                     } else {
-                                      print('❌ Camera not initialized. Initialized: $_isCameraInitialized, Controller: ${_cameraController != null}');
+                                      print(
+                                          '❌ Camera not initialized. Initialized: $_isCameraInitialized, Controller: ${_cameraController != null}');
                                       if (mounted) {
-                                        ScaffoldMessenger.of(context).showSnackBar(
-                                          const SnackBar(
-                                            content: Text('Camera is not ready. Please wait...'),
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(
+                                          SnackBar(
+                                            content: Text(
+                                              appText(
+                                                'scan_screen.dart',
+                                                'Camera is not ready. Please wait...',
+                                              ),
+                                            ),
                                             backgroundColor: Colors.orange,
                                           ),
                                         );
@@ -453,7 +491,9 @@ class _ScanScreenState extends State<ScanScreen> with WidgetsBindingObserver {
                           ),
                           const SizedBox(width: 16),
                           _buildOverlayButton(
-                            icon: _isFlashOn ? Icons.flash_on_rounded : Icons.flash_off_rounded,
+                            icon: _isFlashOn
+                                ? Icons.flash_on_rounded
+                                : Icons.flash_off_rounded,
                             active: _isFlashOn,
                             onTap: _isCapturing ? () {} : _toggleFlash,
                           ),
@@ -524,11 +564,18 @@ class _ScanScreenState extends State<ScanScreen> with WidgetsBindingObserver {
       // Request storage permission
       final photosStatus = await Permission.photos.request();
       final storageStatus = await Permission.storage.request();
-      
+
       if (!photosStatus.isGranted && !storageStatus.isGranted) {
         if (mounted) {
           ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(content: Text('Storage permission is required to pick images')),
+            SnackBar(
+              content: Text(
+                appText(
+                  'scan_screen.dart',
+                  'Storage permission is required to pick images',
+                ),
+              ),
+            ),
           );
         }
         return;
@@ -543,7 +590,11 @@ class _ScanScreenState extends State<ScanScreen> with WidgetsBindingObserver {
       print('Error picking image: $e');
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Error picking image: $e')),
+          SnackBar(
+            content: Text(
+              '${appText('scan_screen.dart', 'Error picking image: ')}$e',
+            ),
+          ),
         );
       }
     }
@@ -610,18 +661,24 @@ class _ScanScreenState extends State<ScanScreen> with WidgetsBindingObserver {
                                         size: 14,
                                         color: Color(0xFF0B5C7A),
                                       ),
-                                      label: const Text(
-                                        'Pick another',
+                                      label: Text(
+                                        appText(
+                                            'scan_screen.dart', 'Pick another'),
                                         style: TextStyle(
                                           color: Color(0xFF0B5C7A),
                                           fontWeight: FontWeight.w600,
                                         ),
                                       ),
                                       style: OutlinedButton.styleFrom(
-                                        side: const BorderSide(color: Color(0xFF0B5C7A)),
-                                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-                                        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
-                                        backgroundColor: Colors.white.withOpacity(0.85),
+                                        side: const BorderSide(
+                                            color: Color(0xFF0B5C7A)),
+                                        shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(12)),
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 8, vertical: 6),
+                                        backgroundColor:
+                                            Colors.white.withOpacity(0.85),
                                       ),
                                     ),
                                   ),
@@ -638,7 +695,8 @@ class _ScanScreenState extends State<ScanScreen> with WidgetsBindingObserver {
                                     height: 80,
                                     decoration: BoxDecoration(
                                       shape: BoxShape.circle,
-                                      color: const Color(0xFF0B5C7A).withOpacity(0.08),
+                                      color: const Color(0xFF0B5C7A)
+                                          .withOpacity(0.08),
                                     ),
                                     child: const Icon(
                                       Icons.cloud_upload_rounded,
@@ -647,8 +705,11 @@ class _ScanScreenState extends State<ScanScreen> with WidgetsBindingObserver {
                                     ),
                                   ),
                                   const SizedBox(height: 16),
-                                  const Text(
-                                    'Upload a seaweed image',
+                                  Text(
+                                    appText(
+                                      'scan_screen.dart',
+                                      'Upload a seaweed image',
+                                    ),
                                     style: TextStyle(
                                       fontSize: 14,
                                       fontWeight: FontWeight.w600,
@@ -656,8 +717,11 @@ class _ScanScreenState extends State<ScanScreen> with WidgetsBindingObserver {
                                     ),
                                   ),
                                   const SizedBox(height: 8),
-                                  const Text(
-                                    'Tap to select from gallery',
+                                  Text(
+                                    appText(
+                                      'scan_screen.dart',
+                                      'Tap to select from gallery',
+                                    ),
                                     style: TextStyle(
                                       fontSize: 11,
                                       color: Color(0xFF6B7A8D),
@@ -669,8 +733,11 @@ class _ScanScreenState extends State<ScanScreen> with WidgetsBindingObserver {
                     ),
                     const SizedBox(height: 24),
                     // Description
-                    const Text(
-                      'Choose a clear, well-lit photo of the seaweed for best results. The image will be analyzed to identify the species and provide detailed information.',
+                    Text(
+                      appText(
+                        'scan_screen.dart',
+                        'Choose a clear, well-lit photo of the seaweed for best results. The image will be analyzed to identify the species and provide detailed information.',
+                      ),
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: 11,
@@ -709,7 +776,9 @@ class _ScanScreenState extends State<ScanScreen> with WidgetsBindingObserver {
                               if (mounted) {
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   SnackBar(
-                                    content: Text('Error: $e'),
+                                    content: Text(
+                                      '${appText('scan_screen.dart', 'Error: ')}$e',
+                                    ),
                                     backgroundColor: Colors.red,
                                   ),
                                 );
@@ -718,12 +787,15 @@ class _ScanScreenState extends State<ScanScreen> with WidgetsBindingObserver {
                               setState(() => _isCapturing = false);
                             }
                           },
-                          icon: const Icon(Icons.check_circle_outline, size: 20),
-                          label: const Text('Analyze'),
+                          icon:
+                              const Icon(Icons.check_circle_outline, size: 20),
+                          label: Text(appText('scan_screen.dart', 'Analyze')),
                           style: ElevatedButton.styleFrom(
                             minimumSize: const Size.fromHeight(48),
-                            backgroundColor: const Color.fromARGB(228, 83, 154, 179),
-                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+                            backgroundColor:
+                                const Color.fromARGB(228, 83, 154, 179),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(16)),
                           ),
                         ),
                       ),
@@ -738,7 +810,6 @@ class _ScanScreenState extends State<ScanScreen> with WidgetsBindingObserver {
       ),
     );
   }
-
 }
 
 class ScannerOverlayPainter extends CustomPainter {
@@ -751,22 +822,28 @@ class ScannerOverlayPainter extends CustomPainter {
 
     // Draw corner indicators
     final cornerSize = 20.0;
-    
+
     // Top-left
     canvas.drawLine(const Offset(0, 0), Offset(cornerSize, 0), paint);
     canvas.drawLine(const Offset(0, 0), Offset(0, cornerSize), paint);
-    
+
     // Top-right
-    canvas.drawLine(Offset(size.width, 0), Offset(size.width - cornerSize, 0), paint);
-    canvas.drawLine(Offset(size.width, 0), Offset(size.width, cornerSize), paint);
-    
+    canvas.drawLine(
+        Offset(size.width, 0), Offset(size.width - cornerSize, 0), paint);
+    canvas.drawLine(
+        Offset(size.width, 0), Offset(size.width, cornerSize), paint);
+
     // Bottom-left
-    canvas.drawLine(Offset(0, size.height), Offset(cornerSize, size.height), paint);
-    canvas.drawLine(Offset(0, size.height), Offset(0, size.height - cornerSize), paint);
-    
+    canvas.drawLine(
+        Offset(0, size.height), Offset(cornerSize, size.height), paint);
+    canvas.drawLine(
+        Offset(0, size.height), Offset(0, size.height - cornerSize), paint);
+
     // Bottom-right
-    canvas.drawLine(Offset(size.width, size.height), Offset(size.width - cornerSize, size.height), paint);
-    canvas.drawLine(Offset(size.width, size.height), Offset(size.width, size.height - cornerSize), paint);
+    canvas.drawLine(Offset(size.width, size.height),
+        Offset(size.width - cornerSize, size.height), paint);
+    canvas.drawLine(Offset(size.width, size.height),
+        Offset(size.width, size.height - cornerSize), paint);
   }
 
   @override

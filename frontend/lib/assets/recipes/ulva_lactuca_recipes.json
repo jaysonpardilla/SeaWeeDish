@@ -24,7 +24,28 @@
         "Add diced potatoes and stock to the pot. Bring to a boil, reduce heat, and simmer for 15-20 minutes until potatoes are fork-tender.",
         "Stir in chopped sea lettuce and simmer for just 3 to 5 minutes so it retains its bright green color.",
         "Remove from heat, stir in cream, and blend with an immersion blender until smooth. Season with salt and pepper."
-      ]
+      ],
+      "filipino": {
+        "title": "Tradisyonal na Irish na Sopas ng Litsugas-dagat at Patatas",
+        "description": "Malinamnam at malasutlang sopas ng patatas na tinatapos sa sariwa at matingkad na berdeng dahon ng litsugas-dagat para sa mayamang lasa ng dagat at mineral.",
+        "ingredients": [
+          "150 g sariwang Ulva lactuca (litsugas-dagat, hinugasan at tinadtad)",
+          "2 tbsp mantikilya",
+          "1 katamtamang dilaw na sibuyas (hiniwa nang pino)",
+          "2 butil ng bawang (dinikdik o tinadtad nang pino)",
+          "500 g Yukon Gold na patatas (binalatan at hiniwa nang pakuwadrado)",
+          "1 L sabaw ng gulay o pagkaing-dagat",
+          "100 mL makapal na krema o buong-gatas",
+          "Asin at bagong-durog na itim na paminta ayon sa panlasa"
+        ],
+        "instructions": [
+          "Banlawan ang mga dahon ng Ulva lactuca sa malamig na tubig upang maalis ang buhangin at maliliit na dumi. Patuluin nang mabuti at hiwain nang pahaba at maninipis.",
+          "Tunawin ang mantikilya sa kaserola sa katamtamang init. Igisa ang sibuyas at bawang hanggang lumambot at maging malinaw.",
+          "Idagdag sa kaserola ang patatas at sabaw. Pakuluin, hinaan ang apoy, at palambutin nang 15-20 minuto hanggang madaling tusukin ng tinidor ang patatas.",
+          "Ihalo ang tinadtad na litsugas-dagat at pakuluan nang 3 hanggang 5 minuto lamang upang manatili ang matingkad na berdeng kulay nito.",
+          "Alisin sa apoy, ihalo ang krema, at katasin gamit ang hand blender hanggang maging makinis. Timplahan ng asin at paminta."
+        ]
+      }
     },
     {
       "title": "Crispy Baked Sea Lettuce Chips",
@@ -41,7 +62,24 @@
         "Gently toss dried fronds with olive oil, sea salt, and sesame seeds in a bowl until lightly coated.",
         "Spread fronds in a single layer on the baking sheet without overlapping.",
         "Bake for 12 to 15 minutes until dry and crisp. Let cool completely before serving as a snack."
-      ]
+      ],
+      "filipino": {
+        "title": "Malutong na Inihurnong Chips ng Litsugas-dagat",
+        "description": "Magagaan at maninipis na malasang chips mula sa buong dahon ng Ulva lactuca.",
+        "ingredients": [
+          "100 g sariwang dahon ng Ulva lactuca (buong piraso)",
+          "1.5 tbsp extra virgin na langis ng oliba o sesame oil",
+          "1/2 tsp pinong asin-dagat o asin na may bawang",
+          "1/2 tsp inihaw na buto ng sesame (opsyonal)"
+        ],
+        "instructions": [
+          "Painitin muna ang oven sa 120°C (250°F) at lagyan ng parchment paper ang baking sheet.",
+          "Hugasan nang mabuti ang mga dahon ng litsugas-dagat, saka patuyuin nang husto gamit ang paper towel o salad spinner.",
+          "Dahan-dahang haluin sa mangkok ang mga tuyong dahon, langis ng oliba, asin-dagat, at buto ng sesame hanggang bahagyang mabalutan.",
+          "Ihanay ang mga dahon sa baking sheet nang hindi nagsasapawan.",
+          "Ihurno nang 12 hanggang 15 minuto hanggang matuyo at maging malutong. Palamigin nang tuluyan bago ihain bilang meryenda."
+        ]
+      }
     },
     {
       "title": "Japanese Aosa Miso Soup (Sea Lettuce Miso Soup)",
@@ -59,7 +97,25 @@
         "Add cubed silken tofu and simmer for 2 minutes.",
         "Ladle a cup of warm dashi into a small bowl, whisk in the miso paste until smooth, then pour back into the pot.",
         "Turn off the heat, stir in the fresh sea lettuce and green onions, and serve immediately."
-      ]
+      ],
+      "filipino": {
+        "title": "Japanese Aosa Miso Soup (Miso Soup na may Litsugas-dagat)",
+        "description": "Klasikong miso soup mula sa baybayin ng Japan na may malambot na litsugas-dagat na idinaragdag bago ihain.",
+        "ingredients": [
+          "50 g sariwa o muling binabad na Ulva lactuca",
+          "4 cups sabaw na dashi (sabaw ng kelp at bonito)",
+          "3 tbsp miso paste na may dashi (pula o puti)",
+          "100 g malasutlang tofu (hiniwang pakuwadrado)",
+          "2 tangkay ng berdeng sibuyas (hiniwang maninipis)"
+        ],
+        "instructions": [
+          "Banlawan sa malamig na tubig ang sariwang litsugas-dagat at patuluin nang mabuti. Hiwain sa kagat-laking piraso.",
+          "Dahan-dahang pakuluin ang sabaw na dashi sa kaserola sa katamtamang init.",
+          "Idagdag ang tofu at pakuluan nang 2 minuto.",
+          "Magsalok ng isang tasa ng mainit-init na dashi sa maliit na mangkok, haluin dito ang miso paste hanggang makinis, saka ibuhos muli sa kaserola.",
+          "Patayin ang apoy, ihalo ang sariwang litsugas-dagat at berdeng sibuyas, at ihain kaagad."
+        ]
+      }
     }
   ]
 }

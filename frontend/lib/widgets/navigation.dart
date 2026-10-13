@@ -2,6 +2,7 @@
 
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import '../services/app_language.dart';
 
 class BottomNavigation extends StatefulWidget {
   final int currentIndex;
@@ -180,7 +181,7 @@ class _BottomNavigationState extends State<BottomNavigation>
                 ),
                 if (isActive) ...[
                   Text(
-                    _navItems[index].label,
+                    appText('navigation.dart', _navItems[index].label),
                     style: const TextStyle(
                       color: Colors.white,
                       fontSize: 9,

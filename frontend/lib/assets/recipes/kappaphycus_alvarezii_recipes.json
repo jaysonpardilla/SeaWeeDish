@@ -32,7 +32,29 @@
         "Cut the branches into manageable 1-to-2-inch pieces using kitchen shears.",
         "In a separate mixing bowl, whisk together the vinegar, calamansi juice, minced ginger, red onions, tomatoes, salt, pepper, and sugar. Let sit for 5 minutes.",
         "Add the blanched Kappaphycus into the dressing bowl, toss gently, and serve cold."
-      ]
+      ],
+      "filipino": {
+        "title": "Ensaladang Guso (Sariwang Salad ng Seaweed)",
+        "description": "Sikat na salad sa Pilipinas na pinagtatambal ang saglit na blinanch na Kappaphycus alvarezii at suka, kamatis, sibuyas, at luya.",
+        "ingredients": [
+          "500g sariwang Kappaphycus alvarezii (Guso)",
+          "1/2 cup suka ng niyog o suka ng tubo",
+          "1 malaking kamatis (tinadtad)",
+          "1 katamtamang pulang sibuyas (tinadtad nang pino)",
+          "1 hinlalaking piraso ng sariwang luya (binalatan at tinadtad)",
+          "Katas mula sa 2-3 pirasong kalamansi (opsyonal)",
+          "1-2 pulang sili / siling labuyo (hiniwa, opsyonal)",
+          "Asin at giniling na itim na paminta ayon sa panlasa",
+          "1 kurot na asukal"
+        ],
+        "instructions": [
+          "Hugasan nang mabuti ang hilaw na seaweed sa malamig na umaagos na tubig nang ilang ulit upang maalis ang sobrang asin, banlik, at buhangin. Putulin ang matitigas na tangkay o epiphyte.",
+          "Pakuluin nang malakas ang isang kaserola ng tubig. Ilubog ang hinugasang seaweed nang hindi hihigit sa 10–15 segundo, saka agad ilipat sa mangkok na puno ng tubig na may yelo upang mapahinto ang pagluluto. Patuluin nang mabuti.",
+          "Gumamit ng gunting pangkusina upang hiwain ang mga sanga sa pirasong 1-to-2-inch na madaling kainin.",
+          "Sa hiwalay na mangkok, haluin ang suka, katas ng kalamansi, tinadtad na luya, pulang sibuyas, kamatis, asin, paminta, at asukal. Hayaang nakababad nang 5 minuto.",
+          "Idagdag ang blinanch na Kappaphycus sa mangkok ng sawsawan, dahan-dahang haluin, at ihain nang malamig."
+        ]
+      }
     },
     {
       "title": "Pineapple-Kappaphycus Seaweed Jam",
@@ -51,7 +73,26 @@
         "Transfer the mixture back into a heavy-bottomed pot and stir in sugar, cinnamon stick or pandan leaf, and calamansi juice.",
         "Simmer over low-medium heat for 35–45 minutes while stirring frequently until the mixture gels and thickens.",
         "Remove the cinnamon/pandan leaf, pour the hot jam into sterilized glass jars, seal tightly, and allow to cool."
-      ]
+      ],
+      "filipino": {
+        "title": "Jam ng Pinya at Kappaphycus",
+        "description": "Jam ng prutas na gumagamit sa likas na katangiang pampalapot-gel ng Kappaphycus alvarezii, nang walang sintetikong pektin.",
+        "ingredients": [
+          "250g sariwang Kappaphycus alvarezii (nilinis)",
+          "500g hinog na pinya (inalisan ng ubod at dinurog o binlend)",
+          "300g puting asukal",
+          "150 mL tubig",
+          "1 patpat ng kanela o dahon ng pandan (opsyonal)",
+          "1 tbsp katas ng kalamansi o lemon"
+        ],
+        "instructions": [
+          "Sa katamtamang init, pakuluin sa kaserola ang 250g nilinis na seaweed kasama ang 150 mL tubig (humigit-kumulang 80°C) nang 15 minuto. Tuluy-tuloy na haluin hanggang matunaw at maging makapal na pasta/purée.",
+          "I-blend ang nilutong pasta ng seaweed kasama ang dinurog na pinya hanggang maging makinis.",
+          "Ibalik ang halo sa kaserolang makapal ang ilalim at ihalo ang asukal, patpat ng kanela o dahon ng pandan, at katas ng kalamansi.",
+          "Pakuluin nang marahan sa mababa hanggang katamtamang init nang 35–45 minuto. Haluin nang madalas hanggang mag-gel at lumapot ang halo.",
+          "Alisin ang kanela o dahon ng pandan, ibuhos ang mainit na jam sa mga isterilisadong garapong salamin, isara nang mahigpit, at palamigin."
+        ]
+      }
     },
     {
       "title": "Seaweed Jelly Candy (Gummy Snack)",
@@ -69,7 +110,25 @@
         "Bring to a gentle boil for 10–12 minutes until the liquid thickens into a syrup consistency.",
         "Stir in the pinch of citric acid.",
         "Pour the molten mixture into silicone candy molds and let sit at room temperature for 2 hours until fully set."
-      ]
+      ],
+      "filipino": {
+        "title": "Jelly Candy ng Seaweed (Meryendang Gummy)",
+        "description": "Malagkit-nguyain na jelly candy mula sa pinakuluang sariwang purée ng Kappaphycus na pinatitigas ng likas na carrageenan.",
+        "ingredients": [
+          "100g purée ng Kappaphycus alvarezii (sariwang seaweed na pinakuluan at binlend kasama ang tubig)",
+          "1 cup katas ng prutas (mangga, orange, o konsentradong kalamansi)",
+          "1 cup asukal",
+          "1/4 cup corn syrup",
+          "1 kurot na citric acid o katas ng lemon"
+        ],
+        "instructions": [
+          "Pagsamahin sa kaserola ang purée ng seaweed, katas ng prutas, asukal, at corn syrup.",
+          "Painitin sa katamtamang init habang tuluy-tuloy na hinahalo hanggang matunaw ang lahat ng kristal ng asukal.",
+          "Pakuluin nang marahan nang 10–12 minuto hanggang lumapot ang likido at maging parang arnibal.",
+          "Ihalo ang isang kurot ng citric acid.",
+          "Ibuhos ang kumukulong halo sa silicone na hulmahan ng kendi at hayaang nakatigil sa temperatura ng silid nang 2 oras hanggang tumigas nang husto."
+        ]
+      }
     }
   ]
 }

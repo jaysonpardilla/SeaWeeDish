@@ -1,14 +1,19 @@
 // ignore_for_file: use_full_hex_values_for_flutter_colors, deprecated_member_use
 import 'package:flutter/material.dart';
+import '../../services/app_language.dart';
+
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
   @override
   State<OnboardingScreen> createState() => _OnboardingScreenState();
 }
-class _OnboardingScreenState extends State<OnboardingScreen> {
+
+class _OnboardingScreenState extends State<OnboardingScreen>
+    with AppLanguageAwareStateMixin<OnboardingScreen> {
   void _goToApp() {
     Navigator.of(context).pushReplacementNamed('/app');
   }
+
   TextStyle get _titleTextStyle => const TextStyle(
         fontFamily: 'Itim',
         fontSize: 34,
@@ -17,14 +22,14 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
         height: 1.1,
       );
   TextStyle get _subtitleTextStyle => const TextStyle(
-      fontFamily: 'Lora',
+        fontFamily: 'Lora',
         fontSize: 16,
         color: Color(0xFF5B6B6D),
         height: 1.4,
       );
 
   TextStyle get _featureTitleStyle => const TextStyle(
-      fontFamily: 'Lora',
+        fontFamily: 'Lora',
         fontSize: 11,
         fontWeight: FontWeight.w700,
         color: Color(0xFF0F3B3D),
@@ -64,6 +69,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
+                  const SizedBox(height: 48),
                   const SizedBox(height: 24),
                   Center(
                     child: Container(
@@ -82,13 +88,19 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   ),
                   const SizedBox(height: 5),
                   Text(
-                    'Discover. Identify. Thrive.',
+                    appText(
+                      'onboarding_screen.dart',
+                      'Discover. Identify. Thrive.',
+                    ),
                     textAlign: TextAlign.center,
                     style: _titleTextStyle,
                   ),
                   const SizedBox(height: 12),
                   Text(
-                    'Get curated recipes, cooking tips, and nutritional benefits.',
+                    appText(
+                      'onboarding_screen.dart',
+                      'Get curated recipes, cooking tips, and nutritional benefits.',
+                    ),
                     textAlign: TextAlign.center,
                     style: _subtitleTextStyle,
                   ),
@@ -98,15 +110,18 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     children: [
                       _buildFeatureCard(
                         icon: Icons.eco,
-                        title: 'Nutrient Rich',
+                        title:
+                            appText('onboarding_screen.dart', 'Nutrient Rich'),
                       ),
                       _buildFeatureCard(
                         icon: Icons.favorite,
-                        title: 'Healthy Lifestyle',
+                        title: appText(
+                            'onboarding_screen.dart', 'Healthy Lifestyle'),
                       ),
                       _buildFeatureCard(
                         icon: Icons.autorenew,
-                        title: 'Sustainable Choice',
+                        title: appText(
+                            'onboarding_screen.dart', 'Sustainable Choice'),
                       ),
                     ],
                   ),
@@ -116,7 +131,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     child: ElevatedButton(
                       onPressed: _goToApp,
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color.fromARGB(255, 26, 103, 107),
+                        backgroundColor:
+                            const Color.fromARGB(255, 26, 103, 107),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(15),
                         ),
@@ -125,20 +141,23 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                           width: 1,
                         ),
                       ),
-                      child: const Text(
-                        'Get Started',
+                      child: Text(
+                        appText('onboarding_screen.dart', 'Get Started'),
                         style: TextStyle(
                           fontFamily: 'Itim',
                           fontSize: 18,
-                          fontWeight: FontWeight.bold, 
+                          fontWeight: FontWeight.bold,
                           color: Colors.white,
                         ),
                       ),
                     ),
                   ),
                   const SizedBox(height: 16),
-                  const Text(
-                    "Let's explore seaweeds together!",
+                  Text(
+                    appText(
+                      'onboarding_screen.dart',
+                      "Let's explore seaweeds together!",
+                    ),
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontFamily: 'Lora',
@@ -151,21 +170,102 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               ),
             ),
           ),
+          Positioned(
+            top: 0,
+            right: 0,
+            child: SafeArea(
+              child: Padding(
+                padding: const EdgeInsets.only(top: 8, right: 10),
+                child: _buildLanguageToggle(),
+              ),
+            ),
+          ),
         ],
       ),
     );
   }
+
+  Widget _buildLanguageToggle() {
+    final isFilipino = AppLanguage.instance.isFilipino;
+
+    return Semantics(
+      button: true,
+      label: 'Select language',
+      value: isFilipino ? 'FIL' : 'ENG',
+      child: Material(
+        color: Colors.transparent,
+        child: InkWell(
+          onTap: AppLanguage.instance.toggleLanguage,
+          borderRadius: BorderRadius.circular(20),
+          child: Container(
+            width: 96,
+            height: 36,
+            padding: const EdgeInsets.all(3),
+            decoration: BoxDecoration(
+              color: const Color(0xB80F3B3D),
+              borderRadius: BorderRadius.circular(20),
+              border: Border.all(color: Colors.white70),
+            ),
+            child: Stack(
+              children: [
+                AnimatedAlign(
+                  alignment:
+                      isFilipino ? Alignment.centerLeft : Alignment.centerRight,
+                  duration: const Duration(milliseconds: 280),
+                  curve: Curves.easeInOutCubic,
+                  child: Container(
+                    width: 43,
+                    height: 28,
+                    decoration: BoxDecoration(
+                      color: const Color(0xFFE8F8EE),
+                      borderRadius: BorderRadius.circular(16),
+                    ),
+                  ),
+                ),
+                Row(
+                  children: [
+                    _buildLanguageOption('FIL', isFilipino),
+                    _buildLanguageOption('ENG', !isFilipino),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildLanguageOption(String label, bool isSelected) {
+    return Expanded(
+      child: Center(
+        child: AnimatedDefaultTextStyle(
+          duration: const Duration(milliseconds: 200),
+          curve: Curves.easeInOut,
+          style: TextStyle(
+            fontFamily: 'Lora',
+            fontSize: 11,
+            fontWeight: FontWeight.w700,
+            letterSpacing: 0.4,
+            color: isSelected ? const Color(0xFF0F3B3D) : Colors.white,
+          ),
+          child: Text(label),
+        ),
+      ),
+    );
+  }
+
   Widget _buildFeatureCard({
     required IconData icon,
     required String title,
-    }) {
+  }) {
     return Expanded(
       child: Container(
         margin: const EdgeInsets.symmetric(horizontal: 2),
         padding: const EdgeInsets.symmetric(vertical: 9, horizontal: 6),
         decoration: BoxDecoration(
           color: const Color.fromARGB(145, 255, 255, 255),
-          borderRadius: BorderRadius.circular(18), 
+          borderRadius: BorderRadius.circular(18),
           border: Border.all(
             color: const Color.fromARGB(96, 21, 83, 87),
             width: 1,

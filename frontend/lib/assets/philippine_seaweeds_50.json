@@ -9,10 +9,20 @@
         "found_in": "Mactan, Bohol, Palawan, and Zamboanga.",
         "season": "Year-round; peaks in summer.",
         "habitat": "Sandy or muddy lagoons and shallow reef flats.",
-        "safety_notes": "Wash thoroughly in clean water to remove sand. Ensure the harvest site is far from industrial or urban runoff. Eat immediately after washing to prevent wilting.",        
+        "safety_notes": "Wash thoroughly in clean water to remove sand. Ensure the harvest site is far from industrial or urban runoff. Eat immediately after washing to prevent wilting.",
         "image": "lib/assets/images/seaweeds-images/Caulerpa lentillifera.jpg",
-        "description_image": "lib/assets/images/seaweeds-images/Caulerpa lentillifera id.jpg",        
-        "identification_guide": "Bright green, grape-like spheres (2\u20133mm) tightly packed around an upright central stalk."
+        "description_image": "lib/assets/images/seaweeds-images/Caulerpa lentillifera id.jpg",
+        "identification_guide": "Bright green, grape-like spheres (2–3mm) tightly packed around an upright central stalk.",
+        "filipino": {
+            "description": "Mga kumpol ng maliliit, berde at makatas na bilog na nakakabit sa gumagapang na tangkay; may lumalabas na maalat na likido kapag kinagat o dinurog.",
+            "type": "Algang Luntian",
+            "found_in": "Mactan, Bohol, Palawan, at Zamboanga.",
+            "season": "Buong taon; pinakamarami tuwing tag-init.",
+            "habitat": "Mga look na mabuhangin o maputik at mabababaw na patag na bahura.",
+            "safety_notes": "Hugasan nang mabuti sa malinis na tubig upang maalis ang buhangin. Tiyaking malayo sa daluyan ng industriyal o urban na maruming tubig ang pinaghahanguan. Kainin agad pagkahugas upang hindi malanta.",
+            "identification_guide": "Matingkad na berdeng bilog na kahawig ng ubas (2–3 mm), siksik na nakahanay sa palibot ng patayong gitnang tangkay.",
+            "edible": "Nakakain"
+        }
     },
     {
         "id": 2,
@@ -27,7 +37,17 @@
         "safety_notes": "Contains small amounts of caulerpin; eat in moderate quantities. Do not harvest from areas with high boat traffic. Keep refrigerated to maintain freshness.",
         "image": "lib/assets/images/seaweeds-images/Caulerpa_racemosa_algae.jpg",
         "description_image": "lib/assets/images/seaweeds-images/Caulerpa_racemosa_algae.jpg",
-        "identification_guide": "Horizontal runners with upright branches bearing club-shaped or spherical green tips."
+        "identification_guide": "Horizontal runners with upright branches bearing club-shaped or spherical green tips.",
+        "filipino": {
+            "description": "Mas malaki at mas matibay na uri ng lato; mas magkakahiwalay ang mga bilog at mas firm at malutong ang tekstura.",
+            "type": "Algang Luntian",
+            "found_in": "Rehiyon ng Ilocos, Pangasinan, at Visayas.",
+            "season": "Buong taon.",
+            "habitat": "Mga siwang sa bato at tipak-tipak na patayong korales sa mabababaw na sonang intertidal.",
+            "safety_notes": "May kaunting caulerpin; kainin lamang nang katamtaman. Huwag kumuha sa mga lugar na matao ang bangka. Itago sa refrigerator upang manatiling sariwa.",
+            "identification_guide": "Mga pahalang na gumagapang na tangkay na may mga sanga pataas at may berdeng dulo na hugis pamalo o bilog.",
+            "edible": "Nakakain"
+        }
     },
     {
         "id": 3,
@@ -42,7 +62,17 @@
         "safety_notes": "Inspect for tiny epiphytes or small crabs hidden in the velvety branches. Do not over-wash in fresh water. Check for local water quality warnings.",
         "image": "lib/assets/images/seaweeds-images/Codium edule.jpg",
         "description_image": "lib/assets/images/seaweeds-images/Codium edule id.jpg",
-        "identification_guide": "Dark green, cylindrical branches that split into two (dichotomous) and have a soft, fuzzy texture."
+        "identification_guide": "Dark green, cylindrical branches that split into two (dichotomous) and have a soft, fuzzy texture.",
+        "filipino": {
+            "description": "Isang malambot at esponghaing damong-dagat na may mala-pelus na haplos; madalas itong gawing sariwang salad na may suka sa lutuing Ilokano.",
+            "type": "Algang Luntian",
+            "found_in": "Ilocos Norte, Cagayan, at Batanes.",
+            "season": "Disyembre hanggang Marso (mga malamig na buwan).",
+            "habitat": "Mga batong nasa ibabang bahagi ng sona intertidal at mga piraso ng korales.",
+            "safety_notes": "Siyasatin kung may maliliit na epiphyte o maliliit na alimango nakatago sa mga sanga nitong mala-pelus. Huwag banlawan nang sobra sa tubig-tabang. Tingnan kung may babala tungkol sa kalidad ng tubig sa lugar.",
+            "identification_guide": "Madilim na berdeng mga sanga na silindriko at paulit-ulit na nahahati sa dalawa (dichotomous), na may malambot at mabalahibong tekstura.",
+            "edible": "Nakakain"
+        }
     },
     {
         "id": 4,
@@ -57,7 +87,17 @@
         "safety_notes": "These absorb nutrients quickly; avoid harvesting near agricultural or sewage areas. Wash repeatedly to remove mud. Usually dried or used in soups.",
         "image": "lib/assets/images/seaweeds-images/Enteromorpha intestinalis.jpg",
         "description_image": "lib/assets/images/seaweeds-images/Enteromorpha intestinalis id.jpg",
-        "identification_guide": "Bright green, unbranched hollow tubes that may be constricted or swollen at intervals."
+        "identification_guide": "Bright green, unbranched hollow tubes that may be constricted or swollen at intervals.",
+        "filipino": {
+            "description": "Mahahaba at hungkag na hiblang berde na kadalasang may naiipit na hangin kaya tila namamaga at kahawig ng maliliit na bituka o manipis na tubo.",
+            "type": "Algang Luntian",
+            "found_in": "Mga estuwaryo at baybaying lugar sa buong bansa.",
+            "season": "Pinakamarami sa tag-araw na tuyo.",
+            "habitat": "Mga tahimik at mababaw na tubig; madalas nakakapit sa mga bato o lumulutang.",
+            "safety_notes": "Mabilis sumipsip ng mga sustansiya ang mga ito; iwasang kumuha malapit sa mga lugar na agrikultural o imburnal. Paulit-ulit na hugasan upang maalis ang putik. Karaniwang pinatutuyo o isinasama sa mga sabaw.",
+            "identification_guide": "Matingkad na berdeng mga tubong hungkag at walang sanga; maaaring sumikip o lumobo sa ilang bahagi.",
+            "edible": "Nakakain"
+        }
     },
     {
         "id": 5,
@@ -72,7 +112,17 @@
         "safety_notes": "Rinse carefully as small snails often cling to the sheets. Best used in soups or dried as a seasoning. Ensure water clarity at the harvest site.",
         "image": "lib/assets/images/seaweeds-images/ulva reticulata.jpg",
         "description_image": "lib/assets/images/seaweeds-images/ulva reticulata id.jpg",
-        "identification_guide": "Pale to bright green, very thin translucent blades with numerous holes of various sizes."
+        "identification_guide": "Pale to bright green, very thin translucent blades with numerous holes of various sizes.",
+        "filipino": {
+            "description": "Manipis at mistulang sapin na damong-dagat na mukhang berdeng balot na maraming likas na butas o parang lambat na may siwang.",
+            "type": "Algang Luntian",
+            "found_in": "Batangas, Cebu, at Davao.",
+            "season": "Buong taon.",
+            "habitat": "Mga patag na bahura at mabatong baybayin; madalas na nakahalo sa ibang damong-dagat.",
+            "safety_notes": "Maingat na banlawan dahil madalas kumapit sa mga sapin ang maliliit na suso. Pinakamasarap isama sa sabaw o patuyuin at gawing pampalasa. Tiyaking malinaw ang tubig sa pinagkunan.",
+            "identification_guide": "Maputla hanggang matingkad na berde, napakanipis at bahagyang aninag na mga talim na may maraming butas na iba-iba ang laki.",
+            "edible": "Nakakain"
+        }
     },
     {
         "id": 6,
@@ -84,10 +134,20 @@
         "found_in": "Shallow tropical waters throughout the Philippines.",
         "season": "Year-round.",
         "habitat": "Attached to small stones or shells in sandy areas.",
-        "safety_notes": "Do not consume as it has a high calcium carbonate content. Mostly of interest to researchers and hobbyists. It is extremely delicate and breaks easily.",        
+        "safety_notes": "Do not consume as it has a high calcium carbonate content. Mostly of interest to researchers and hobbyists. It is extremely delicate and breaks easily.",
         "image": "lib/assets/images/seaweeds-images/Acetabularia major.jpg",
-        "description_image": "lib/assets/images/seaweeds-images/Acetabularia major id.jpg",        
-        "identification_guide": "A slender stalk (2\u201310cm) topped with a circular, lime-green disc or umbrella."
+        "description_image": "lib/assets/images/seaweeds-images/Acetabularia major id.jpg",
+        "identification_guide": "A slender stalk (2–10cm) topped with a circular, lime-green disc or umbrella.",
+        "filipino": {
+            "description": "Natatanging organismong iisang selula lamang na kahawig ng munting berdeng payong o kabuteng tumutubo sa sahig ng dagat.",
+            "type": "Algang Luntian",
+            "found_in": "Mababaw na tropikal na tubig sa buong Pilipinas.",
+            "season": "Buong taon.",
+            "habitat": "Nakakapit sa maliliit na bato o kabibe sa mabuhanging lugar.",
+            "safety_notes": "Huwag kainin dahil mataas ang taglay nitong calcium carbonate. Kadalasang pinag-aaralan ng mga mananaliksik o kinagigiliwan ng mga hobbyist. Napakarupok nito at madaling mabali.",
+            "identification_guide": "Payat na tangkay (2–10 cm) na may bilog at kulay-apog na berdeng disk o tila payong sa itaas.",
+            "edible": "Hindi nakakain"
+        }
     },
     {
         "id": 7,
@@ -102,7 +162,17 @@
         "safety_notes": "Discard parts with ice-ice disease (white, mushy spots). Rinse with vinegar to kill surface bacteria. Do not consume if it smells fermented.",
         "image": "lib/assets/images/seaweeds-images/Kappaphycus alvarezii.jpg",
         "description_image": "lib/assets/images/seaweeds-images/Kappaphycus alvarezii id.jpg",
-        "identification_guide": "Thick, cartilaginous branches with smooth surfaces; colors vary from green and yellow to deep purple."
+        "identification_guide": "Thick, cartilaginous branches with smooth surfaces; colors vary from green and yellow to deep purple.",
+        "filipino": {
+            "description": "Malaki at lamanin na damong-dagat na may mabibigat na sanga; pangunahing pinagkukunan ito ng carrageenan at karaniwang ipinagbibili sa mga pampublikong pamilihan.",
+            "type": "Algang Pula",
+            "found_in": "Tawi-Tawi, Sulu, Palawan, at Bohol.",
+            "season": "Buong taon (itinatanim).",
+            "habitat": "Mga patag na bahura na may katamtamang agos at mataas na alat ng tubig.",
+            "safety_notes": "Itapon ang mga bahaging may sakit na ice-ice (maputi at malalambot na batik). Banlawan ng suka upang mapuksa ang bacteria sa ibabaw. Huwag kainin kung amoy pinaasim.",
+            "identification_guide": "Makakapal at kartilagino ang mga sanga at makinis ang ibabaw; nag-iiba ang kulay mula berde at dilaw hanggang matingkad na lila.",
+            "edible": "Nakakain"
+        }
     },
     {
         "id": 8,
@@ -117,7 +187,17 @@
         "safety_notes": "Must be boiled thoroughly to extract the gelatinous material. Avoid collecting from polluted bay areas. Strain the extract to remove debris.",
         "image": "lib/assets/images/seaweeds-images/Gracilaria edulis.jpg",
         "description_image": "lib/assets/images/seaweeds-images/Gracilaria edulis id.jpg",
-        "identification_guide": "Cylindrical, repeatedly branched stems that are usually reddish-brown but can turn greenish-yellow in sunlight."
+        "identification_guide": "Cylindrical, repeatedly branched stems that are usually reddish-brown but can turn greenish-yellow in sunlight.",
+        "filipino": {
+            "description": "Marupok at parang alambre na pulang damong-dagat na tradisyonal na pinakukuluan upang makuha ang agar, na ginagamit sa paggawa ng mga katutubong panghimagas na gulaman.",
+            "type": "Algang Pula",
+            "found_in": "Manila Bay, Sorsogon, at Panay Island.",
+            "season": "Pinakamarami sa tag-araw na tuyo.",
+            "habitat": "Mga look na maputik at mabuhanging patag na bahura sa tahimik na tubig.",
+            "safety_notes": "Pakuluan nang husto upang makuha ang mala-gulaman nitong sangkap. Iwasang kumuha sa maruruming bahagi ng look. Salain ang katas upang maalis ang mga dumi.",
+            "identification_guide": "Mga tangkay na silindriko at maraming ulit na sumasanga; karaniwang mapula-kayumanggi ngunit maaaring maging berde-dilaw kapag nasisikatan ng araw.",
+            "edible": "Nakakain"
+        }
     },
     {
         "id": 9,
@@ -132,7 +212,17 @@
         "safety_notes": "Clean thoroughly as mud easily gets trapped in the joints. Can be eaten fresh or boiled for agar. Ensure the area is free from heavy metal contamination.",
         "image": "lib/assets/images/seaweeds-images/Gracilaria salicornia.jpg",
         "description_image": "lib/assets/images/seaweeds-images/Gracilaria salicornia id.jpg",
-        "identification_guide": "Yellowish-green to orange branches with clear constrictions that make them look segmented like a chain."
+        "identification_guide": "Yellowish-green to orange branches with clear constrictions that make them look segmented like a chain.",
+        "filipino": {
+            "description": "Natatanging damong-dagat na kahawig ng magkakaugnay na maliliit na longganisa o dugtungan; karaniwang tumutubo bilang makapal at buhol-buhol na sapin sa bahura.",
+            "type": "Algang Pula",
+            "found_in": "Sa buong bansa, karaniwan sa mabababaw na patag na bahura.",
+            "season": "Buong taon.",
+            "habitat": "Nakakapit sa mga bato o nakahimlay nang hiwa-hiwalay sa mabuhangin-maputik na ilalim.",
+            "safety_notes": "Linising mabuti dahil madaling maipit ang putik sa mga dugtungan. Maaaring kainin nang sariwa o pakuluan para sa agar. Tiyaking walang kontaminasyon ng mabibigat na metal sa lugar.",
+            "identification_guide": "Dilaw-berde hanggang kahel ang mga sanga at may malinaw na pagsisikip na nagmumukha silang magkakadugtong na kawing.",
+            "edible": "Nakakain"
+        }
     },
     {
         "id": 10,
@@ -147,7 +237,17 @@
         "safety_notes": "Only the young, tender tips should be eaten. Blanch in boiling water to soften the texture and reduce iodine. Avoid areas with industrial runoff.",
         "image": "lib/assets/images/seaweeds-images/Sargassum polycystum.jpg",
         "description_image": "lib/assets/images/seaweeds-images/Sargassum polycystum id.jpg",
-        "identification_guide": "Main stem with leaves having serrated edges and small, stalked air bladders (vesicles)."
+        "identification_guide": "Main stem with leaves having serrated edges and small, stalked air bladders (vesicles).",
+        "filipino": {
+            "description": "Masalimuot na damong-dagat na kahawig ng munting palumpong sa ilalim ng dagat, na may mga talim na parang dahon at maliliit na bilog na pantulong lumutang.",
+            "type": "Algang Kayumanggi",
+            "found_in": "Mga baybaying lugar sa buong kapuluan.",
+            "season": "Marso hanggang Mayo (tag-init).",
+            "habitat": "Mabatong ilalim at taluktok ng bahura.",
+            "safety_notes": "Kainin lamang ang malambot at murang dulo. Paputiin sandali sa kumukulong tubig upang lumambot at mabawasan ang iodine. Iwasan ang mga lugar na may daloy ng maruming tubig mula sa industriya.",
+            "identification_guide": "May pangunahing tangkay na may mga dahong gilid-gulugod at maliliit na pantog-hangin (vesicle) na nakakabit sa maiikling tangkay.",
+            "edible": "Nakakain"
+        }
     },
     {
         "id": 11,
@@ -162,7 +262,17 @@
         "safety_notes": "While non-toxic, the texture is extremely fibrous and hard to digest. Mostly used for industrial alginate extraction. Handle with care as it is quite sharp.",
         "image": "lib/assets/images/seaweeds-images/Turbinaria ornata.jpg",
         "description_image": "lib/assets/images/seaweeds-images/Turbinaria ornata id.jpg",
-        "identification_guide": "Erect stalks with distinctive triangular, crown-like leaves that have a hollowed-out center."
+        "identification_guide": "Erect stalks with distinctive triangular, crown-like leaves that have a hollowed-out center.",
+        "filipino": {
+            "description": "Napakatigas at matibay na damong-dagat na may tatsulok at koronang mga dahon; kadalasan ay napakatigas kainin ngunit ginagamit bilang pataba.",
+            "type": "Algang Kayumanggi",
+            "found_in": "Batangas, Cebu, at Davao.",
+            "season": "Buong taon.",
+            "habitat": "Mga lugar na malalakas ang alon kung saan mahigpit itong nakakapit sa mga batong korales.",
+            "safety_notes": "Hindi ito nakalalason, ngunit napakahibla at mahirap tunawin. Kadalasang ginagamit sa industriyal na pagkuha ng alginate. Mag-ingat sa paghawak dahil matatalim ito.",
+            "identification_guide": "Mga tangkay na tuwid at may natatanging tatsulok na dahong mistulang korona na may uka sa gitna.",
+            "edible": "Karaniwang hindi kinakain"
+        }
     },
     {
         "id": 12,
@@ -177,7 +287,17 @@
         "safety_notes": "Rinse thoroughly to remove fine silt trapped in the feathers. Do not cook; serve fresh with vinegar. Check for clarity of water.",
         "image": "lib/assets/images/seaweeds-images/Caulerpa sertularioides.jpg",
         "description_image": "lib/assets/images/seaweeds-images/Caulerpa sertularioides id.jpg",
-        "identification_guide": "Feather-like upright branches (3-10cm) with very fine, needle-like pinnules on both sides of the central axis."
+        "identification_guide": "Feather-like upright branches (3-10cm) with very fine, needle-like pinnules on both sides of the central axis.",
+        "filipino": {
+            "description": "Pinong berdeng damong-dagat na may mga dahong pataas na kahawig na kahawig ng maliliit na balahibo o dahon ng pako na tumutubo mula sa gumagapang na tangkay.",
+            "type": "Algang Luntian",
+            "found_in": "Palawan, Pangasinan, at Cebu.",
+            "season": "Buong taon; sagana tuwing tag-init.",
+            "habitat": "Mababaw na mabuhanging ilalim at mga seagrass bed.",
+            "safety_notes": "Banlawan nang mabuti upang maalis ang pinong banlik na naiipit sa mga tila balahibo. Huwag lutuin; ihain nang sariwa kasama ng suka. Tiyaking malinis at malinaw ang tubig.",
+            "identification_guide": "Mga sanga pataas na kahawig ng balahibo (3–10 cm), na may napakapinong tila-karayom na pinnule sa magkabilang panig ng gitnang aksis.",
+            "edible": "Nakakain"
+        }
     },
     {
         "id": 13,
@@ -192,7 +312,17 @@
         "safety_notes": "Use in moderation as it contains secondary metabolites. Avoid harvesting in areas with heavy maritime traffic. Wash with potable water.",
         "image": "lib/assets/images/seaweeds-images/Caulerpa taxifolia.jpg",
         "description_image": "lib/assets/images/seaweeds-images/Caulerpa taxifolia id.jpg",
-        "identification_guide": "Bright green, sickle-shaped leaves arranged in two rows along an upright stalk; looks like a small underwater fern."
+        "identification_guide": "Bright green, sickle-shaped leaves arranged in two rows along an upright stalk; looks like a small underwater fern.",
+        "filipino": {
+            "description": "Madalas tawaging damong-dagat na pako; matingkad na berde ang mga sapad nitong dahon na kahawig ng dahon ng puno ng yew o pako.",
+            "type": "Algang Luntian",
+            "found_in": "Manila Bay, Batangas, at Visayas.",
+            "season": "Pinakamarami sa tag-araw na tuyo.",
+            "habitat": "Mabuhangin at maputik na ilalim sa mga nasisilungang look.",
+            "safety_notes": "Kainin nang katamtaman dahil nagtataglay ito ng mga sekundaryong metabolite. Iwasang kumuha sa mga lugar na matao ang trapikong pandagat. Hugasan gamit ang malinis na tubig na maiinom.",
+            "identification_guide": "Matingkad na berdeng dahong hugis karit na nakaayos sa dalawang hanay sa kahabaan ng patayong tangkay; kahawig ng munting pako sa ilalim ng dagat.",
+            "edible": "Nakakain"
+        }
     },
     {
         "id": 14,
@@ -207,7 +337,17 @@
         "safety_notes": "Inspect the convoluted folds for tiny sea snails or sand. Do not boil as it loses its texture. Wash with salt water first.",
         "image": "lib/assets/images/seaweeds-images/Codium arabicum.jpg",
         "description_image": "lib/assets/images/seaweeds-images/Codium arabicum id.jpg",
-        "identification_guide": "Firm, spongy, and flattened green lobes that are tightly attached to the rocky substrate."
+        "identification_guide": "Firm, spongy, and flattened green lobes that are tightly attached to the rocky substrate.",
+        "filipino": {
+            "description": "Madilim na berdeng damong-dagat na parang sapin at tumutubo bilang di-regular at bukol-bukol na kumpol, kahawig ng utak o makapal na espongha sa mga bato.",
+            "type": "Algang Luntian",
+            "found_in": "Rehiyon ng Ilocos at Hilagang-Kanlurang Luzon.",
+            "season": "Mga malamig na buwan (Disyembre hanggang Pebrero).",
+            "habitat": "Mga batong intertidal na naaabot ng katamtamang hampas ng alon.",
+            "safety_notes": "Siyasatin ang masisikip na tiklop kung may maliliit na suso-dagat o buhangin. Huwag pakuluan dahil mawawala ang tekstura nito. Banlawan muna sa tubig-alat.",
+            "identification_guide": "Matitibay, esponghaing at sapad na berdeng lobo na mahigpit na nakakapit sa mabatong ilalim.",
+            "edible": "Nakakain"
+        }
     },
     {
         "id": 15,
@@ -222,7 +362,17 @@
         "safety_notes": "Pick through carefully to remove tiny epiphytic algae. Rinse with calamansi or vinegar. Ensure the harvest area is not near sewage outlets.",
         "image": "lib/assets/images/seaweeds-images/Acanthophora spicifera.jpg",
         "description_image": "lib/assets/images/seaweeds-images/Acanthophora spicifera id.jpg",
-        "identification_guide": "Branches are covered in short, spike-like branchlets that are mostly concentrated near the tips."
+        "identification_guide": "Branches are covered in short, spike-like branchlets that are mostly concentrated near the tips.",
+        "filipino": {
+            "description": "Malutong at mapulang-kayumangging damong-dagat na tumutubo sa siksik at kulot na kumpol; madalas ihain nang sariwa bilang ulam sa mga baybaying bayan.",
+            "type": "Algang Pula",
+            "found_in": "Batangas, Bataan, at Cebu.",
+            "season": "Pinakamarami sa tag-araw na tuyo.",
+            "habitat": "Mababaw na patag na bahura at mabatong tide pool.",
+            "safety_notes": "Maingat na piliin at alisin ang maliliit na epiphytic algae. Banlawan ng kalamansi o suka. Tiyaking malayo sa labasan ng imburnal ang pinaghahanguan.",
+            "identification_guide": "Nababalutan ang mga sanga ng maiikling parang-tinik na sanga-sangang usbong na pinakamarami malapit sa mga dulo.",
+            "edible": "Nakakain"
+        }
     },
     {
         "id": 16,
@@ -237,7 +387,17 @@
         "safety_notes": "Very delicate; wash gently to avoid tearing the fronds. Check for small crustaceans hiding in the lace. Often used in salads for its color.",
         "image": "lib/assets/images/seaweeds-images/Halymenia durvillaei.jpg",
         "description_image": "lib/assets/images/seaweeds-images/Halymenia durvillaei id.jpg",
-        "identification_guide": "Bright red to orange-red, flattened fronds with jagged, tooth-like edges and a slippery texture."
+        "identification_guide": "Bright red to orange-red, flattened fronds with jagged, tooth-like edges and a slippery texture.",
+        "filipino": {
+            "description": "Isa sa pinakamagagandang damong-dagat; mayroon itong matingkad na pula, palumpong at tila-puntas na mga dahon na madulas at malambot sa haplos.",
+            "type": "Algang Pula",
+            "found_in": "Malalalim na bahagi ng bahura sa Samar, Leyte, at Surigao.",
+            "season": "Buong taon; pinakamainam matapos ang bagyo kapag inanod ito sa pampang.",
+            "habitat": "Mga batong subtidal at mga piraso ng korales sa mas malalim na tubig.",
+            "safety_notes": "Napakarupok nito; banlawan nang marahan upang hindi mapunit ang mga dahon. Tingnan kung may maliliit na crustacean na nagtatago sa tila-puntas na bahagi. Madalas itong isama sa salad bilang pampakulay.",
+            "identification_guide": "Matingkad na pula hanggang kahel-pula, mga sapad na dahon na may tulis-tulis na gilid na parang ngipin at madulas na tekstura.",
+            "edible": "Nakakain"
+        }
     },
     {
         "id": 17,
@@ -252,7 +412,17 @@
         "safety_notes": "Usually consumed blanched or fresh. Ensure it is free of white spots which indicate decay. Clean the broad surface area carefully.",
         "image": "lib/assets/images/seaweeds-images/Halymenia dilatata.jpg",
         "description_image": "lib/assets/images/seaweeds-images/Halymenia dilatata id.jpg",
-        "identification_guide": "Large, thin, slippery red blades that can be up to 20cm wide with wavy or ruffled margins."
+        "identification_guide": "Large, thin, slippery red blades that can be up to 20cm wide with wavy or ruffled margins.",
+        "filipino": {
+            "description": "Malapad at tila-sapin na pulang damong-dagat na tumutubo bilang malalaki at alun-along talim, at nagiging kapansin-pansing aninag sa ilalim ng tubig.",
+            "type": "Algang Pula",
+            "found_in": "Mga bahura sa Visayas at Mindanao.",
+            "season": "Buong taon.",
+            "habitat": "Nakakapit sa mga bato sa mas malalim at mas tahimik na tubig.",
+            "safety_notes": "Karaniwang kinakain nang bahagyang pinakuluan o sariwa. Tiyaking walang puting batik na palatandaan ng pagkabulok. Maingat na linisin ang malapad na ibabaw nito.",
+            "identification_guide": "Malalaki, manipis at madulas na pulang talim na maaaring umabot sa 20 cm ang lapad, na may alun-alon o lukot-lukot na gilid.",
+            "edible": "Nakakain"
+        }
     },
     {
         "id": 18,
@@ -267,7 +437,17 @@
         "safety_notes": "Too tough to eat raw; must be boiled for several hours to extract agar. Strain through cheesecloth. Do not harvest from polluted shorelines.",
         "image": "lib/assets/images/seaweeds-images/Gelidiella acerosa.jpg",
         "description_image": "lib/assets/images/seaweeds-images/Gelidiella acerosa id.jpg",
-        "identification_guide": "Small, stiff, cylindrical branches (2-5cm tall) that are often dark brown or yellowish and look like tiny wire brushes."
+        "identification_guide": "Small, stiff, cylindrical branches (2-5cm tall) that are often dark brown or yellowish and look like tiny wire brushes.",
+        "filipino": {
+            "description": "Matigas, parang alambre at gumagapang na pulang damong-dagat na itinuturing na pangunahing sangkap sa paggawa ng de-kalidad at matigas na agar.",
+            "type": "Algang Pula",
+            "found_in": "Pangasinan, Masbate, at Bohol.",
+            "season": "Enero hanggang Hunyo.",
+            "habitat": "Mabatong nakausling bahagi sa sonang intertidal na hinahampas ng malalakas na alon.",
+            "safety_notes": "Masyadong matigas kainin nang hilaw; pakuluan nang ilang oras upang makuha ang agar. Salain gamit ang cheesecloth. Huwag kumuha sa maruruming baybayin.",
+            "identification_guide": "Maliliit at matitigas na sanga na silindriko (2–5 cm ang taas), kadalasang madilim na kayumanggi o madilaw at kahawig ng maliliit na pangkuskos na alambre.",
+            "edible": "Nakakain (naproseso)"
+        }
     },
     {
         "id": 19,
@@ -282,7 +462,17 @@
         "safety_notes": "Often used as a thickening agent in local soups. Wash with clean water. Ensure it is not collected from murky or stagnant water.",
         "image": "lib/assets/images/seaweeds-images/Solieria robusta.jpg",
         "description_image": "lib/assets/images/seaweeds-images/Solieria robusta id.jpg",
-        "identification_guide": "Soft, fleshy, bright red cylindrical branches that taper to a point at the tips."
+        "identification_guide": "Soft, fleshy, bright red cylindrical branches that taper to a point at the tips.",
+        "filipino": {
+            "description": "Makatas at matingkad na pulang damong-dagat na may makinis at bilugang mga sanga; kahawig ito ng Guso ngunit mas malambot ang loob.",
+            "type": "Algang Pula",
+            "found_in": "Mga nasisilungang look sa Luzon at Visayas.",
+            "season": "Tag-araw na tuyo.",
+            "habitat": "Mabuhangin-maputik na ilalim sa sonang subtidal.",
+            "safety_notes": "Madalas gamitin bilang pampalapot sa mga lokal na sabaw. Hugasan sa malinis na tubig. Tiyaking hindi ito kinuha sa maputik o hindi umaagos na tubig.",
+            "identification_guide": "Malalambot, lamanin at matingkad na pulang sanga na silindriko at papatulis ang mga dulo.",
+            "edible": "Nakakain"
+        }
     },
     {
         "id": 20,
@@ -297,7 +487,17 @@
         "safety_notes": "Blanch in boiling water for 30 seconds before eating to improve texture. Avoid old, dark brown specimens which can be bitter. Rinse out all sand.",
         "image": "lib/assets/images/seaweeds-images/Hydroclathrus clathratus.jpg",
         "description_image": "lib/assets/images/seaweeds-images/Hydroclathrus clathratus id.jpg",
-        "identification_guide": "Round or irregular brown clumps (5-15cm) that are completely covered in small, round holes."
+        "identification_guide": "Round or irregular brown clumps (5-15cm) that are completely covered in small, round holes.",
+        "filipino": {
+            "description": "Kayumanggi at esponghaing damong-dagat na kahawig ng lambat o kesong Swiss dahil sa maraming likas na butas nito.",
+            "type": "Algang Kayumanggi",
+            "found_in": "Batangas, Pangasinan, at Cebu.",
+            "season": "Pebrero hanggang Mayo.",
+            "habitat": "Mababaw na patag na bahura at mga tide pool.",
+            "safety_notes": "Paputiin sa kumukulong tubig nang 30 segundo bago kainin upang gumanda ang tekstura. Iwasan ang luma at matingkad-kayumangging mga halimbawa dahil maaaring mapait. Banlawan upang maalis ang lahat ng buhangin.",
+            "identification_guide": "Bilog o di-regular na kumpol na kayumanggi (5–15 cm) at puno ng maliliit at bilog na butas.",
+            "edible": "Nakakain"
+        }
     },
     {
         "id": 21,
@@ -312,7 +512,17 @@
         "safety_notes": "Use only the fresh, golden-brown tips. Blanching is required to remove the fishy odor. Harvest from areas with high wave turnover.",
         "image": "lib/assets/images/seaweeds-images/Sargassum siliquosum.jpg",
         "description_image": "lib/assets/images/seaweeds-images/Sargassum siliquosum id.jpg",
-        "identification_guide": "Long primary stalks with flattened, narrow leaves and small, oval air bladders on short stems."
+        "identification_guide": "Long primary stalks with flattened, narrow leaves and small, oval air bladders on short stems.",
+        "filipino": {
+            "description": "Mahaba at umaalon na kayumangging damong-dagat na may makikitid na talim na parang dahon at maraming pantog-hangin na tumutulong dito na lumutang patungo sa liwanag ng araw.",
+            "type": "Algang Kayumanggi",
+            "found_in": "Mabatong baybayin sa buong bansa.",
+            "season": "Tag-init (Marso–Mayo).",
+            "habitat": "Mga sonang intertidal at subtidal na mabato.",
+            "safety_notes": "Gamitin lamang ang sariwa at kulay-gintong mga dulo. Kailangang paputiin sandali upang mawala ang malansang amoy. Kumuha sa mga lugar na madalas salubungin ng malalakas na alon.",
+            "identification_guide": "Mahahabang pangunahing tangkay na may sapad at makikitid na dahon at maliliit na hugis-itlog na pantog-hangin sa maiikling tangkay.",
+            "edible": "Nakakain"
+        }
     },
     {
         "id": 22,
@@ -327,7 +537,17 @@
         "safety_notes": "Not toxic, but too calcified and paper-thin to be palatable. Provides important habitat for micro-marine life. Avoid disturbing during harvest of other species.",
         "image": "lib/assets/images/seaweeds-images/Padina minor.jpg",
         "description_image": "lib/assets/images/seaweeds-images/Padina minor id.jpg",
-        "identification_guide": "Small (2-5cm) tan or light brown fans with distinct concentric white lines."
+        "identification_guide": "Small (2-5cm) tan or light brown fans with distinct concentric white lines.",
+        "filipino": {
+            "description": "Maliit at pinong kayumangging damong-dagat na kahawig ng maliliit na pamaypay o tainga, at kadalasang may manipis at puting sapin ng apog.",
+            "type": "Algang Kayumanggi",
+            "found_in": "Mababaw na mabatong baybayin sa buong bansa.",
+            "season": "Buong taon.",
+            "habitat": "Mga tide pool at itaas na bahagi ng patag na bahura.",
+            "safety_notes": "Hindi ito nakalalason, ngunit napakakalkulado at manipis na parang papel kaya hindi masarap kainin. Mahalaga itong tirahan ng maliliit na organismo sa dagat. Huwag gambalain habang nangunguha ng ibang uri.",
+            "identification_guide": "Maliliit (2–5 cm), kulay-kayumanggi o mapusyaw na kayumangging pamaypay na may malinaw na puting mga linyang pabilog.",
+            "edible": "Hindi nakakain"
+        }
     },
     {
         "id": 23,
@@ -342,7 +562,17 @@
         "safety_notes": "Too leathery and thin for consumption. Often indicates a healthy reef ecosystem. Do not scrape from live coral.",
         "image": "lib/assets/images/seaweeds-images/Lobophora variegata.jpg",
         "description_image": "lib/assets/images/seaweeds-images/Lobophora variegata id.jpg",
-        "identification_guide": "Dark brown, overlapping fan-shaped blades that grow flat against the surface."
+        "identification_guide": "Dark brown, overlapping fan-shaped blades that grow flat against the surface.",
+        "filipino": {
+            "description": "Kayumangging damong-dagat na tumutubo bilang sapad at pamaypay na mga kaliskis o sapin na kumakapit sa mga bato o patay na korales.",
+            "type": "Algang Kayumanggi",
+            "found_in": "Malalalim na bahura ng korales.",
+            "season": "Buong taon.",
+            "habitat": "Malalalim na batong subtidal; tumutubo rin sa mga lugar na kaunti ang liwanag.",
+            "safety_notes": "Masyadong parang katad at manipis para kainin. Madalas itong palatandaan ng malusog na ekosistema ng bahura. Huwag kayurin mula sa buhay na korales.",
+            "identification_guide": "Madilim na kayumangging mga talim na magkakapatong at hugis pamaypay, na sapad na tumutubo sa ibabaw.",
+            "edible": "Hindi nakakain"
+        }
     },
     {
         "id": 24,
@@ -357,7 +587,17 @@
         "safety_notes": "Fragile and easily popped. While not toxic, it has no nutritional use in Philippine cuisine. Often grows as an epiphyte.",
         "image": "lib/assets/images/seaweeds-images/Colpomenia sinuosa.jpg",
         "description_image": "lib/assets/images/seaweeds-images/Colpomenia sinuosa id.jpg",
-        "identification_guide": "Spherical, hollow, and wrinkled brown sacs that can reach the size of a tennis ball."
+        "identification_guide": "Spherical, hollow, and wrinkled brown sacs that can reach the size of a tennis ball.",
+        "filipino": {
+            "description": "Hungkag at tila-lobong kayumangging damong-dagat na manipis at parang papel kapag hinawakan; mistula itong gintong-kayumangging bula sa bahura.",
+            "type": "Algang Kayumanggi",
+            "found_in": "Batangas, Cebu, at Bohol.",
+            "season": "Pebrero hanggang Abril.",
+            "habitat": "Nakakapit sa mga bato o ibang damong-dagat sa mga tide pool.",
+            "safety_notes": "Marupok at madaling pumutok. Hindi ito nakalalason ngunit wala itong gamit bilang pagkain sa lutuing Pilipino. Madalas itong tumubo bilang epiphyte.",
+            "identification_guide": "Pabilog, hungkag at kulubot na mga supot na kayumanggi na maaaring kasinglaki ng bola ng tennis.",
+            "edible": "Hindi nakakain"
+        }
     },
     {
         "id": 25,
@@ -372,7 +612,17 @@
         "safety_notes": "Too small and calcified for consumption. Fascinating for observation but has no culinary use. Handle gently to avoid crushing.",
         "image": "lib/assets/images/seaweeds-images/Bornetella sphaerica.jpg",
         "description_image": "lib/assets/images/seaweeds-images/Bornetella sphaerica id.jpg",
-        "identification_guide": "Bright green, perfectly round spheres about 5-10mm in diameter."
+        "identification_guide": "Bright green, perfectly round spheres about 5-10mm in diameter.",
+        "filipino": {
+            "description": "Maliliit na bilog na berde at kahawig ng holen na tumutubo nang kumpol sa mga bato, mistulang nagkalat na berdeng butil sa sahig ng dagat.",
+            "type": "Algang Luntian",
+            "found_in": "Mababaw na mabatong baybayin ng Luzon.",
+            "season": "Buong taon.",
+            "habitat": "Mga batong nasa itaas na sonang intertidal.",
+            "safety_notes": "Masyadong maliit at kalkulado para kainin. Kawili-wiling pagmasdan ngunit walang gamit sa pagluluto. Maingat na hawakan upang hindi madurog.",
+            "identification_guide": "Matingkad na berde at perpektong bilog na mga butil na humigit-kumulang 5–10 mm ang diyametro.",
+            "edible": "Hindi nakakain"
+        }
     },
     {
         "id": 26,
@@ -387,7 +637,17 @@
         "safety_notes": "Rare and beautiful; best left in the wild. Not used as food. Very sensitive to water temperature changes.",
         "image": "lib/assets/images/seaweeds-images/Tydemania expeditionis.jpg",
         "description_image": "lib/assets/images/seaweeds-images/Tydemania expeditionis id.jpg",
-        "identification_guide": "Clusters of green filaments arranged in pompom whorls around a central stalk."
+        "identification_guide": "Clusters of green filaments arranged in pompom whorls around a central stalk.",
+        "filipino": {
+            "description": "Natatanging berdeng damong-dagat na tumutubo nang paikot-ikot at kahawig ng sunod-sunod na berdeng bulaklak o pompom sa isang tangkay.",
+            "type": "Algang Luntian",
+            "found_in": "Malinaw at malalim na tubig sa Palawan at Sulu.",
+            "season": "Buong taon.",
+            "habitat": "Matatarik na dalisdis ng malalim na bahura (10 m pataas).",
+            "safety_notes": "Bihira at maganda; pinakamainam na iwan ito sa likas na tirahan. Hindi ito ginagamit bilang pagkain. Napakasensitibo nito sa pagbabago ng temperatura ng tubig.",
+            "identification_guide": "Mga kumpol ng berdeng hibla na nakaayos na paikot na parang pompom sa palibot ng gitnang tangkay.",
+            "edible": "Hindi nakakain"
+        }
     },
     {
         "id": 27,
@@ -402,7 +662,17 @@
         "safety_notes": "Traps a lot of sediment; avoid handling if you have skin sensitivities. Not edible. Important for stabilizing sandy seafloors.",
         "image": "lib/assets/images/seaweeds-images/Avrainvillea erecta.jpg",
         "description_image": "lib/assets/images/seaweeds-images/Avrainvillea erecta id.jpg",
-        "identification_guide": "Single, paddle-shaped, dull green blade with a fuzzy, leathery texture."
+        "identification_guide": "Single, paddle-shaped, dull green blade with a fuzzy, leathery texture.",
+        "filipino": {
+            "description": "Maputik-berdeng damong-dagat na may makapal at parang-katad na talim na hugis pamaypay, na tumutubo mula sa bombilyang nakabaon sa buhangin.",
+            "type": "Algang Luntian",
+            "found_in": "Mga maputik na look at seagrass bed.",
+            "season": "Buong taon.",
+            "habitat": "Malambot, maalikabok na banlik o mabuhanging ilalim.",
+            "safety_notes": "Maraming banlik ang naiipon dito; iwasang hawakan kung sensitibo ang iyong balat. Hindi ito nakakain. Mahalaga ito sa pagpapatatag ng mabuhanging sahig ng dagat.",
+            "identification_guide": "Iisang mapurol na berdeng talim na hugis sagwan, may malambot at parang-katad na tekstura.",
+            "edible": "Hindi nakakain"
+        }
     },
     {
         "id": 28,
@@ -417,7 +687,17 @@
         "safety_notes": "Heavily calcified; it turns into white sand when it dies. Do not attempt to eat. Important for coral reef sand production.",
         "image": "lib/assets/images/seaweeds-images/Halimeda macroloba.jpg",
         "description_image": "lib/assets/images/seaweeds-images/Halimeda macroloba id.jpg",
-        "identification_guide": "Large, flat, fan-like green segments (2-3cm wide) stacked on top of each other."
+        "identification_guide": "Large, flat, fan-like green segments (2-3cm wide) stacked on top of each other.",
+        "filipino": {
+            "description": "Malaki at bahaging-bahaging berdeng damong-dagat na kahawig ng salansan ng berdeng barya o munting kaktus sa ilalim ng tubig.",
+            "type": "Algang Luntian",
+            "found_in": "Mabuhanging patag na bahura sa buong bansa.",
+            "season": "Buong taon.",
+            "habitat": "Mabuhanging ilalim; gumagamit ito ng ugat upang kumapit.",
+            "safety_notes": "Maraming calcium carbonate; nagiging puting buhangin ito kapag namatay. Huwag kainin. Mahalaga ito sa paglikha ng buhangin sa mga bahura ng korales.",
+            "identification_guide": "Malalaki at sapad na berdeng bahaging hugis pamaypay (2–3 cm ang lapad), na magkakapatong.",
+            "edible": "Hindi nakakain"
+        }
     },
     {
         "id": 29,
@@ -432,7 +712,17 @@
         "safety_notes": "Not for consumption. Its tiny spines can trap bacteria, so avoid handling in polluted water. Often used by marine snails as food.",
         "image": "lib/assets/images/seaweeds-images/Centroceras clavulatum.jpg",
         "description_image": "lib/assets/images/seaweeds-images/Centroceras clavulatum id.jpg",
-        "identification_guide": "Very fine, brittle filaments that have tiny joints visible under a magnifying glass."
+        "identification_guide": "Very fine, brittle filaments that have tiny joints visible under a magnifying glass.",
+        "filipino": {
+            "description": "Maliit at hiblang pulang damong-dagat na kahawig ng pinong mapulang-lilang buhok o balahibo na tumatakip sa mga bato.",
+            "type": "Algang Pula",
+            "found_in": "Mabatong baybayin sa buong bansa.",
+            "season": "Buong taon.",
+            "habitat": "Mga batong nasa ibabang sonang intertidal, na kadalasang may halong buhangin.",
+            "safety_notes": "Hindi ito kinakain. Maaaring maipon ang bacteria sa maliliit nitong tinik kaya iwasang hawakan sa maruming tubig. Madalas itong pagkain ng mga suso-dagat.",
+            "identification_guide": "Napakapinong marurupok na hibla na may maliliit na dugtungan na nakikita sa pamamagitan ng magnifying glass.",
+            "edible": "Hindi nakakain"
+        }
     },
     {
         "id": 30,
@@ -447,7 +737,17 @@
         "safety_notes": "Not edible. The fuzzy surface can trap fine sand and debris. Provides a unique aesthetic to coral reefs.",
         "image": "lib/assets/images/seaweeds-images/Galaxaura rugosa.jpg",
         "description_image": "lib/assets/images/seaweeds-images/Galaxaura rugosa id.jpg",
-        "identification_guide": "Dichotomously branched, cylindrical red stems with a chalky, lime-covered texture."
+        "identification_guide": "Dichotomously branched, cylindrical red stems with a chalky, lime-covered texture.",
+        "filipino": {
+            "description": "Mapulang-rosas na damong-dagat na tila mabalahibo sa ilalim ng tubig ngunit matigas at kalkulado kapag iniahon.",
+            "type": "Algang Pula",
+            "found_in": "Mababaw na bahura sa Batangas at Cebu.",
+            "season": "Tag-init.",
+            "habitat": "Nakakapit sa mga bato sa malinaw at mababaw na tubig.",
+            "safety_notes": "Hindi ito nakakain. Maaaring maipit sa mabalahibong ibabaw nito ang pinong buhangin at mga dumi. Nagdaragdag ito ng natatanging ganda sa mga bahura ng korales.",
+            "identification_guide": "Mga pulang tangkay na silindriko at paulit-ulit na nahahati sa dalawa, na may maputik na parang-tsok at nababalutan ng apog na tekstura.",
+            "edible": "Hindi nakakain"
+        }
     },
     {
         "id": 31,
@@ -462,6 +762,16 @@
         "safety_notes": "Excellent in salads or dried as flakes. Ensure it is not collected from green tide areas (excessive growth due to pollution). Wash thoroughly.",
         "image": "lib/assets/images/seaweeds-images/Ulva lactuca.jpg",
         "description_image": "lib/assets/images/seaweeds-images/Ulva lactuca id.jpg",
-        "identification_guide": "Wide, thin, bright green blades with a wavy edge; usually 5-15cm long."
+        "identification_guide": "Wide, thin, bright green blades with a wavy edge; usually 5-15cm long.",
+        "filipino": {
+            "description": "Ang karaniwang sea lettuce: binubuo ito ng matingkad na berdeng sapin na aninag at kahawig ng mga dahon ng letsugas na tumutubo sa mga bato.",
+            "type": "Algang Luntian",
+            "found_in": "Sa buong mundo, kabilang ang lahat ng baybayin ng Pilipinas.",
+            "season": "Pinakamarami sa unang bahagi ng tag-init.",
+            "habitat": "Mabatong baybayin at mga tide pool.",
+            "safety_notes": "Masarap sa salad o pinatutuyo at ginagawang mga piraso. Tiyaking hindi ito kinuha sa mga lugar na may green tide (labis na pagdami dahil sa polusyon). Hugasan nang mabuti.",
+            "identification_guide": "Malalapad, manipis at matingkad na berdeng talim na alun-alon ang gilid; karaniwang 5–15 cm ang haba.",
+            "edible": "Nakakain"
+        }
     }
 ]

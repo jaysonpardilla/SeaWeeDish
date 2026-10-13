@@ -3,6 +3,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
+import '../../services/app_language.dart';
 
 class RecommendedDishesScreen extends StatefulWidget {
   final String? speciesName;
@@ -13,7 +14,8 @@ class RecommendedDishesScreen extends StatefulWidget {
   State<RecommendedDishesScreen> createState() => _RecommendedDishesScreenState();
 }
 
-class _RecommendedDishesScreenState extends State<RecommendedDishesScreen> {
+class _RecommendedDishesScreenState extends State<RecommendedDishesScreen>
+    with AppLanguageAwareStateMixin<RecommendedDishesScreen> {
   List<dynamic> _recipes = [];
   bool _loading = true;
   String? _error;
@@ -85,7 +87,14 @@ class _RecommendedDishesScreenState extends State<RecommendedDishesScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Recommended Recipes', style: TextStyle(color: Color.fromARGB(255, 66, 66, 66), fontSize: 18, fontWeight: FontWeight.bold)),
+        title: Text(
+          appText('recommended_recipes_screen.dart', 'Recommended Recipes'),
+          style: const TextStyle(
+            color: Color.fromARGB(255, 66, 66, 66),
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
       ),
       body: Container(
         decoration: const BoxDecoration(
@@ -117,7 +126,9 @@ class _RecommendedDishesScreenState extends State<RecommendedDishesScreen> {
             const SizedBox(height: 12),
             ElevatedButton(
               onPressed: _loadRecipes,
-              child: const Text('Retry'),
+              child: Text(
+                appText('recommended_recipes_screen.dart', 'Retry'),
+              ),
               style: ElevatedButton.styleFrom(backgroundColor: const Color(0xFF0CA8B3)),
             )
           ],
@@ -126,8 +137,14 @@ class _RecommendedDishesScreenState extends State<RecommendedDishesScreen> {
     }
 
     if (_recipes.isEmpty) {
-      return const Center(
-        child: Text('No recipes available.', style: TextStyle(color: Colors.white70)),
+      return Center(
+        child: Text(
+          appText(
+            'recommended_recipes_screen.dart',
+            'No recipes available.',
+          ),
+          style: const TextStyle(color: Colors.white70),
+        ),
       );
     }
 
@@ -136,8 +153,9 @@ class _RecommendedDishesScreenState extends State<RecommendedDishesScreen> {
       separatorBuilder: (_, __) => const SizedBox(height: 8),
       itemBuilder: (context, index) {
         final item = _recipes[index] as Map<String, dynamic>;
-        final title = item['title'] ?? 'Untitled';
-        final description = item['description'] ?? '';
+        final recipeContent = _localizedRecipeContent(item);
+        final title = recipeContent['title'] as String? ?? 'Untitled';
+        final description = recipeContent['description'] as String? ?? '';
 
         return Card(
           color: const Color(0xFF142D40),
@@ -148,11 +166,23 @@ class _RecommendedDishesScreenState extends State<RecommendedDishesScreen> {
             iconColor: Colors.white,
             title: Text(title, style: const TextStyle(color: Colors.white, fontSize: 14, fontWeight: FontWeight.bold)),
             subtitle: Text(description, style: const TextStyle(color: Colors.white70)),
-            children: _buildExpandedContent(item),
+            children: _buildExpandedContent(recipeContent),
           ),
         );
       },
     );
+  }
+
+  Map<String, dynamic> _localizedRecipeContent(Map<String, dynamic> item) {
+    if (!AppLanguage.instance.isFilipino) return item;
+
+    final filipinoContent = item['filipino'];
+    if (filipinoContent is! Map<String, dynamic>) {
+      throw FormatException(
+        'Recipe "${item['title']}" is missing its Filipino translation.',
+      );
+    }
+    return filipinoContent;
   }
 
   List<Widget> _buildExpandedContent(Map<String, dynamic> item) {
@@ -166,7 +196,13 @@ class _RecommendedDishesScreenState extends State<RecommendedDishesScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text('Ingredients', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
+              Text(
+                appText('recommended_recipes_screen.dart', 'Ingredients'),
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
               const SizedBox(height: 6),
               ...ings.map((i) => Text('• $i', style: const TextStyle(color: Colors.white70))).toList(),
             ],
@@ -183,7 +219,13 @@ class _RecommendedDishesScreenState extends State<RecommendedDishesScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text('Instructions', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
+              Text(
+                appText('recommended_recipes_screen.dart', 'Instructions'),
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
               const SizedBox(height: 6),
               ...instr.map((s) => Padding(
                     padding: const EdgeInsets.only(bottom: 6),

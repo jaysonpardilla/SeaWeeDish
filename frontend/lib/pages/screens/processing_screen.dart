@@ -5,6 +5,7 @@ import 'dart:async';
 import 'dart:io';
 import 'package:image/image.dart' as img;
 import '../../services/api_service.dart';
+import '../../services/app_language.dart';
 import 'result_screen.dart';
 
 class ProcessingScreen extends StatefulWidget {
@@ -20,7 +21,7 @@ class ProcessingScreen extends StatefulWidget {
 }
 
 class _ProcessingScreenState extends State<ProcessingScreen>
-    with TickerProviderStateMixin {
+    with TickerProviderStateMixin, AppLanguageAwareStateMixin<ProcessingScreen> {
   late AnimationController _progressController;
   late final AssetImage _backgroundImage;
   bool _isBackgroundPrecached = false;
@@ -55,7 +56,8 @@ class _ProcessingScreenState extends State<ProcessingScreen>
   }
 
   /// Smoothly animate progress from one value to another
-  Future<void> _animateProgress(double from, double to, Duration duration) async {
+  Future<void> _animateProgress(
+      double from, double to, Duration duration) async {
     _progressController.reset();
     _progressController.duration = duration;
 
@@ -77,7 +79,7 @@ class _ProcessingScreenState extends State<ProcessingScreen>
     try {
       // Convert image path to File
       final capturedImage = File(widget.imagePath);
-      
+
       print('📊 Processing started for image: ${capturedImage.path}');
       print('📊 Image exists: ${await capturedImage.exists()}');
       print('📊 Image size: ${await capturedImage.length()} bytes');
@@ -91,8 +93,9 @@ class _ProcessingScreenState extends State<ProcessingScreen>
       final stopwatch = Stopwatch()..start();
       final compressedFile = await _compressImage(capturedImage);
       stopwatch.stop();
-      print('📊 Compression complete: ${compressedFile.path} (${stopwatch.elapsedMilliseconds}ms)');
-      
+      print(
+          '📊 Compression complete: ${compressedFile.path} (${stopwatch.elapsedMilliseconds}ms)');
+
       await _animateProgress(_progress, 35, const Duration(milliseconds: 800));
 
       // Stage 2: Upload to API (35-80%)
@@ -106,8 +109,9 @@ class _ProcessingScreenState extends State<ProcessingScreen>
       final apiService = ApiService();
       final result = await apiService.predictFromImage(compressedFile);
       stopwatch.stop();
-      
-      print('📊 API Response - Prediction: ${result.prediction}, Confidence: ${result.confidence} (${stopwatch.elapsedMilliseconds}ms)');
+
+      print(
+          '📊 API Response - Prediction: ${result.prediction}, Confidence: ${result.confidence} (${stopwatch.elapsedMilliseconds}ms)');
 
       await _animateProgress(_progress, 80, const Duration(milliseconds: 1000));
 
@@ -117,7 +121,7 @@ class _ProcessingScreenState extends State<ProcessingScreen>
       });
 
       await _animateProgress(_progress, 100, const Duration(milliseconds: 600));
-      
+
       setState(() {
         _status = 'Complete!';
       });
@@ -126,7 +130,8 @@ class _ProcessingScreenState extends State<ProcessingScreen>
       await Future.delayed(const Duration(milliseconds: 300));
 
       if (mounted) {
-        print('📊 Navigating to ResultScreen with prediction: ${result.prediction}');
+        print(
+            '📊 Navigating to ResultScreen with prediction: ${result.prediction}');
         Navigator.of(context).pushReplacement(
           MaterialPageRoute(
             builder: (context) => ResultScreen(
@@ -140,9 +145,9 @@ class _ProcessingScreenState extends State<ProcessingScreen>
       print('❌ Processing error: $e');
       setState(() {
         _errorMessage = e.toString();
-        _status = 'Analysis failed';
+        _status = 'Analysis did not succeed';
       });
-      
+
       // Show error dialog with option to go back
       if (mounted) {
         Future.delayed(const Duration(milliseconds: 1000), () {
@@ -150,16 +155,22 @@ class _ProcessingScreenState extends State<ProcessingScreen>
             showDialog(
               context: context,
               builder: (context) => AlertDialog(
-                title: const Text('Error'),
-                content: Text(_errorMessage ?? 'Unknown error occurred'),
+                title: Text(appText('processing_screen.dart', 'Error')),
+                content: Text(
+                  _errorMessage ??
+                      appText(
+                        'processing_screen.dart',
+                        'An unknown error occurred',
+                      ),
+                ),
                 actions: [
                   TextButton(
                     onPressed: () => Navigator.of(context).pop(),
-                    child: const Text('Retry'),
+                    child: Text(appText('processing_screen.dart', 'Retry')),
                   ),
                   TextButton(
                     onPressed: () => Navigator.of(context).pop(),
-                    child: const Text('Go Back'),
+                    child: Text(appText('processing_screen.dart', 'Go Back')),
                   ),
                 ],
               ),
@@ -223,8 +234,8 @@ class _ProcessingScreenState extends State<ProcessingScreen>
                 children: [
                   const SizedBox(height: 40),
                   // Title
-                  const Text(
-                    'Analyzing Seaweed',
+                  Text(
+                    appText('processing_screen.dart', 'Analyzing Seaweed'),
                     style: TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
@@ -318,8 +329,8 @@ class _ProcessingScreenState extends State<ProcessingScreen>
                             ),
                           ),
                           const SizedBox(height: 6),
-                          const Text(
-                            'Processing',
+                          Text(
+                            appText('processing_screen.dart', 'Processing'),
                             style: TextStyle(
                               fontSize: 13,
                               color: Colors.white70,
@@ -337,16 +348,21 @@ class _ProcessingScreenState extends State<ProcessingScreen>
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.w500,
-                      color: _errorMessage != null ? Colors.red[300] : Colors.white,
+                      color: _errorMessage != null
+                          ? Colors.red[300]
+                          : Colors.white,
                     ),
                     child: Text(
-                      _status,
+                      appText('processing_screen.dart', _status),
                       textAlign: TextAlign.center,
                     ),
                   ),
                   const SizedBox(height: 12),
                   Text(
-                    'Identifying seaweed species...',
+                    appText(
+                      'processing_screen.dart',
+                      'Identifying seaweed species...',
+                    ),
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: 14,
@@ -368,8 +384,9 @@ class _ProcessingScreenState extends State<ProcessingScreen>
                       ),
                       child: Column(
                         children: [
-                          const Text(
-                            'Analysis Failed',
+                          Text(
+                            appText(
+                                'processing_screen.dart', 'Analysis Failed'),
                             style: TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.bold,
@@ -396,8 +413,8 @@ class _ProcessingScreenState extends State<ProcessingScreen>
                                 borderRadius: BorderRadius.circular(8),
                               ),
                             ),
-                            child: const Text(
-                              'Go Back',
+                            child: Text(
+                              appText('processing_screen.dart', 'Go Back'),
                               style: TextStyle(color: Colors.white),
                             ),
                           ),

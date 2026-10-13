@@ -4,6 +4,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import '../../services/app_language.dart';
 
 class HistoryScreen extends StatefulWidget {
   const HistoryScreen({super.key});
@@ -12,7 +13,8 @@ class HistoryScreen extends StatefulWidget {
   State<HistoryScreen> createState() => _HistoryScreenState();
 }
 
-class _HistoryScreenState extends State<HistoryScreen> {
+class _HistoryScreenState extends State<HistoryScreen>
+    with AppLanguageAwareStateMixin<HistoryScreen> {
   int _selectedFilter = 0;
   String searchQuery = '';
   bool _sortAscending = true;
@@ -97,8 +99,8 @@ class _HistoryScreenState extends State<HistoryScreen> {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
-              'Sort & Filter',
+            Text(
+              appText('history_screen.dart', 'Sort & Filter'),
               style: TextStyle(
                 fontFamily: 'Itim',
                 fontSize: 18,
@@ -107,8 +109,8 @@ class _HistoryScreenState extends State<HistoryScreen> {
               ),
             ),
             const SizedBox(height: 16),
-            const Text(
-              'Sort Order',
+            Text(
+              appText('history_screen.dart', 'Sort Order'),
               style: TextStyle(
                 fontSize: 14,
                 fontWeight: FontWeight.w600,
@@ -138,7 +140,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
                       padding: const EdgeInsets.symmetric(vertical: 12),
                       child: Center(
                         child: Text(
-                          'Ascending (A-Z)',
+                          appText('history_screen.dart', 'Ascending (A-Z)'),
                           style: TextStyle(
                             fontSize: 13,
                             fontWeight: FontWeight.w600,
@@ -170,7 +172,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
                       padding: const EdgeInsets.symmetric(vertical: 12),
                       child: Center(
                         child: Text(
-                          'Descending (Z-A)',
+                          appText('history_screen.dart', 'Descending (Z-A)'),
                           style: TextStyle(
                             fontSize: 13,
                             fontWeight: FontWeight.w600,
@@ -184,8 +186,8 @@ class _HistoryScreenState extends State<HistoryScreen> {
               ],
             ),
             const SizedBox(height: 20),
-            const Text(
-              'Filter by Category',
+            Text(
+              appText('history_screen.dart', 'Filter by Category'),
               style: TextStyle(
                 fontSize: 14,
                 fontWeight: FontWeight.w600,
@@ -216,7 +218,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
                     ),
                     padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                     child: Text(
-                      _filters[index],
+                      appText('history_screen.dart', _filters[index]),
                       style: TextStyle(
                         fontSize: 12,
                         fontWeight: FontWeight.w600,
@@ -256,7 +258,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            'Scan History',
+                            appText('history_screen.dart', 'Scan History'),
                             style: const TextStyle(
                               fontFamily: 'Itim',
                               fontSize: 16,
@@ -340,7 +342,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
                   padding: const EdgeInsets.symmetric(horizontal: 16),
                   child: Center(
                     child: Text(
-                      _filters[index],
+                      appText('history_screen.dart', _filters[index]),
                       style: TextStyle(
                         fontSize: 12,
                         fontWeight: FontWeight.w600,
@@ -361,11 +363,14 @@ class _HistoryScreenState extends State<HistoryScreen> {
     if (_filteredScans.isEmpty) {
       return ListView(
         physics: const AlwaysScrollableScrollPhysics(),
-        children: const [
+        children: [
           SizedBox(height: 300),
           Center(
             child: Text(
-              'No history matches your search or filter.',
+              appText(
+                'history_screen.dart',
+                'No history matches your search or filter.',
+              ),
               style: TextStyle(
                 fontSize: 12,
                 color: Color(0xFF395C7A),
@@ -435,7 +440,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
                           ),
                           const SizedBox(height: 4),
                           Text(
-                            'Confidence: ${scan['confidence']}%',
+                            '${appText('history_screen.dart', 'Confidence')}: ${scan['confidence']}%',
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                             style: const TextStyle(
@@ -462,7 +467,10 @@ class _HistoryScreenState extends State<HistoryScreen> {
                       ),
                       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                       child: Text(
-                        scan['status'] as String,
+                        appText(
+                          'history_screen.dart',
+                          scan['status'] as String,
+                        ),
                         style: TextStyle(
                           fontSize: 9,
                           fontWeight: FontWeight.w700,

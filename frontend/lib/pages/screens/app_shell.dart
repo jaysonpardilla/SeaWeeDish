@@ -4,6 +4,7 @@ import 'home_screen.dart';
 import 'scan_screen.dart';
 import 'learning_screen.dart';
 import 'history_screen.dart';
+import '../../services/app_language.dart';
 
 /// Enum for organizing screen indices - makes code more readable
 enum AppScreen {
@@ -23,7 +24,8 @@ class AppShell extends StatefulWidget {
   State<AppShell> createState() => _AppShellState();
 }
 
-class _AppShellState extends State<AppShell> {
+class _AppShellState extends State<AppShell>
+    with AppLanguageAwareStateMixin<AppShell> {
   final GlobalKey<State<LearningScreen>> _learningScreenKey = 
   GlobalKey<State<LearningScreen>>();
   int _currentIndex = 0;

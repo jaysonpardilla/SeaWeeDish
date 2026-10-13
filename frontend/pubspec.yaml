@@ -47,6 +47,7 @@ flutter:
     - lib/assets/onboarding/
     - assets/fonts/ 
     - lib/assets/recipes/
+    - lib/assets/app_translations.json
     
 flutter_native_splash:
   color: "#ffffff"
@@ -62,4 +63,3 @@ flutter_launcher_icons:
   android: true
   ios: true
   image_path: "lib/assets/images/app_icon.png" 
-

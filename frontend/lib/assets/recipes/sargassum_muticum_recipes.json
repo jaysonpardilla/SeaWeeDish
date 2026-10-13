@@ -24,7 +24,28 @@
         "Bring 900 mL water, apple cider vinegar, and honey to a boil in a pot. Place the washed seaweed fronds in a heatproof bowl and pour the boiling vinegar mixture over top to steep.",
         "Melt butter in a large saucepan over medium heat. Add chopped onions and cubed potatoes; cook gently for 2 minutes. Pour in stock and simmer uncovered for 30 minutes until potatoes are fork-tender.",
         "Strain a handful of pickled S. muticum and drop into the simmering soup. Cook for 3 to 5 minutes. Remove from heat and blend smooth using an immersion stick blender. Season with salt and black pepper."
-      ]
+      ],
+      "filipino": {
+        "title": "Sopas ng Patatas na may Atsarang Sargassum muticum",
+        "description": "Malinamnam at kremang sopas ng patatas na may mga dahon ng Sargassum muticum na binabad sa suka ng mansanas at pulot-pukyutan.",
+        "ingredients": [
+          "1 malaking dakot ng sariwang dahon ng Sargassum muticum (nilinis)",
+          "240 mL suka ng mansanas",
+          "900 mL tubig",
+          "1 tbsp pulot-pukyutan",
+          "50 g mantikilya",
+          "1 katamtamang dilaw na sibuyas (tinadtad)",
+          "500 g patatas (binalatan at hiniwang pakuwadrado)",
+          "1 L sabaw ng gulay o sabaw ng manok",
+          "Asin at bagong-giling na itim na paminta ayon sa panlasa"
+        ],
+        "instructions": [
+          "Ilubog ang sariwang dahon ng S. muticum sa malamig at malinis na tubig nang 10 minuto upang maalis ang buhangin at natitirang asin. Patuluin nang mabuti.",
+          "Pakuluin sa kaserola ang 900 mL tubig, suka ng mansanas, at pulot-pukyutan. Ilagay ang hinugasang dahon ng seaweed sa mangkok na hindi tinatablan ng init at buhusan ng kumukulong timpla ng suka upang ibabad.",
+          "Tunawin ang mantikilya sa malaking kaserola sa katamtamang init. Idagdag ang tinadtad na sibuyas at hiniwang pakuwadradong patatas; lutuin nang marahan nang 2 minuto. Ibuhos ang sabaw at pakuluin nang walang takip nang 30 minuto hanggang madaling tusukin ng tinidor ang patatas.",
+          "Salain ang isang dakot ng inatsarang S. muticum at idagdag sa kumukulong-marahang sopas. Lutuin nang 3 hanggang 5 minuto. Alisin sa apoy at katasin hanggang makinis gamit ang hand blender. Timplahan ng asin at itim na paminta."
+        ]
+      }
     },
     {
       "title": "Crispy Pan-Fried Sargassum muticum Fronds",
@@ -39,7 +60,22 @@
         "Strip leaf-like structures and float bladders away from the central woody stem. Rinse thoroughly under cold water and pat completely dry with paper towels.",
         "Heat oil in a skillet over medium-high heat. Add stripped fronds in a single layer. Fry for 1 to 2 minutes until crisp and slightly darkened.",
         "Transfer with a slotted spoon to paper towels to drain excess oil. Sprinkle immediately with sea salt and toasted sesame seeds."
-      ]
+      ],
+      "filipino": {
+        "title": "Malutong na Piniritong Dahon ng Sargassum muticum",
+        "description": "Mabilisang piniritong dahon ng Sargassum muticum na inalisan ng matitigas na tangkay, inihain bilang malutong at mayamang-umami na sea chips.",
+        "ingredients": [
+          "100 g sariwang dahon ng Sargassum muticum (dahon at pantog-lamang, itinatapon ang mga tangkay)",
+          "2 tbsp langis ng niyog o neutral na mantika",
+          "1 kurot na pinong asin-dagat",
+          "1/2 tsp inihaw na buto ng sesame (opsyonal)"
+        ],
+        "instructions": [
+          "Alisin sa gitnang makahoy na tangkay ang mga dahong parang dahon at lumulutang na pantog. Banlawan nang mabuti sa malamig na tubig at patuyuin nang husto gamit ang paper towel.",
+          "Painitin ang mantika sa kawali sa katamtaman-mataas na init. Idagdag ang mga dahon nang hindi nagsasapawan. Iprito nang 1 hanggang 2 minuto hanggang maging malutong at bahagyang umitim.",
+          "Gamit ang sandok na may butas, ilipat sa paper towel upang maalis ang sobrang mantika. Budburan agad ng asin-dagat at inihaw na buto ng sesame."
+        ]
+      }
     },
     {
       "title": "Korean-Style Braised Sargassum (Sargassum-Jorim)",
@@ -58,7 +94,26 @@
         "In a saucepan, mix soy sauce, mirin, brown sugar, minced garlic, and water/dashi. Bring to a gentle boil.",
         "Add the parboiled seaweed fronds to the pan. Reduce heat to low and simmer for 15–20 minutes until the liquid reduces into a glossy glaze.",
         "Stir in toasted sesame oil before removing from heat. Serve cold or warm as a side dish."
-      ]
+      ],
+      "filipino": {
+        "title": "Sargassum na Nilaga sa Sarsa, Estilong Koreano (Sargassum-Jorim)",
+        "description": "Mga dahon ng Sargassum na marahang pinakuluan sa kintab na sarsa ng toyo, bawang, at sesame upang lumambot at lumalim ang malasang lasa.",
+        "ingredients": [
+          "150 g sariwang dahon ng Sargassum muticum (bahagyang pinakuluan)",
+          "2 tbsp toyo",
+          "1 tbsp mirin o rice wine",
+          "1 tbsp brown sugar o pulot-pukyutan",
+          "1 tsp inihaw na sesame oil",
+          "1 butil ng bawang (tinadtad)",
+          "1/2 cup tubig o sabaw na dashi"
+        ],
+        "instructions": [
+          "Pakuluin sa tubig ang nilinis na dahon ng Sargassum muticum nang 3 hanggang 5 minuto upang lumambot. Patuluin at hiwain sa kagat-laking piraso.",
+          "Sa kaserola, paghaluin ang toyo, mirin, brown sugar, tinadtad na bawang, at tubig/dashi. Pakuluin nang marahan.",
+          "Idagdag sa kaserola ang bahagyang pinakuluang seaweed. Hinaan ang apoy at pakuluin nang marahan sa loob ng 15–20 minuto hanggang lumiit ang likido at maging makintab na sarsa.",
+          "Ihalo ang inihaw na sesame oil bago alisin sa apoy. Ihain nang malamig o mainit bilang ulam."
+        ]
+      }
     }
   ]
 }

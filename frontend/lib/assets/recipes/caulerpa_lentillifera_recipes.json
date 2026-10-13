@@ -24,7 +24,28 @@
         "Submerge the cleaned lato in a bowl of ice water for 2 to 3 minutes to maximize crispness. Drain well.",
         "In a separate bowl, whisk together the vinegar, calamansi juice, sugar, and cracked black pepper until the sugar dissolves. Stir in the diced tomatoes, red onions, and ginger.",
         "Place the drained lato on a serving platter and top with the salted egg. Either pour the dressing over the top immediately before serving or serve the dressing on the side as a dip."
-      ]
+      ],
+      "filipino": {
+        "title": "Klasikong Filipino Ensaladang Lato (Salad ng Seaweed)",
+        "description": "Klasikong ulam na ipinapares ang malutong na lato sa hiniwang kamatis at sibuyas, at opsyonal na itlog na maalat.",
+        "ingredients": [
+          "250 g sariwang Caulerpa lentillifera (lato)",
+          "2 malaking hinog na plum tomato (inalisan ng ubod at tinadtad nang pino)",
+          "1 katamtamang pulang sibuyas (tinadtad nang pino)",
+          "1 itlog na maalat (binalatan at tinadtad, opsyonal)",
+          "1 hinlalaking piraso ng sariwang luya (binalatan at tinadtad, opsyonal)",
+          "3 tbsp suka ng tubo o suka ng niyog",
+          "1 tbsp sariwang katas ng kalamansi o katas ng dayap",
+          "1/4 tsp pinong asukal",
+          "1/2 tsp bagong-durog na itim na paminta"
+        ],
+        "instructions": [
+          "Ilagay ang sariwang lato sa mangkok ng malamig na tubig. Dahan-dahang alisin ang mga dumi, bato sa dagat, o sirang tangkay. Patuluin nang mabuti.",
+          "Ilubog ang nilinis na lato sa mangkok ng tubig na may yelo nang 2 hanggang 3 minuto upang maging malutong ito. Patuluin nang mabuti.",
+          "Sa hiwalay na mangkok, haluin ang suka, katas ng kalamansi, asukal, at dinurog na itim na paminta hanggang matunaw ang asukal. Ihalo ang tinadtad na kamatis, pulang sibuyas, at luya.",
+          "Ilagay ang pinatulong lato sa bandeha at patungan ng itlog na maalat. Ibuhos ang sawsawan sa ibabaw bago ihain o ihain ito sa tabi bilang sawsawan."
+        ]
+      }
     },
     {
       "title": "Okinawan Umi-Budo with Citrus Ponzu Dip",
@@ -43,7 +64,26 @@
         "Whisk together soy sauce, yuzu juice, dashi, mirin, and rice vinegar in a small dip ramekin.",
         "Bed a plate with crushed ice, lay the fresh umi-budo clusters on top, and place the ponzu bowl alongside.",
         "Dip individual fronds into the sauce right before biting. Avoid pouring the dip over the seaweed to keep the pearls firm."
-      ]
+      ],
+      "filipino": {
+        "title": "Okinawan Umi-Budo na may Sawsawang Citrus Ponzu",
+        "description": "Sariwang sea grapes na inihain nang walang dagdag na palamuti sa ibabaw ng dinurog na yelo, kasama ang malasang ponzu na may sitrus.",
+        "ingredients": [
+          "150 g sariwang umi-budo",
+          "Yelo (para sa bandeha ng paghahain)",
+          "2 tbsp toyo ng Japan (shoyu)",
+          "1.5 tbsp katas ng yuzu, sudachi, o sariwang lemon",
+          "1 tbsp sabaw na dashi (o tubig)",
+          "1 tsp mirin",
+          "1/2 tsp suka ng bigas"
+        ],
+        "instructions": [
+          "Ilubog ang umi-budo sa malinis na tubig na may temperatura ng silid o malamig nang 1 hanggang 2 minuto upang mabawasan ang natitirang alat. Patuluin nang lubusan.",
+          "Haluin sa maliit na mangkok na pangsawsaw ang toyo, katas ng yuzu, dashi, mirin, at suka ng bigas.",
+          "Lagyan ng dinurog na yelo ang bandeha, ilagay sa ibabaw ang kumpol ng sariwang umi-budo, at itabi ang mangkok ng ponzu.",
+          "Isawsaw ang bawat dahon sa sarsa bago kagatin. Huwag ibuhos ang sawsawan sa seaweed upang manatiling matitibay ang mga butil."
+        ]
+      }
     },
     {
       "title": "Okinawan Umi-Budo Donburi (Sea Grape & Sashimi Rice Bowl)",
@@ -62,7 +102,26 @@
         "Quick-rinse umi-budo in cool water and pat dry with paper towels.",
         "Divide rice into two serving bowls. Lay shiso leaves on top, arrange sashimi slices along one side, and pile fresh umi-budo on the other side. Nest-egg the yolk in the center if desired.",
         "Serve with wasabi and soy sauce on the side."
-      ]
+      ],
+      "filipino": {
+        "title": "Okinawan Umi-Budo Donburi (Mangkok ng Kanin na may Sea Grape at Sashimi)",
+        "description": "Sikat na mangkok ng kanin sa Izakaya kung saan nagbibigay ang sea grapes ng pumipitik na tekstura katabi ng sariwang hilaw na sashimi.",
+        "ingredients": [
+          "100 g sariwang umi-budo",
+          "150 g tuna na yellowfin o salmon na angkop kainin bilang sashimi (hiniwa)",
+          "2 cups nilutong Japanese short-grain rice (pinalamig hanggang temperatura ng silid)",
+          "1 tbsp tinimplahang suka ng bigas",
+          "2 sariwang dahon ng shiso (perilla)",
+          "1 pula ng itlog o itlog na niluto sa tubig/onsen egg (opsyonal)",
+          "Wasabi at toyo (ihain na kasama)"
+        ],
+        "instructions": [
+          "Dahan-dahang ihalo ang tinimplahang suka ng bigas sa nilutong kanin. Hayaang bahagyang lumamig upang hindi bumagsak ang mga butil ng sea grapes dahil sa init.",
+          "Mabilisang banlawan ang umi-budo sa malamig na tubig at patuyuin sa paper towel.",
+          "Hatiin ang kanin sa dalawang mangkok na paghahainan. Ilagay sa ibabaw ang dahon ng shiso, ayusin sa isang panig ang mga hiwa ng sashimi at sa kabila ang sariwang umi-budo. Kung nais, ilagay ang pula ng itlog sa gitna.",
+          "Ihain na may kasamang wasabi at toyo."
+        ]
+      }
     },
     {
       "title": "Malaysian Latok with Sambal Belacan & Calamansi",
@@ -80,7 +139,25 @@
         "Wash latok thoroughly in clean water 2 to 3 times to remove any remaining sand or grit. Drain in a colander.",
         "In a mortar and pestle, pound the chilies, toasted belacan, shallot, sugar, and salt into a textured paste. Squeeze the juice of two calamansi limes into the paste and stir.",
         "Place the latok on a plate alongside extra calamansi halves and the sambal belacan dip. Dip the sea grapes into the sambal before eating."
-      ]
+      ],
+      "filipino": {
+        "title": "Latok na Malaysian na may Sambal Belacan at Kalamansi",
+        "description": "Sariwang sea grapes na inihain kasama ng maanghang, maasim, at malasang sawsawang dinikdik na bagoong-alamang.",
+        "ingredients": [
+          "200 g sariwang latok",
+          "3-4 sariwang kalamansi (hiniwa sa kalahati)",
+          "2 sariwang pulang siling labuyo (cili padi)",
+          "1 tsp inihaw na bagoong-alamang (belacan)",
+          "1 maliit na sibuyas na pula",
+          "1/2 tsp asukal",
+          "1 kurot na asin"
+        ],
+        "instructions": [
+          "Hugasan nang mabuti ang latok sa malinis na tubig nang 2 hanggang 3 ulit upang maalis ang natitirang buhangin o maliliit na dumi. Patuluin sa salaan.",
+          "Sa almires at pambayo, dikdikin ang mga sili, inihaw na belacan, sibuyas na pula, asukal, at asin hanggang maging magaspang na pasta. Pigaan ng katas ng dalawang kalamansi at haluin.",
+          "Ilagay ang latok sa plato, kasama ng mga natitirang hati ng kalamansi at sawsawang sambal belacan. Isawsaw ang sea grapes sa sambal bago kainin."
+        ]
+      }
     },
     {
       "title": "Sesame-Soy & Cucumber Sea Grape Salad",
@@ -99,7 +176,26 @@
         "Whisk sesame oil, soy sauce, lemon juice, and honey in a bowl. Toss julienned cucumber and cherry tomatoes with half of the dressing.",
         "Rinse sea grapes in cold water, dunk in an ice bath for 2 minutes, then drain thoroughly.",
         "Arrange the dressed vegetables on a plate, lay the sea grapes across the top, drizzle with the remaining dressing right before serving, and sprinkle with toasted sesame seeds."
-      ]
+      ],
+      "filipino": {
+        "title": "Salad ng Sea Grape na may Sesame-Soy at Pipino",
+        "description": "Malutong at makabagong malamig na salad na may hiniwang pahabang pipino, cherry tomato, at sawsawang inihaw na sesame.",
+        "ingredients": [
+          "150 g sariwang Caulerpa lentillifera",
+          "1 Japanese o Persian na pipino (hiniwang pahaba at maninipis)",
+          "8-10 cherry tomato (hinati)",
+          "1 tbsp inihaw na buto ng sesame",
+          "1.5 tbsp inihaw na sesame oil",
+          "1 tbsp toyo na kaunti ang sodium",
+          "1 tbsp sariwang katas ng lemon",
+          "1 tsp pulot-pukyutan o maple syrup"
+        ],
+        "instructions": [
+          "Haluin sa mangkok ang sesame oil, toyo, katas ng lemon, at pulot-pukyutan. Ihalo ang hiniwang pahabang pipino at cherry tomato sa kalahati ng sawsawan.",
+          "Banlawan sa malamig na tubig ang sea grapes, ilubog sa tubig na may yelo nang 2 minuto, at patuluin nang mabuti.",
+          "Ayusin sa plato ang mga gulay na may sawsawan, ilatag sa ibabaw ang sea grapes, patakan ng natitirang sawsawan bago ihain, at budburan ng inihaw na buto ng sesame."
+        ]
+      }
     }
   ]
 }

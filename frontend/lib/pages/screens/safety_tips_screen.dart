@@ -1,13 +1,19 @@
 // ignore_for_file: deprecated_member_use
 
 import 'package:flutter/material.dart';
+import '../../services/app_language.dart';
 
-class SafetyTipsScreen extends StatelessWidget {
+class SafetyTipsScreen extends StatefulWidget {
   const SafetyTipsScreen({super.key});
 
   @override
+  State<SafetyTipsScreen> createState() => _SafetyTipsScreenState();
+}
+
+class _SafetyTipsScreenState extends State<SafetyTipsScreen>
+    with AppLanguageAwareStateMixin<SafetyTipsScreen> {
+  @override
   Widget build(BuildContext context) {
-    final primaryGreen = const Color(0xFF005E4D);
     final softBackground = const Color.fromARGB(255, 255, 255, 255);
 
     return Scaffold(
@@ -22,8 +28,11 @@ class SafetyTipsScreen extends StatelessWidget {
           onPressed: () => Navigator.pop(context),
           splashRadius: 18,
         ),
-        title: const Text(
-          'Safety & Sustainability Guide',
+        title: Text(
+          appText(
+            'safety_tips_screen.dart',
+            'Safety & Sustainability Guide',
+          ),
           style: TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.w800,
@@ -41,8 +50,11 @@ class SafetyTipsScreen extends StatelessWidget {
           padding: const EdgeInsets.all(10),
           child: ListView(
             children: [
-              const Text(
-                'Essential practices for safe consumption, ecosystem preservation, and responsible harvesting.',
+              Text(
+                appText(
+                  'safety_tips_screen.dart',
+                  'Essential practices for safe consumption, ecosystem preservation, and responsible harvesting.',
+                ),
                 style: TextStyle(
                   fontSize: 13,
                   color: Color(0xFF385E59),
@@ -52,20 +64,24 @@ class SafetyTipsScreen extends StatelessWidget {
               const SizedBox(height: 20),
 
               _buildInfoCard(
-                title: '⚠️ Water Quality & Marine Hazards',
+                title: '⚠️ ${appText('safety_tips_screen.dart', 'Water Quality & Marine Hazards')}',
                 accentColor: const Color.fromARGB(255, 255, 239, 231),
                 iconBg: const Color(0xFFF5B7A0),
                 icon: Icons.warning_amber_rounded,
                 items: [
                   _buildTipItem(
-                    title: 'Red Tide & Harmful Algal Blooms (HABs)',
-                    description:
-                        'Never harvest seaweed during active Red Tide alerts or HAB advisories. Microscopic toxins settle on fronds and cannot be washed or cooked out.',
+                    title: appText('safety_tips_screen.dart', 'Red Tide & Harmful Algal Blooms (HABs)'),
+                    description: appText(
+                      'safety_tips_screen.dart',
+                      'Never harvest seaweed during active Red Tide alerts or HAB advisories. Microscopic toxins settle on fronds and cannot be washed or cooked out.',
+                    ),
                   ),
                   _buildTipItem(
-                    title: 'Contaminated Waters & Runoff',
-                    description:
-                        'Avoid harvesting near industrial ports, agricultural runoff sites, stormwater outlets, or heavy maritime traffic to prevent heavy metal ingestion.',
+                    title: appText('safety_tips_screen.dart', 'Contaminated Waters & Runoff'),
+                    description: appText(
+                      'safety_tips_screen.dart',
+                      'Avoid harvesting near industrial ports, agricultural runoff sites, stormwater outlets, or heavy maritime traffic to prevent heavy metal ingestion.',
+                    ),
                   ),
                 ],
               ),
@@ -73,25 +89,31 @@ class SafetyTipsScreen extends StatelessWidget {
               const SizedBox(height: 16),
 
               _buildInfoCard(
-                title: '🌱 Sustainable Harvesting Protocol',
+                title: '🌱 ${appText('safety_tips_screen.dart', 'Sustainable Harvesting Protocol')}',
                 accentColor: const Color.fromARGB(255, 255, 248, 238),
                 iconBg: const Color(0xFFB9E4C5),
                 icon: Icons.eco_rounded,
                 items: [
                   _buildTipItem(
-                    title: 'The 30% Rule',
-                    description:
-                        'Harvest only up to 1/3 of a single patch. Always leave enough biomass to ensure local marine flora continues to thrive.',
+                    title: appText('safety_tips_screen.dart', 'The 30% Rule'),
+                    description: appText(
+                      'safety_tips_screen.dart',
+                      'Harvest only up to 1/3 of a single patch. Always leave enough biomass to ensure local marine flora continues to thrive.',
+                    ),
                   ),
                   _buildTipItem(
-                    title: 'Protect the Holdfast',
-                    description:
-                        'Always use clean shears or a knife to cut fronds above the base (holdfast). Never rip plants off rocks—leaving the root-like base allows the seaweed to regenerate.',
+                    title: appText('safety_tips_screen.dart', 'Protect the Holdfast'),
+                    description: appText(
+                      'safety_tips_screen.dart',
+                      'Always use clean shears or a knife to cut fronds above the base (holdfast). Never rip plants off rocks—leaving the root-like base allows the seaweed to regenerate.',
+                    ),
                   ),
                   _buildTipItem(
-                    title: 'Respect Protected Marine Areas',
-                    description:
-                        'Verify local coastal laws and ensure you are not harvesting in marine sanctuaries, marine protected areas, or private properties.',
+                    title: appText('safety_tips_screen.dart', 'Respect Protected Marine Areas'),
+                    description: appText(
+                      'safety_tips_screen.dart',
+                      'Verify local coastal laws and ensure you are not harvesting in marine sanctuaries, marine protected areas, or private properties.',
+                    ),
                   ),
                 ],
               ),
@@ -99,25 +121,31 @@ class SafetyTipsScreen extends StatelessWidget {
               const SizedBox(height: 16),
 
               _buildInfoCard(
-                title: '🧼 Handling & Preparation',
+                title: '🧼 ${appText('safety_tips_screen.dart', 'Handling & Preparation')}',
                 accentColor: const Color.fromARGB(255, 234, 243, 251),
                 iconBg: const Color(0xFFB8D9F8),
                 icon: Icons.water_drop_rounded,
                 items: [
                   _buildTipItem(
-                    title: 'Potable Water Rinsing',
-                    description:
-                        'Thoroughly soak and wash wild seaweed multiple times in clean, running tap water to remove sand, epiphytes, and debris.',
+                    title: appText('safety_tips_screen.dart', 'Potable Water Rinsing'),
+                    description: appText(
+                      'safety_tips_screen.dart',
+                      'Thoroughly soak and wash wild seaweed multiple times in clean, running tap water to remove sand, epiphytes, and debris.',
+                    ),
                   ),
                   _buildTipItem(
-                    title: 'Cold Storage & Immediate Prep',
-                    description:
-                        'Freshly harvested seaweed degrades quickly. Keep it chilled and consume within 24–48 hours for optimal safety and texture.',
+                    title: appText('safety_tips_screen.dart', 'Cold Storage & Immediate Prep'),
+                    description: appText(
+                      'safety_tips_screen.dart',
+                      'Freshly harvested seaweed degrades quickly. Keep it chilled and consume within 24–48 hours for optimal safety and texture.',
+                    ),
                   ),
                   _buildTipItem(
-                    title: 'Health & Iodine Awareness',
-                    description:
-                        'Consuming large amounts of marine algae introduces high levels of iodine. Individuals with thyroid conditions or seafood allergies should consume in moderation.',
+                    title: appText('safety_tips_screen.dart', 'Health & Iodine Awareness'),
+                    description: appText(
+                      'safety_tips_screen.dart',
+                      'Consuming large amounts of marine algae introduces high levels of iodine. Individuals with thyroid conditions or seafood allergies should consume in moderation.',
+                    ),
                   ),
                 ],
               ),
@@ -125,20 +153,24 @@ class SafetyTipsScreen extends StatelessWidget {
               const SizedBox(height: 16),
 
               _buildInfoCard(
-                title: '🛡️ Intertidal Hazards & First Aid',
+                title: '🛡️ ${appText('safety_tips_screen.dart', 'Intertidal Hazards & First Aid')}',
                 accentColor: const Color(0xFFEAECEF),
                 iconBg: const Color(0xFFBFCFD3),
                 icon: Icons.shield_rounded,
                 items: [
                   _buildTipItem(
-                    title: 'Marine Contact Hazards',
-                    description:
-                        'Watch out for stinging organism hitchhikers (jellyfish, fire corals, hydroids) or sea urchins living amongst seaweed fronds in shallow reef waters.',
+                    title: appText('safety_tips_screen.dart', 'Marine Contact Hazards'),
+                    description: appText(
+                      'safety_tips_screen.dart',
+                      'Watch out for stinging organism hitchhikers (jellyfish, fire corals, hydroids) or sea urchins living amongst seaweed fronds in shallow reef waters.',
+                    ),
                   ),
                   _buildTipItem(
-                    title: 'Recommended Gear',
-                    description:
-                        'Always wear protective rubber-soled water shoes or reef boots and protective gloves when harvesting along sharp rocks or coral beds.',
+                    title: appText('safety_tips_screen.dart', 'Recommended Gear'),
+                    description: appText(
+                      'safety_tips_screen.dart',
+                      'Always wear protective rubber-soled water shoes or reef boots and protective gloves when harvesting along sharp rocks or coral beds.',
+                    ),
                   ),
                 ],
               ),

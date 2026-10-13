@@ -5,6 +5,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import '../../services/app_language.dart';
 
 class HomeScreen extends StatefulWidget {
   final Function(int) onTabChanged;
@@ -15,7 +16,8 @@ class HomeScreen extends StatefulWidget {
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
+class _HomeScreenState extends State<HomeScreen>
+    with WidgetsBindingObserver, AppLanguageAwareStateMixin<HomeScreen> {
   List<Map<String, dynamic>> _commonSeaweeds = [];
   List<Map<String, dynamic>> _recentScans = [];
 
@@ -48,9 +50,11 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
 
   Future<void> _loadCommonSeaweeds() async {
     try {
-      final response = await rootBundle.loadString('lib/assets/philippine_seaweeds_50.json');
+      final response =
+          await rootBundle.loadString('lib/assets/philippine_seaweeds_50.json');
       final List<dynamic> data = jsonDecode(response);
-      final seaweeds = data.map((item) => item as Map<String, dynamic>).toList();
+      final seaweeds =
+          data.map((item) => item as Map<String, dynamic>).toList();
 
       final random = Random();
       seaweeds.shuffle(random);
@@ -89,8 +93,7 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
           .map((item) => jsonDecode(item) as Map<String, dynamic>)
           .toList();
 
-      final sorted = [...history]
-        ..sort((a, b) {
+      final sorted = [...history]..sort((a, b) {
           final first = (a['createdAt'] ?? 0) as int;
           final second = (b['createdAt'] ?? 0) as int;
           return second.compareTo(first);
@@ -111,7 +114,7 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: const Color(0xFFF8FBFC),
+        color: const Color(0xFFF8FBFC),
         child: SafeArea(
           top: false,
           bottom: true,
@@ -123,36 +126,35 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
               physics: const BouncingScrollPhysics(),
               child: Column(
                 children: [
-                // Top Banner Image
-                _buildTopBanner(),
-                
-                // Quick Actions
-                _buildQuickActions(),
-                
-                // Nearby Seaweeds
-                _buildNearbySeaweeds(),
-                
-                // Recent Scans
-                _buildRecentScans(),
+                  // Top Banner Image
+                  _buildTopBanner(),
 
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 10),
-                  child: Row(
-                    children: [
-                      Expanded(child: _buildDidYouKnowCard()),
-                      const SizedBox(width: 12),
-                      Expanded(child: _buildSafetyReminderCard()),
-                    ],
+                  // Quick Actions
+                  _buildQuickActions(),
+
+                  // Nearby Seaweeds
+                  _buildNearbySeaweeds(),
+
+                  // Recent Scans
+                  _buildRecentScans(),
+
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    child: Row(
+                      children: [
+                        Expanded(child: _buildDidYouKnowCard()),
+                        const SizedBox(width: 12),
+                        Expanded(child: _buildSafetyReminderCard()),
+                      ],
+                    ),
                   ),
-                ),
-                
-                const SizedBox(height: 40),
-              ],
+
+                  const SizedBox(height: 40),
+                ],
+              ),
             ),
           ),
-        ),
-      )
-    );
+        ));
   }
 
   Future<void> _refreshData() async {
@@ -218,8 +220,8 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const Text(
-                'Quick Actions',
+              Text(
+                appText('home_screen.dart', 'Quick Actions'),
                 style: TextStyle(
                   fontFamily: 'Itim',
                   fontSize: 16,
@@ -269,32 +271,33 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
             children: [
               _buildQuickActionTile(
                 icon: Icons.image_outlined,
-                title: 'Upload Image',
-                subtitle: 'From gallery',
+                title: appText('home_screen.dart', 'Upload Image'),
+                subtitle: appText('home_screen.dart', 'From gallery'),
                 backgroundColor: const Color(0xFFD9F4F7),
                 iconColor: const Color(0xFF0B7A8A),
                 onTap: () => widget.onTabChanged(2),
               ),
               _buildQuickActionTile(
                 icon: Icons.menu_book_outlined,
-                title: 'Learn',
-                subtitle: 'Stay informed',
+                title: appText('home_screen.dart', 'Learn'),
+                subtitle: appText('home_screen.dart', 'Stay informed'),
                 backgroundColor: const Color(0xFFD9F4F7),
                 iconColor: const Color(0xFF0B7A8A),
                 onTap: () => widget.onTabChanged(1),
               ),
               _buildQuickActionTile(
                 icon: Icons.history_outlined,
-                title: 'View History',
-                subtitle: 'Review your scans',
+                title: appText('home_screen.dart', 'View History'),
+                subtitle: appText('home_screen.dart', 'Review your scans'),
                 backgroundColor: const Color(0xFFD9F4F7),
                 iconColor: const Color(0xFF0B7A8A),
                 onTap: () => widget.onTabChanged(3),
               ),
               _buildQuickActionTile(
                 icon: Icons.security_outlined,
-                title: 'Safety Tips',
-                subtitle: 'Guidelines for\nsafe use',
+                title: appText('home_screen.dart', 'Safety Tips'),
+                subtitle:
+                    appText('home_screen.dart', 'Guidelines for\nsafe use'),
                 backgroundColor: const Color(0xFFD9F4F7),
                 iconColor: const Color(0xFF0B7A8A),
                 onTap: () {
@@ -315,11 +318,12 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
     required Color backgroundColor,
     required Color iconColor,
     VoidCallback? onTap,
-    }) {
-      return GestureDetector(
-      onTap: onTap ?? () {
-        // Handle action
-      },
+  }) {
+    return GestureDetector(
+      onTap: onTap ??
+          () {
+            // Handle action
+          },
       child: Container(
         decoration: BoxDecoration(
           color: backgroundColor.withOpacity(1),
@@ -395,8 +399,8 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text(
-                    'Common Seaweeds',
+                  Text(
+                    appText('home_screen.dart', 'Common Seaweeds'),
                     style: TextStyle(
                       fontFamily: 'Itim',
                       fontSize: 16,
@@ -410,8 +414,8 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
                 onTap: () => widget.onTabChanged(1),
                 child: Row(
                   children: [
-                    const Text(
-                      'See All',
+                    Text(
+                      appText('home_screen.dart', 'See All'),
                       style: TextStyle(
                         fontSize: 12,
                         fontWeight: FontWeight.w600,
@@ -537,7 +541,8 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
   }
 
   Widget _buildImageFromPath(String imagePath) {
-    final isAsset = imagePath.startsWith('lib/assets/') || imagePath.startsWith('assets/');
+    final isAsset =
+        imagePath.startsWith('lib/assets/') || imagePath.startsWith('assets/');
 
     if (isAsset) {
       return Image.asset(
@@ -600,8 +605,8 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
             child: const Icon(Icons.spa, size: 35, color: Color(0xFF0B7A8A)),
           ),
           const SizedBox(height: 12),
-          const Text(
-            'Did You Know?',
+          Text(
+            appText('home_screen.dart', 'Did You Know?'),
             style: TextStyle(
               fontFamily: 'Itim',
               fontSize: 14,
@@ -610,8 +615,11 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
             ),
           ),
           const SizedBox(height: 6),
-          const Text(
-            'Some seaweeds are rich in antioxidants, but others can be harmful. Identify before you consume!',
+          Text(
+            appText(
+              'home_screen.dart',
+              'Some seaweeds are rich in antioxidants, but others can be harmful. Identify before you consume!',
+            ),
             style: TextStyle(
               fontSize: 11,
               fontWeight: FontWeight.w500,
@@ -649,8 +657,8 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
             ),
           ),
           const SizedBox(height: 12),
-          const Text(
-            'Safety Reminder',
+          Text(
+            appText('home_screen.dart', 'Safety Reminder'),
             style: TextStyle(
               fontFamily: 'Itim',
               fontSize: 14,
@@ -659,8 +667,11 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
             ),
           ),
           const SizedBox(height: 6),
-          const Text(
-            'Avoid consuming unidentified seaweeds. When in doubt, don\'t eat it.',
+          Text(
+            appText(
+              'home_screen.dart',
+              'Avoid consuming unidentified seaweeds. When in doubt, don\'t eat it.',
+            ),
             style: TextStyle(
               fontSize: 11,
               fontWeight: FontWeight.w500,
@@ -675,13 +686,13 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
               color: const Color(0xFF2DBE89).withOpacity(0.2),
               borderRadius: BorderRadius.circular(6),
             ),
-            child: const Row(
+            child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
                 Icon(Icons.shield, size: 13, color: Color(0xFF2DBE89)),
                 SizedBox(width: 4),
                 Text(
-                  'Stay Safe',
+                  appText('home_screen.dart', 'Stay Safe'),
                   style: TextStyle(
                     fontSize: 10,
                     fontWeight: FontWeight.w600,
@@ -706,8 +717,8 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const Text(
-                'Recent Scans',
+              Text(
+                appText('home_screen.dart', 'Recent Scans'),
                 style: TextStyle(
                   fontFamily: 'Itim',
                   fontSize: 16,
@@ -719,8 +730,8 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
                 onTap: () => widget.onTabChanged(3),
                 child: Row(
                   children: [
-                    const Text(
-                      'See all',
+                    Text(
+                      appText('home_screen.dart', 'See All'),
                       style: TextStyle(
                         fontSize: 12,
                         fontWeight: FontWeight.w600,
@@ -741,10 +752,10 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
           const SizedBox(height: 12),
           // Recent Scans List
           if (_recentScans.isEmpty)
-            const Padding(
-              padding: EdgeInsets.symmetric(vertical: 12),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 12),
               child: Text(
-                'No recent scans yet.',
+                appText('home_screen.dart', 'No recent scans yet.'),
                 style: TextStyle(fontSize: 12, color: Color(0xFF6C7A80)),
               ),
             )
@@ -778,13 +789,17 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
                                   ? Image.memory(
                                       base64Decode(imageData),
                                       fit: BoxFit.cover,
-                                      errorBuilder: (context, error, stackTrace) {
+                                      errorBuilder:
+                                          (context, error, stackTrace) {
                                         return const Center(
-                                          child: Icon(Icons.broken_image_outlined, color: Colors.grey),
+                                          child: Icon(
+                                              Icons.broken_image_outlined,
+                                              color: Colors.grey),
                                         );
                                       },
                                     )
-                                  : _buildImageFromPath('lib/assets/images/seaweeds-images/Ulva lactuca.jpg'),
+                                  : _buildImageFromPath(
+                                      'lib/assets/images/seaweeds-images/Ulva lactuca.jpg'),
                             ),
                           ),
                           const SizedBox(width: 12),
@@ -804,7 +819,7 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
                                 ),
                                 const SizedBox(height: 4),
                                 Text(
-                                  'Confidence: $confidence',
+                                  '${appText('home_screen.dart', 'Confidence')}: $confidence',
                                   style: const TextStyle(
                                     fontSize: 11,
                                     fontWeight: FontWeight.w500,
@@ -815,13 +830,14 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
                             ),
                           ),
                           Container(
-                            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 10, vertical: 6),
                             decoration: BoxDecoration(
                               color: statusColor.withOpacity(0.15),
                               borderRadius: BorderRadius.circular(8),
                             ),
                             child: Text(
-                              status,
+                              appText('home_screen.dart', status),
                               style: TextStyle(
                                 fontSize: 12,
                                 fontWeight: FontWeight.bold,
@@ -840,5 +856,4 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
       ),
     );
   }
-
-}                                                                                                                                                                                                              
+}

@@ -24,7 +24,28 @@
         "In a serving bowl, combine the lime juice, olive oil, minced garlic, sea salt, black pepper, and optional scotch bonnet chili.",
         "Add the diced red bell pepper and red onion to the dressing.",
         "Gently add the Caulerpa sertularioides fronds to the bowl, toss softly to coat, and serve immediately."
-      ]
+      ],
+      "filipino": {
+        "title": "Sariwang Feather Seaweed Salad, Estilong Caribbean",
+        "description": "Malamig at malutong na salad ng sariwang Caulerpa sertularioides na hinaluan ng katas ng kalamansi, siling kampana, at bawang.",
+        "ingredients": [
+          "200 g sariwang Caulerpa sertularioides (pinutulan at hinugasan)",
+          "1 maliit na pulang siling kampana (tinadtad nang pino)",
+          "1/2 maliit na pulang sibuyas (hiniwang maninipis)",
+          "1 maliit na butil ng bawang (kinayod o tinadtad nang pino)",
+          "2 tbsp sariwang katas ng kalamansi",
+          "1 tbsp extra virgin na langis ng oliba",
+          "1/4 tsp asin-dagat",
+          "1/2 tsp bagong-giling na itim na paminta",
+          "1 maliit na scotch bonnet o habanero na sili (inalisan ng buto at tinadtad, opsyonal)"
+        ],
+        "instructions": [
+          "Banlawan nang dalawang ulit sa malamig na tubig ang mga dahon ng feather seaweed upang maalis ang buhangin. Putulin ang mga nanilaw na tangkay o kapit-ugat. Patuluin sa salaan at dahan-dahang patuyuin gamit ang paper towel.",
+          "Sa mangkok na paghahainan, pagsamahin ang katas ng kalamansi, langis ng oliba, tinadtad na bawang, asin-dagat, itim na paminta, at opsyonal na scotch bonnet na sili.",
+          "Idagdag sa sawsawan ang tinadtad na pulang siling kampana at pulang sibuyas.",
+          "Dahan-dahang idagdag sa mangkok ang mga dahon ng Caulerpa sertularioides, marahang haluin upang mabalutan, at ihain kaagad."
+        ]
+      }
     },
     {
       "title": "Southeast Asian Green Mango & Feather Seaweed Salad",
@@ -44,7 +65,27 @@
         "In a bowl, whisk together the vinegar, calamansi juice, sugar, and salt until dissolved.",
         "Add the shredded green mango, diced tomatoes, and sliced shallots into the vinegar dressing.",
         "Place the chilled seaweed fronds on a platter, spoon the green mango mixture over top right before serving, and toss gently."
-      ]
+      ],
+      "filipino": {
+        "title": "Salad ng Hilaw na Manggang Berde at Feather Seaweed, Estilong Timog-Silangang Asya",
+        "description": "Sariwang salad na pinagtatambal ang natural na maanghang at malutong na feather seaweed, maasim na manggang berde, at suka ng niyog.",
+        "ingredients": [
+          "200 g sariwang Caulerpa sertularioides",
+          "1/2 cup hilaw na manggang berde (binalatan at hiniwang pahaba o ginayat)",
+          "2 maliit na hinog na kamatis (inalisan ng ubod at hiniwang pakuwadrado)",
+          "1 maliit na sibuyas na pula o pulang sibuyas (hiniwang maninipis)",
+          "2 tbsp suka ng niyog o suka ng tubo",
+          "1 tbsp sariwang katas ng kalamansi o dayap",
+          "1/2 tsp asukal",
+          "1 kurot na asin-dagat"
+        ],
+        "instructions": [
+          "Ilubog ang Caulerpa sertularioides sa malinis at pinalamig na tubig nang 2 minuto upang maging malutong ang mga dahon. Patuluin nang mabuti.",
+          "Sa mangkok, haluin ang suka, katas ng kalamansi, asukal, at asin hanggang matunaw.",
+          "Idagdag sa sawsawan ng suka ang ginayat na manggang berde, hiniwang kamatis, at hiniwang sibuyas.",
+          "Ilagay sa pinggan ang pinalamig na mga dahon ng seaweed, sandukan ng halo ng manggang berde bago ihain, at dahan-dahang haluin."
+        ]
+      }
     },
     {
       "title": "South Asian Spiced Coconut & Lime Feather Seaweed Salad",
@@ -61,7 +102,24 @@
         "Wash the seaweed fronds under cool running water and submerge in an ice bath for 3 minutes. Drain completely.",
         "In a mortar or bowl, lightly bruise the green chilies, minced shallot, grated coconut, salt, and lime juice together.",
         "Add the drained Caulerpa sertularioides to the mixture, folding gently so as not to bruise the fronds. Serve cold."
-      ]
+      ],
+      "filipino": {
+        "title": "Maanghang na Niyog at Kalamansi na Feather Seaweed Salad, Estilong Timog Asya",
+        "description": "Hilaw na ulam na may feather seaweed na hinaluan ng bagong-kayod na niyog, berdeng sili, at sitrus.",
+        "ingredients": [
+          "150 g sariwang Caulerpa sertularioides",
+          "1/4 cup bagong-kayod na niyog (walang asukal)",
+          "1-2 berdeng sili (tinadtad nang pino)",
+          "1 maliit na sibuyas na pula (tinadtad nang pino)",
+          "1.5 tbsp sariwang katas ng lemon o kalamansi",
+          "1 kurot na asin-dagat"
+        ],
+        "instructions": [
+          "Hugasan ang mga dahon ng seaweed sa malamig na umaagos na tubig at ilubog sa tubig na may yelo nang 3 minuto. Patuluin nang lubusan.",
+          "Sa almires o mangkok, bahagyang dikdikin o durugin ang berdeng sili, tinadtad na sibuyas, kinayod na niyog, asin, at katas ng kalamansi.",
+          "Idagdag sa halo ang pinatulong Caulerpa sertularioides at marahang itupi upang hindi madurog ang mga dahon. Ihain nang malamig."
+        ]
+      }
     }
   ]
 }
