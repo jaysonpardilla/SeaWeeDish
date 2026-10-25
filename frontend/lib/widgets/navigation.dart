@@ -172,11 +172,11 @@ class _BottomNavigationState extends State<BottomNavigation>
                 AnimatedScale(
                   duration: _animationDuration,
                   curve: Curves.fastOutSlowIn,
-                  scale: isActive ? 1.0 : 0.85,
+                  scale: 1.0,
                   child: Icon(
                     _navItems[index].icon,
                     color: isActive ? _iconColorActive : _iconColorInactive,
-                    size: 25,
+                    size: 33,
                   ),
                 ),
                 if (isActive) ...[
