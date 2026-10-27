@@ -2,11 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_map/flutter_map.dart';
-import 'package:latlong2/latlong.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:geolocator/geolocator.dart';
-import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
 import 'dart:io';
@@ -35,7 +30,6 @@ class _ResultScreenState extends State<ResultScreen>
   late String seaweedName;
   late String resultDisplayName;
   late int confidence;
-  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
   @override
   void initState() {
@@ -66,10 +60,6 @@ class _ResultScreenState extends State<ResultScreen>
     }
 
     Future.microtask(() => _saveResultToDeviceHistory());
-
-    if (widget.prediction != null && confidence > _minimumConfidenceToSave) {
-      _saveResultToMap();
-    }
   }
 
   Future<void> _loadResultDisplayName() async {
@@ -111,88 +101,6 @@ class _ResultScreenState extends State<ResultScreen>
     return normalized == 'caulerpa lentilifera'
         ? 'caulerpa lentillifera'
         : normalized;
-  }
-
-  Future<void> _saveResultToMap() async {
-    if (!mounted) return;
-
-    if (confidence <= _minimumConfidenceToSave) {
-      return;
-    }
-
-    try {
-      print('🗺️ Starting map save process...');
-      print('🗺️ Current user ID: guest_user');
-      print('🗺️ Seaweed name: $seaweedName, Confidence: $confidence');
-
-      final permission = await Geolocator.checkPermission();
-      print('🗺️ Location permission: $permission');
-
-      if (permission == LocationPermission.denied ||
-          permission == LocationPermission.deniedForever) {
-        print('🗺️ Requesting location permission...');
-        final requested = await Geolocator.requestPermission();
-        print('🗺️ Permission request result: $requested');
-
-        if (requested == LocationPermission.denied ||
-            requested == LocationPermission.deniedForever) {
-          return;
-        }
-      }
-
-      final serviceEnabled = await Geolocator.isLocationServiceEnabled();
-      print('🗺️ Location service enabled: $serviceEnabled');
-
-      if (!serviceEnabled) {
-        return;
-      }
-
-      print('🗺️ Getting current position...');
-      final position = await Geolocator.getCurrentPosition(
-        desiredAccuracy: LocationAccuracy.high,
-      );
-
-      print('🗺️ Got position: ${position.latitude}, ${position.longitude}');
-
-      String imageUrl = '';
-      if (widget.capturedImage is File) {
-        print('🗺️ Uploading image to Cloudinary...');
-        imageUrl = await _uploadImageToCloudinary(widget.capturedImage as File);
-        print('🗺️ Image URL after upload: $imageUrl');
-      } else {
-        print(
-            '⚠️ Captured image is not a File: ${widget.capturedImage.runtimeType}');
-      }
-
-      print('🗺️ Saving to Firestore...');
-      print('🗺️ Data to save: {');
-      print('  latitude: ${position.latitude},');
-      print('  longitude: ${position.longitude},');
-      print('  userId: guest_user,');
-      print(
-          '  seaweed: { name: $seaweedName, confidence: $confidence, imageUrl: $imageUrl }');
-      print('}');
-
-      await _firestore.collection('map_points').add({
-        'latitude': position.latitude,
-        'longitude': position.longitude,
-        'userId': 'guest_user',
-        'createdAt': FieldValue.serverTimestamp(),
-        'seaweeds': [
-          {
-            'name': seaweedName,
-            'confidence': confidence,
-            'imageUrl': imageUrl,
-            'uploadedAt': DateTime.now().millisecondsSinceEpoch,
-          }
-        ],
-      });
-
-      print('✅ Firestore save successful!');
-    } catch (e, st) {
-      print('❌ Map save error: $e');
-      print('❌ Stack trace: $st');
-    }
   }
 
   Future<void> _saveResultToDeviceHistory() async {
@@ -283,54 +191,6 @@ class _ResultScreenState extends State<ResultScreen>
     }[date.month];
 
     return '$month ${date.day}, ${date.year} $hour:$minute $suffix';
-  }
-
-  Future<String> _uploadImageToCloudinary(File imageFile) async {
-    try {
-      const uploadPreset = 'seaweeds_identifier';
-      const cloudinaryUrl =
-          'https://api.cloudinary.com/v1_1/dkvhqzo31/image/upload';
-
-      print('📤 Starting Cloudinary upload for: ${imageFile.path}');
-      print('📤 File exists: ${await imageFile.exists()}');
-      print('📤 File size: ${await imageFile.length()} bytes');
-
-      final request = http.MultipartRequest('POST', Uri.parse(cloudinaryUrl));
-      request.fields['upload_preset'] = uploadPreset;
-      request.fields['public_id'] =
-          'seaweeds/${DateTime.now().millisecondsSinceEpoch}_${imageFile.path.split('/').last}';
-      request.files
-          .add(await http.MultipartFile.fromPath('file', imageFile.path));
-
-      print('📤 Sending request to Cloudinary...');
-      final response = await request.send().timeout(const Duration(minutes: 2));
-
-      print('📤 Cloudinary response status: ${response.statusCode}');
-
-      if (response.statusCode != 200) {
-        final errorBody = await response.stream.bytesToString();
-        print('❌ Cloudinary error body: $errorBody');
-        throw Exception(
-            'Cloudinary upload failed with status ${response.statusCode}: $errorBody');
-      }
-
-      final responseBody = await response.stream.bytesToString();
-      print('📤 Cloudinary response: $responseBody');
-
-      final responseData = jsonDecode(responseBody);
-      final imageUrl = responseData['secure_url'] as String?;
-
-      if (imageUrl == null || imageUrl.isEmpty) {
-        print('⚠️ Cloudinary returned empty URL');
-        return '';
-      }
-
-      print('✅ Cloudinary upload successful: $imageUrl');
-      return imageUrl;
-    } catch (e) {
-      print('❌ Cloudinary upload error: $e');
-      return '';
-    }
   }
 
   @override
@@ -744,206 +604,5 @@ class _ResultScreenState extends State<ResultScreen>
       print('🔙 Popping route: ${route.settings.name ?? 'unknown'}');
       return route.isFirst;
     });
-  }
-}
-
-// Full-screen map screen for selecting location
-class FullScreenMapScreen extends StatefulWidget {
-  const FullScreenMapScreen({super.key});
-
-  @override
-  State<FullScreenMapScreen> createState() => _FullScreenMapScreenState();
-}
-
-class _FullScreenMapScreenState extends State<FullScreenMapScreen>
-    with AppLanguageAwareStateMixin<FullScreenMapScreen> {
-  late MapController mapController;
-  late LatLng selectedLocation = LatLng(11.5740, 124.5745);
-
-  @override
-  void initState() {
-    super.initState();
-    mapController = MapController();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Stack(
-        children: [
-          // Full map
-          FlutterMap(
-            mapController: mapController,
-            options: MapOptions(
-              center: selectedLocation,
-              zoom: 11.0,
-              onTap: (tapPosition, point) {
-                setState(() {
-                  selectedLocation = point;
-                });
-              },
-            ),
-            children: [
-              TileLayer(
-                urlTemplate: 'https://tile.openstreetmap.de/{z}/{x}/{y}.png',
-                userAgentPackageName: 'com.example.app',
-              ),
-              MarkerLayer(
-                markers: [
-                  Marker(
-                    point: selectedLocation,
-                    builder: (context) => Icon(
-                      Icons.location_on,
-                      color: Colors.red.shade700,
-                      size: 40,
-                    ),
-                  ),
-                ],
-              ),
-            ],
-          ),
-          // Top bar with back button and title
-          Positioned(
-            top: 0,
-            left: 0,
-            right: 0,
-            child: SafeArea(
-              child: Container(
-                color: Colors.black.withOpacity(0.5),
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-                child: Row(
-                  children: [
-                    GestureDetector(
-                      onTap: () => Navigator.pop(context),
-                      child: const Icon(
-                        Icons.arrow_back,
-                        color: Colors.white,
-                        size: 24,
-                      ),
-                    ),
-                    const SizedBox(width: 16),
-                    const Text(
-                      'Select Location in Biliran',
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ),
-          // Bottom action bar
-          Positioned(
-            bottom: 0,
-            left: 0,
-            right: 0,
-            child: SafeArea(
-              child: Container(
-                padding: const EdgeInsets.all(20),
-                decoration: BoxDecoration(
-                  color: Colors.black.withOpacity(0.7),
-                  borderRadius: const BorderRadius.only(
-                    topLeft: Radius.circular(20),
-                    topRight: Radius.circular(20),
-                  ),
-                ),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Container(
-                      padding: const EdgeInsets.all(12),
-                      decoration: BoxDecoration(
-                        color: Colors.white.withOpacity(0.1),
-                        borderRadius: BorderRadius.circular(8),
-                        border: Border.all(
-                          color: Colors.white.withOpacity(0.3),
-                        ),
-                      ),
-                      child: Row(
-                        children: [
-                          const Icon(
-                            Icons.location_on,
-                            color: Color(0xFF0CA8B3),
-                            size: 20,
-                          ),
-                          const SizedBox(width: 12),
-                          Expanded(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                const Text(
-                                  'Selected Location',
-                                  style: TextStyle(
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.white70,
-                                  ),
-                                ),
-                                Text(
-                                  '${selectedLocation.latitude.toStringAsFixed(4)}, ${selectedLocation.longitude.toStringAsFixed(4)}',
-                                  style: const TextStyle(
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.white,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    const SizedBox(height: 16),
-                    SizedBox(
-                      width: double.infinity,
-                      child: ElevatedButton(
-                        onPressed: () {
-                          Navigator.pop(context, selectedLocation);
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
-                              content: Text(
-                                'Location saved: ${selectedLocation.latitude.toStringAsFixed(4)}, ${selectedLocation.longitude.toStringAsFixed(4)}',
-                              ),
-                              backgroundColor: const Color(0xFF0CA8B3),
-                              duration: const Duration(seconds: 2),
-                            ),
-                          );
-                        },
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: const Color(0xFF0CA8B3),
-                          padding: const EdgeInsets.symmetric(vertical: 14),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          elevation: 0,
-                        ),
-                        child: const Text(
-                          'Save Location',
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  @override
-  void dispose() {
-    mapController.dispose();
-    super.dispose();
   }
 }
