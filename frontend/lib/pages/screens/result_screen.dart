@@ -1,6 +1,7 @@
 // ignore_for_file: unused_local_variable, deprecated_member_use
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -32,6 +33,7 @@ class _ResultScreenState extends State<ResultScreen>
   static const int _minimumConfidenceToSave = 70;
 
   late String seaweedName;
+  late String resultDisplayName;
   late int confidence;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
@@ -58,11 +60,57 @@ class _ResultScreenState extends State<ResultScreen>
       print('📋 Using fallback mock data');
     }
 
+    resultDisplayName = seaweedName;
+    if (seaweedName.trim().toLowerCase() != 'unrecognized') {
+      _loadResultDisplayName();
+    }
+
     Future.microtask(() => _saveResultToDeviceHistory());
 
     if (widget.prediction != null && confidence > _minimumConfidenceToSave) {
       _saveResultToMap();
     }
+  }
+
+  Future<void> _loadResultDisplayName() async {
+    try {
+      final response =
+          await rootBundle.loadString('lib/assets/philippine_seaweeds_50.json');
+      final seaweeds = jsonDecode(response) as List<dynamic>;
+      final prediction = _normalizeSeaweedName(seaweedName);
+
+      for (final item in seaweeds) {
+        final seaweed = item as Map<String, dynamic>;
+        final commonName = seaweed['common_name'] as String?;
+        final scientificName = seaweed['scientific_name'] as String?;
+        if (commonName == null || scientificName == null) continue;
+
+        if (prediction == _normalizeSeaweedName(commonName) ||
+            prediction == _normalizeSeaweedName(scientificName)) {
+          if (mounted) {
+            setState(() {
+              resultDisplayName = '$scientificName ($commonName)';
+            });
+          }
+          return;
+        }
+      }
+    } catch (e) {
+      debugPrint('Unable to load seaweed display name: $e');
+    }
+  }
+
+  String _normalizeSeaweedName(String name) {
+    final normalized = name
+        .split('(')
+        .first
+        .trim()
+        .toLowerCase()
+        .replaceAll('_', ' ')
+        .replaceAll(RegExp(r'\s+'), ' ');
+    return normalized == 'caulerpa lentilifera'
+        ? 'caulerpa lentillifera'
+        : normalized;
   }
 
   Future<void> _saveResultToMap() async {
@@ -330,13 +378,12 @@ class _ResultScreenState extends State<ResultScreen>
                   const SizedBox(height: 5),
                   // Seaweed name with label
                   Text(
-                    appText('result_screen.dart', 'Result: {name}')
-                        .replaceAll(
-                          '{name}',
-                          seaweedName == 'Unrecognized'
-                              ? appText('result_screen.dart', 'Unrecognized')
-                              : seaweedName,
-                        ),
+                    appText('result_screen.dart', 'Result: {name}').replaceAll(
+                      '{name}',
+                      seaweedName == 'Unrecognized'
+                          ? appText('result_screen.dart', 'Unrecognized')
+                          : resultDisplayName,
+                    ),
                     style: const TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
@@ -414,10 +461,11 @@ class _ResultScreenState extends State<ResultScreen>
                         width: double.infinity,
                         padding: const EdgeInsets.all(12),
                         decoration: BoxDecoration(
-                          color: Colors.white.withOpacity(0.06),
+                          color: const Color(0x330CA8B3),
                           borderRadius: BorderRadius.circular(12),
-                          border:
-                              Border.all(color: Colors.white.withOpacity(0.12)),
+                          border: Border.all(
+                            color: const Color(0x660CA8B3),
+                          ),
                         ),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -444,14 +492,20 @@ class _ResultScreenState extends State<ResultScreen>
                                       MaterialPageRoute(
                                         builder: (context) =>
                                             RecommendedDishesScreen(
-                                          speciesName: seaweedName,
+                                          speciesName: _normalizeSeaweedName(
+                                              seaweedName),
                                         ),
                                       ),
                                     );
                                   },
                                   style: OutlinedButton.styleFrom(
-                                    side:
-                                        const BorderSide(color: Colors.white24),
+                                    backgroundColor: const Color(0xFF0CA8B3),
+                                    elevation: 4,
+                                    shadowColor: const Color(0xFF0CA8B3),
+                                    side: const BorderSide(
+                                      color: Colors.white,
+                                      width: 1.5,
+                                    ),
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(8),
                                     ),
@@ -530,8 +584,9 @@ class _ResultScreenState extends State<ResultScreen>
 
   // Returns a list of cleaning steps for the predicted species (or empty if unknown)
   List<String> _getCleaningSteps() {
-    final predicted =
-        (widget.prediction?.prediction ?? seaweedName).trim().toLowerCase();
+    final predicted = _normalizeSeaweedName(
+      widget.prediction?.prediction ?? seaweedName,
+    );
 
     if (predicted == 'caulerpa lentilifera' ||
         predicted == 'caulerpa lentillifera') {

@@ -68,6 +68,8 @@ class Seaweed {
     if (translation is String && translation.isNotEmpty) return translation;
     return appText('seaweed_detail_screen.dart', englishText);
   }
+
+  String get formattedName => '$scientificName ($commonName)';
 }
 
 class SeaweedDetailScreen extends StatefulWidget {
@@ -334,22 +336,28 @@ class _SeaweedDetailScreenState extends State<SeaweedDetailScreen>
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text(
-                                    widget.seaweed.commonName,
+                                  Text.rich(
+                                    TextSpan(
+                                      children: [
+                                        TextSpan(
+                                          text: widget.seaweed.scientificName,
+                                          style: const TextStyle(
+                                            fontStyle: FontStyle.italic,
+                                          ),
+                                        ),
+                                        TextSpan(
+                                          text:
+                                              ' (${widget.seaweed.commonName})',
+                                        ),
+                                      ],
+                                    ),
+                                    maxLines: 2,
+                                    overflow: TextOverflow.ellipsis,
                                     style: const TextStyle(
-                                      fontSize: 18,
+                                      fontSize: 14,
                                       fontWeight: FontWeight.bold,
                                       color: Color(0xFF083C7E),
                                       fontFamily: 'Itim',
-                                    ),
-                                  ),
-                                  const SizedBox(height: 4),
-                                  Text(
-                                    widget.seaweed.scientificName,
-                                    style: const TextStyle(
-                                      fontSize: 11,
-                                      fontStyle: FontStyle.italic,
-                                      color: Color(0xFF395C7A),
                                     ),
                                   ),
                                   const SizedBox(height: 10),
@@ -842,7 +850,8 @@ class _SeaweedDetailScreenState extends State<SeaweedDetailScreen>
                                                                 .spaceBetween,
                                                         children: [
                                                           Text(
-                                                            seaweed.commonName,
+                                                            seaweed
+                                                                .formattedName,
                                                             maxLines: 2,
                                                             overflow:
                                                                 TextOverflow
